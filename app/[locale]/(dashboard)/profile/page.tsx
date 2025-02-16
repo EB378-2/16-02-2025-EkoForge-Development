@@ -90,19 +90,6 @@ export default function ProfilePage() {
   const [taskFilter, setTaskFilter] = React.useState<"active" | "archived">("active");
   const [noteFilter, setNoteFilter] = React.useState<"active" | "archived">("active");
 
-  // Initialize local state when profile data loads.
-  React.useEffect(() => {
-    if (data?.data) {
-      setTasks(
-        data.data.tasks || [
-          { id: 1, task: "Complete profile update", completed: false, archived: false },
-          { id: 2, task: "Review new notifications", completed: false, archived: false },
-        ]
-      );
-      setNotes(data.data.notes || []);
-    }
-  }, [data]);
-
   if (!userId) return <Typography>Loading...</Typography>;
   if (isLoading || !data?.data) return <Typography>Loading profile...</Typography>;
   if (isError) return <Typography>Error loading profile</Typography>;
@@ -370,6 +357,7 @@ export default function ProfilePage() {
               <Box sx={{ display: "flex", mb: 2 }}>
                 <TextField
                   fullWidth
+                  multiline
                   label="New Task"
                   variant="outlined"
                   value={newTask}
