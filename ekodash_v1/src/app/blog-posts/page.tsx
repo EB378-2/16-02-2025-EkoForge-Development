@@ -1,124 +1,131 @@
 "use client";
 
+import { Typography } from "@mui/material";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import { useMany } from "@refinedev/core";
 import {
-    DateField,
-    DeleteButton,
-    EditButton,
-    List,
-    ShowButton,
-    useDataGrid,
+  DateField,
+  DeleteButton,
+  EditButton,
+  List,
+  ShowButton,
+  useDataGrid,
 } from "@refinedev/mui";
-import { Typography } from '@mui/material'
 import React from "react";
-    
+
 export default function BlogPostList() {
-    const { dataGridProps } = useDataGrid({
-        syncWithLocation: true,
-        meta: {
-            select: '*, categories(id,title)',
-        },
-    });
+  const { dataGridProps } = useDataGrid({
+    syncWithLocation: true,
+    meta: {
+      select: "*, categories(id,title)",
+    },
+  });
 
-    const { data: categoryData, isLoading: categoryIsLoading } = useMany({
-        resource: "categories",
-        ids: dataGridProps?.rows?.map((item: any) => item?.categories?.id).filter(Boolean) ?? [],
-        queryOptions: {
-            enabled: !!dataGridProps?.rows,
-        },
-    });
+  const { data: categoryData, isLoading: categoryIsLoading } = useMany({
+    resource: "categories",
+    ids:
+      dataGridProps?.rows
+        ?.map((item: any) => item?.categories?.id)
+        .filter(Boolean) ?? [],
+    queryOptions: {
+      enabled: !!dataGridProps?.rows,
+    },
+  });
 
-const columns = React.useMemo<GridColDef[]>(
+  const columns = React.useMemo<GridColDef[]>(
     () => [
-        {
-            field: "id",
-            headerName: "ID",
-            type: "number",
-            minWidth: 50,
-            display: "flex",
-            align: 'left',
-            headerAlign: 'left',
+      {
+        field: "id",
+        headerName: "ID",
+        type: "number",
+        minWidth: 50,
+        display: "flex",
+        align: "left",
+        headerAlign: "left",
+      },
+      {
+        field: "title",
+        headerName: "Title",
+        minWidth: 200,
+        display: "flex",
+      },
+      {
+        field: "content",
+        flex: 1,
+        headerName: "Content",
+        minWidth: 250,
+        display: "flex",
+        renderCell: function render({ value }) {
+          if (!value) return "-";
+          return (
+            <Typography
+              component="p"
+              whiteSpace="pre"
+              overflow="hidden"
+              textOverflow="ellipsis"
+            >
+              {value}
+            </Typography>
+          );
         },
-        {
-            field: "title",
-            headerName: "Title",
-            minWidth: 200,
-            display: "flex",
+      },
+      {
+        field: "categories",
+        headerName: "Category",
+        minWidth: 160,
+        display: "flex",
+        valueGetter: (_, row) => {
+          const value = row?.categories;
+          return value;
         },
-        {
-            field: "content",
-            flex: 1,
-            headerName: "Content",
-            minWidth: 250,
-            display: "flex",
-            renderCell: function render({ value }) {
-                if (!value) return '-'
-                return (
-                    <Typography component='p' whiteSpace='pre' overflow='hidden' textOverflow='ellipsis'>
-                        {value}
-                    </Typography>
-                );
-            },
+        renderCell: function render({ value }) {
+          return categoryIsLoading ? (
+            <>Loading...</>
+          ) : (
+            categoryData?.data?.find((item) => item.id === value?.id)?.title
+          );
         },
-        {
-            field:  "categories",
-            headerName: "Category",
-            minWidth: 160,
-            display: "flex",
-            valueGetter: (_, row) => {
-                const value = row?.categories;
-                return value;
-            },
-            renderCell: function render({ value }) {
-                return categoryIsLoading ? (
-                    <>Loading...</>
-                ) : (
-                    categoryData?.data?.find((item) => item.id === value?.id)?.title
-                    );
-                },
+      },
+      {
+        field: "status",
+        headerName: "Status",
+        minWidth: 80,
+        display: "flex",
+      },
+      {
+        field: "createdAt",
+        headerName: "Created at",
+        minWidth: 120,
+        display: "flex",
+        renderCell: function render({ value }) {
+          return <DateField value={value} />;
         },
-        {
-            field: "status",
-            headerName: "Status",
-            minWidth: 80,
-            display: "flex",
+      },
+      {
+        field: "actions",
+        headerName: "Actions",
+        align: "right",
+        headerAlign: "right",
+        minWidth: 120,
+        sortable: false,
+        display: "flex",
+        renderCell: function render({ row }) {
+          return (
+            <>
+              <EditButton hideText recordItemId={row.id} />
+              <ShowButton hideText recordItemId={row.id} />
+              <DeleteButton hideText recordItemId={row.id} />
+            </>
+          );
         },
-        {
-                field: "createdAt",
-            headerName: "Created at",
-            minWidth: 120,
-            display: "flex",
-            renderCell: function render({ value }) {
-                return <DateField value={value} />;
-            },
-        },
-        {
-            field: 'actions',
-            headerName: 'Actions',
-            align: 'right',
-            headerAlign: 'right',
-            minWidth: 120,
-            sortable: false,
-            display: 'flex',
-            renderCell: function render({ row }) {
-                return (
-                    <>
-                        <EditButton hideText recordItemId={row.id} />
-                        <ShowButton hideText recordItemId={row.id} />
-                        <DeleteButton hideText recordItemId={row.id} />
-                    </>
-                );
-            },
-        },
+      },
     ],
-        [categoryData, categoryIsLoading],
-    );
+    [categoryData, categoryIsLoading]
+  );
 
-    return (
-        <List>
-            <DataGrid {...dataGridProps} columns={columns} />
-        </List>
-    );
-};
-
+  return (
+    <List>
+      <DataGrid {...dataGridProps} columns={columns} />
+    </List>
+  );
+}
