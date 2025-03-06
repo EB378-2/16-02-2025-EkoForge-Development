@@ -1,0 +1,98 @@
+{
+  "NavbarLinks": {
+    "navLink1": "Mitä asiakkaamme sanovat meistä",
+    "navLink2": "Ota yhteyttä",
+    "navLink3": "Verkkosivuesimerkit",
+    "navLink4": "Varaa tapaaminen"
+  },
+  "HomePage": {
+    "simple": "Yksinkertainen.",
+    "elegant": "Tyylikäs.",
+    "effective": "Tehokas.",
+    "HeroSubTitle": "Verkkosivut ja digitaaliset ratkaisut startup-yrityksille ja pienyrityksille tehokkaan kasvun käynnistämiseksi.",
+    "CTA": "Varaa myyntipuhelu",
+    "Contact Us": "Ota yhteyttä",
+    
+    "disrupt": "Kuinka tämä tarkalleen toimii?",
+    "StepOne": "Vaihe 1: Valitse brändi yrityksellesi",
+    "StepTwo": "Vaihe 2: Hanki tehokas verkkosivusto",
+    "StepThree": "Vaihe 3: Näy asiakkaillesi tehokkaan SEO:n avulla",
+    "StepOneText": "Jos sinulla ei vielä ole brändiä, autamme sinua valitsemaan sellaisen, joka puhuttelee sekä yritystäsi että asiakkaitasi.",
+    "StepTwoText": "Suunnittelemme ja kehitämme verkkosivuston, joka on räätälöity yrityksellesi ja asiakkaillesi.",
+    "StepThreeText": "Autamme sinua pääsemään asiakkaidesi eteen tehokkailla SEO- ja digitaalisen markkinoinnin strategioilla.",
+  
+    "Call-To-Action": "Siirry verkkoon ja aloita voittaminen tänään",
+    "Call-To-Action-Sub": "Asiakkaat etsivät sinua juuri nyt. Varmistetaan, että he löytävät sinut.",
+    "Book Now": "KLIKKAA TÄSTÄ ALOITTAKSESI!"
+  },
+  "Contact": {
+    "title": "Ota yhteyttä",
+    "name": "Nimi",
+    "emailentry": "Sähköpostiosoite",
+    "reason": "Kuinka voimme auttaa?",
+    "send": "Lähetä viesti",
+    "contact information": "Yhteystiedot"
+  },
+  "Testimonials": {
+    "title": "Asiakaspalautteet"
+  },
+  "Footer": {
+    "aboutText": "Teemme yhteistyötä yrittäjien kanssa luodaksemme kauniita verkkokokemuksia heidän asiakkailleen.",
+    "navigation": "Navigointi",
+    "navLink1": "Varaa tapaaminen",
+    "navLink2": "Asiakaspalautteet",
+    "navLink3": "Ota yhteyttä",
+    "navLink4": "Verkkosivuesimerkit",
+    "login": "Kirjaudu sisään",
+    "socialmedia": "Sosiaalinen media",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "company": "Yritys",
+    "about": "Tietoa meistä",
+    "legal": "Lainsäädäntö",
+    "terms": "Käyttöehdot",
+    "privacy": "Tietosuojakäytäntö",
+    "license": "Lisenssisopimus",
+    "rights": "Kaikki oikeudet pidätetään."
+  },
+  "AboutBusiness": {
+    "title": "Yrityksesi tarvitsee enemmän kuin pelkän verkkosivuston – se tarvitsee myyntikoneen",
+    "introParagraph1": "Digitaalisessa maailmassa verkkosivustosi ei ole vain online-esite – se on yrityksesi tehokkain myyntityökalu. Liian monet yrittäjät tyytyvät geneerisiin, itse tehtyihin verkkosivustoihin, jotka näyttävät hyvältä mutta eivät tuo asiakkaita.",
+    "introParagraph2": "Jos verkkosivustosi ei houkuttele kävijöitä, rakenna luottamusta ja konvertoi myyntiä, se ei ole vain huono verkkosivusto – se maksaa sinulle rahaa joka päivä.",
+  
+    "harshRealityTitle": "Kova totuus: Huono verkkosivusto on pahempi kuin ei verkkosivustoa lainkaan",
+    "harshRealityText": "Muistatko viimeksi, kun etsit yritystä verkosta? Päädyitkö vanhanaikaiselle, hitaasti latautuvalle tai sekavalle verkkosivustolle? Poistuit. Juuri näin käy, kun potentiaaliset asiakkaat kohtaavat huonosti suunnitellun verkkosivuston.",
+    "harshRealityListItem1": "❌ Saa sinut näyttämään epäammattimaiselta – Ensivaikutelmat ovat tärkeitä.",
+    "harshRealityListItem2": "❌ Menetät asiakkaita kilpailijoille – Hidas tai sekava sivusto karkottaa asiakkaat.",
+    "harshRealityListItem3": "❌ Tuhlaa aikaasi ja rahaasi – Tee-se-itse-rakentajat jättävät usein toimimattoman sivuston.",
+    "harshRealityListItem4": "❌ Ei näy Googlessa – Huono SEO tarkoittaa, että potentiaaliset asiakkaat eivät löydä sinua.",
+    "harshRealityListItem5": "❌ Ei muunna kävijöitä maksaviksi asiakkaiksi – Sivuston tulisi tuottaa liidejä ja myyntiä.",
+  
+    "benefitsTitle": "Mitä korkeatasoinen verkkosivusto voi tehdä yrityksellesi?",
+    "benefitsIntro": "Tehokkaan verkkosivuston tulisi olla kuin yrityksesi ahkerin työntekijä – se houkuttelee, muuntaa ja sitouttaa asiakkaita kellon ympäri.",
+    "benefitListItem1": "✅ Rakentaa luottamusta ja uskottavuutta – Moderni verkkosivusto parantaa ammattimaisuuttasi.",
+    "benefitListItem2": "✅ Houkuttelee lisää asiakkaita – Asiantunteva SEO tuo jatkuvaa liikennettä.",
+    "benefitListItem3": "✅ Muuntaa kävijät asiakkaiksi – Selkeä, vakuuttava suunnittelu ohjaa toimintaa.",
+    "benefitListItem4": "✅ Toimii kaikilla laitteilla – Mobiiliystävällinen sivusto tavoittaa laajemman yleisön.",
+    "benefitListItem5": "✅ Kasvaa yrityksesi mukana – Räätälöidyt ratkaisut mukautuvat tarpeisiisi.",
+  
+    "packageTitle": "Mitä verkkosivustopakettisi sisältää?",
+    "packageListItem1": "🔹 Upea, mobiiliystävällinen design",
+    "packageListItem2": "🔹 SEO-optimointi",
+    "packageListItem3": "🔹 Myyntiin optimoitu sisältö",
+    "packageListItem4": "🔹 Salamannopea latausnopeus",
+    "packageListItem5": "🔹 Helppokäyttöiset yhteydenotto- ja varauslomakkeet",
+  
+    "finalCallTitle": "Valmis viemään yrityksesi uudelle tasolle?",
+    "finalCallText": "Huono verkkosivusto maksaa sinulle asiakkaita joka päivä. Älä anna enää yhdenkään asiakkaan mennä sivu suun. Investoi tehokkaaseen verkkosivustoon tänään ja katso, kuinka liiketoimintasi kasvaa.",
+    "bookNow": "Varaa nyt"
+  },
+  "Profile": {
+    "username": "Käyttäjänimi",
+    "email": "Sähköposti",
+    "phone": "Puhelinnumero",
+    "address": "Osoite",
+    "role": "Rooli"
+  }
+}
