@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import { useGetIdentity } from "@refinedev/core";
 import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import React, { useContext } from "react";
+import Lang from "@components/ui/Lang";
 
 type IUser = {
   id: number;
@@ -42,6 +43,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
             justifyContent="flex-end"
             alignItems="center"
           >
+            <Lang />
             <IconButton
               color="inherit"
               onClick={() => {

@@ -4,7 +4,7 @@ import React from "react";
 import { getTheme } from "@theme/theme";
 import { useColorMode } from "@contexts/color-mode";
 import { Typography, Button, Box } from "@mui/material";
-import Navbar from "@components/Front/Navbar";
+import Navbar from "@components/ui/Lang";
 import Footer from "@components/Front/Footer";
 
 export default function Terms() {

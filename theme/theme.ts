@@ -64,7 +64,7 @@ declare module "@mui/material/styles" {
 export const lightTheme = createTheme(RefineThemes.Blue, {
   palette: {
     primary: {
-      main: "#1B1F3B",
+      main: "#133c83",
       light: "#2F3558",
       dark: "#0F1228",
       contrastText: "#ffffff",
@@ -140,7 +140,7 @@ export const lightTheme = createTheme(RefineThemes.Blue, {
 export const darkTheme = createTheme(RefineThemes.BlueDark, {
   palette: {
     primary: {
-      main: "#525db3",
+      main: "#133c83",
       light: "#2F3558",
       dark: "#1B1F3B",
       contrastText: "#ffffff",

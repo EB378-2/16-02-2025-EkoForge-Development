@@ -16,7 +16,7 @@ import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
 
 // Icons
-import Navbar from "@components/Front/Navbar";
+import Navbar from "@components/ui/Lang";
 import Footer from "@components/Front/Footer";
 
 const AboutUs = () => {
