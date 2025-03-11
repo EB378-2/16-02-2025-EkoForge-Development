@@ -130,7 +130,7 @@ export default async function RootLayout({
                         },
                         {
                           name: "flight school",
-                          list: `/${locale}/flight-school`,
+                          list: `/${locale}/flight_school`,
                           meta: {
                             label: "Flight School",
                             icon: <SchoolIcon />,
@@ -138,7 +138,7 @@ export default async function RootLayout({
                         },
                         {
                           name: "aviation club",
-                          list: `/${locale}/flight-school`,
+                          list: `/${locale}/club`,
                           meta: {
                             label: "Aviation Club",
                             icon: <Groups3Icon />,

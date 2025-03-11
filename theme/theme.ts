@@ -140,7 +140,7 @@ export const lightTheme = createTheme(RefineThemes.Blue, {
 export const darkTheme = createTheme(RefineThemes.BlueDark, {
   palette: {
     primary: {
-      main: "#133c83",
+      main: "#2676ff",
       light: "#2F3558",
       dark: "#1B1F3B",
       contrastText: "#ffffff",

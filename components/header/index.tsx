@@ -13,6 +13,7 @@ import { useGetIdentity } from "@refinedev/core";
 import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import React, { useContext } from "react";
 import Lang from "@components/ui/Lang";
+import { Button, Link } from "@mui/material";
 
 type IUser = {
   id: number;
@@ -75,6 +76,18 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                 )}
                 <Avatar src={user?.avatar} alt={user?.name} />
               </Stack>
+            )}
+            {!user && (
+              <Button
+                variant="contained"
+                color="primary"
+                component={Link}
+                href="/login"
+                sx={{ 
+                }}
+              >
+                Login
+              </Button>
             )}
           </Stack>
         </Stack>
