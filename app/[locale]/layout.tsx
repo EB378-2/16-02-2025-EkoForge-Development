@@ -121,7 +121,7 @@ export default async function RootLayout({
                       notificationProvider={useNotificationProvider}
                       resources={[
                         {
-                          name: "posts",
+                          name: "blogs",
                           list: `/${locale}/home`,
                           meta: {
                             icon: <BroadcastOnHomeIcon />,
@@ -171,7 +171,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "saftey_notice",
+                          name: "notice",
                           list: `/${locale}/members/saftey_notice`,
                           create: `/${locale}/members/saftey_notice/create`,
                           edit: `/${locale}/members/saftey_notice/edit/:id`,
@@ -184,7 +184,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name:"flight_planning",
+                          name:"flightplans",
                           identifier: "flight_planning_members",
                           meta: {
                             icon: <AirplaneTicketIcon />,
@@ -193,7 +193,7 @@ export default async function RootLayout({
                           }
                         },
                         {
-                          name: "flight_planning",
+                          name: "flightplans",
                           list: `/${locale}/members/flight_planning`,
                           create: `/${locale}/members/flight_planning/create`,
                           edit: `/${locale}/members/flight_planning/edit/:id`,
@@ -206,7 +206,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "flight_planning",
+                          name: "flightplans",
                           identifier: "international_flight_planning",
                           list: `/${locale}/members/international_flight_planning`,
                           create: `/${locale}/members/international_flight_planning/create`,
