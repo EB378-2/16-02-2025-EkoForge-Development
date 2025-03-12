@@ -1,142 +1,104 @@
 "use client";
 
 import React from "react";
-import { useTranslations } from "next-intl";
-import NextLink from "next/link";
-import { motion } from "framer-motion";
-import { Box, Container, Typography, Button } from "@mui/material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { List, EditButton, ShowButton, DeleteButton } from "@refinedev/mui";
+import { useTable } from "@refinedev/core";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { Avatar} from "@mui/material";
 
-const AboutBusinessPage: React.FC = () => {
-  const t = useTranslations("AboutBusiness");
-  const { mode } = useColorMode();
-    const theme = getTheme(mode);
+interface Profile {
+    id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone_number?: string;
+    avatar_url?: string;
+    created_at: string;
+    updated_at: string;
+}
 
-  // Animation variants for Framer Motion.
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-  };
+export default function MembersList() {
+    const {
+        tableQueryResult,
+        pageCount,
+        current,
+        setCurrent,
+        pageSize,
+        setPageSize,
+    } = useTable<Profile>({
+        resource: "profiles",
+        initialSorter: [
+            {
+                field: "first_name",
+                order: "asc",
+            },
+        ],
+        initialPageSize: 10,
+    });
 
-  const slideInRight = {
-    hidden: { opacity: 0, x: 100 },
-    visible: { opacity: 1, x: 0, transition: { duration: 1 } },
-  };
+    const rows = tableQueryResult?.data?.data ?? [];
+    const total = pageCount * pageSize;
 
-  return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h3" sx={{ fontWeight: "bold", mb: 4, textAlign: "center" }}>
-        {t("title")}
-      </Typography>
+    const columns: GridColDef[] = [
+        {
+            field: "avatar_url",
+            headerName: "Avatar",
+            width: 100,
+            renderCell: ({row}) => (
+                <Avatar sx={{ margin: "auto" }} src={row.value} alt={row.first_name} />
+            ),
+        },
+        {
+            field: "first_name last_name",
+            headerName: "Name",
+            width: 150,
+            renderCell: ({ row }) => (
+              <span>{row.first_name} {row.last_name}</span>
+      ),
+        },
+        {
+            field: "email",
+            headerName: "Email",
+            width: 200,
+        },
+        {
+            field: "phone_number",
+            headerName: "Phone Number",
+            width: 150,
+        },
+        {
+            field: "actions",
+            headerName: "Actions",
+            width: 200,
+            renderCell: ({ row }) => (
+                    <ShowButton
+                        hideText
+                        size="small"
+                        variant="outlined"
+                        resourceNameOrRouteName="profiles"
+                        recordItemId={row.id}
+                    />
+            ),
+            sortable: false,
+            filterable: false,
+        },
+    ];
 
-      <Box component={motion.div} initial="hidden" whileInView="visible" variants={fadeInUp}>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("introParagraph1")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("introParagraph2")}
-        </Typography>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("harshRealityTitle")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("harshRealityText")}
-        </Typography>
-        <Box component="ul" sx={{ ml: 3, mb: 2 }}>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem1")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem2")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem3")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem4")}
-          </Typography>
-          <Typography component="li" variant="body1">
-            {t("harshRealityListItem5")}
-          </Typography>
-        </Box>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("benefitsTitle")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("benefitsIntro")}
-        </Typography>
-        <Box component="ul" sx={{ ml: 3, mb: 2 }}>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem1")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem2")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem3")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem4")}
-          </Typography>
-          <Typography component="li" variant="body1">
-            {t("benefitListItem5")}
-          </Typography>
-        </Box>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("packageTitle")}
-        </Typography>
-        <Box component="ul" sx={{ ml: 3, mb: 2 }}>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem1")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem2")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem3")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem4")}
-          </Typography>
-          <Typography component="li" variant="body1">
-            {t("packageListItem5")}
-          </Typography>
-        </Box>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("finalCallTitle")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.6 }}>
-          {t("finalCallText")}
-        </Typography>
-
-        <NextLink href={`https://calendly.com/ekoforge`} passHref>
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <Button
-              variant="contained"
-              size="large"
-              sx={{
-                px: 4,
-                py: 1.5,
-                background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
-                color: theme.palette.common.white,
-                fontWeight: "bold",
-                borderRadius: 50,
-                boxShadow: 3,
-                textTransform: "none",
-              }}
-            >
-              {t("bookNow")}
-            </Button>
-          </motion.div>
-        </NextLink>
-      </Box>
-    </Container>
-  );
-};
-
-export default AboutBusinessPage;
+    return (
+        <List title="Members">
+            <DataGrid
+                autoHeight
+                rows={rows}
+                columns={columns}
+                rowCount={total}
+                pageSizeOptions={[10, 20, 30, 50, 100]}
+                pagination
+                paginationModel={{ page: current - 1, pageSize }}
+                onPaginationModelChange={(model) => {
+                    setCurrent(model.page + 1);
+                    setPageSize(model.pageSize);
+                }}
+            />
+        </List>
+    );
+}

@@ -226,7 +226,6 @@ export default async function RootLayout({
                           edit: `/${locale}/members/equipment_info/edit/:id`,
                           show: `/${locale}/members/equipment_info/show/:id`,
                           meta: {
-                            canDelete: true,
                             icon: <ConstructionIcon />,
                             parent: "flight_planning_members",
                             label: "Equipment Hours and Information",
@@ -274,7 +273,6 @@ export default async function RootLayout({
                           list: `/${locale}/members/statistics`,
                           show: `/${locale}/members/statistics/show/:id`,
                           meta: {
-                            canDelete: true,
                             icon: <AnalyticsIcon />,
                             parent: "members",
                             label: "Flight Statistics",

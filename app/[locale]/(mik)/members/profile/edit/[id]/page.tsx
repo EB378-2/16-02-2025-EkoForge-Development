@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Grid, Typography, TextField, Button, Avatar, Stack, FormControl, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import { Edit } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
+import { useGetIdentity } from "@refinedev/core";
+import { Controller } from "react-hook-form";
+import { useTranslations } from "next-intl";
 
 interface ProfileData {
   email: string;
@@ -15,13 +18,23 @@ interface ProfileData {
   country: string;
   zip: string;
   role: string;
+  ratings: string[]; // Aviation related ratings stored as an array of strings.
 }
 
 export default function ProfileEdit() {
+  const t = useTranslations("Profile");
+
+  // Get the current user's identity.
+  const { data: identity } = useGetIdentity<{ id: string }>();
+  const userId = identity?.id ?? "";
+
+  // useForm hook to manage the edit form.
   const {
     saveButtonProps,
     refineCore: { queryResult, formLoading },
     register,
+    handleSubmit,
+    control,
     reset,
     formState: { errors },
   } = useForm<ProfileData>({
@@ -29,7 +42,7 @@ export default function ProfileEdit() {
     refineCoreProps: { meta: { select: "*" } },
   });
 
-  // Get current profile data if available for defaults.
+  // Get current profile data if available.
   const profileData = queryResult?.data?.data as ProfileData | undefined;
 
   // Reset form values when profile data is fetched.
@@ -39,10 +52,16 @@ export default function ProfileEdit() {
     }
   }, [profileData, reset]);
 
-  // If loading or no profile data yet, display a loading state.
-  if (formLoading || !profileData) {
-    return <Typography>Loading...</Typography>;
+  if (formLoading || !userId) {
+    return <Typography>Loading profile...</Typography>;
   }
+
+  if (!profileData) {
+    return <Typography>Error loading profile</Typography>;
+  }
+
+  // Define the options for aviation related ratings.
+  const ratingOptions = ["VFR", "IFR", "Night", "Multi-Engine", "Instructor"];
 
   return (
     <Edit isLoading={formLoading} saveButtonProps={saveButtonProps}>
@@ -148,6 +167,43 @@ export default function ProfileEdit() {
           fullWidth
           InputLabelProps={{ shrink: true }}
           label="Role"
+        />
+
+        {/* Aviation Ratings Checkbox Group */}
+        <Controller
+          name="ratings"
+          control={control}
+          render={({ field }) => {
+            const currentRatings: string[] = field.value || [];
+            const handleCheckboxChange = (option: string, checked: boolean) => {
+              let newRatings = currentRatings;
+              if (checked) {
+                newRatings = [...currentRatings, option];
+              } else {
+                newRatings = currentRatings.filter((rating) => rating !== option);
+              }
+              field.onChange(newRatings);
+            };
+            return (
+              <FormControl component="fieldset" sx={{ mt: 2 }}>
+                <Typography variant="h6">Aviation Ratings</Typography>
+                <FormGroup row>
+                  {ratingOptions.map((option) => (
+                    <FormControlLabel
+                      key={option}
+                      control={
+                        <Checkbox
+                          checked={currentRatings.includes(option)}
+                          onChange={(e) => handleCheckboxChange(option, e.target.checked)}
+                        />
+                      }
+                      label={option}
+                    />
+                  ))}
+                </FormGroup>
+              </FormControl>
+            );
+          }}
         />
       </Box>
     </Edit>

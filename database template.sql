@@ -28,6 +28,8 @@ CREATE TABLE public.admins (
       ON DELETE CASCADE
 );
 
+ALTER TABLE public.admins ENABLE ROW LEVEL SECURITY;
+
 -- ===============================================================
 -- 3. Create Helper Function to Check Admin Status
 -- ===============================================================
@@ -35,7 +37,7 @@ CREATE OR REPLACE FUNCTION public.is_admin() RETURNS boolean AS $$
 BEGIN
   RETURN EXISTS (
     SELECT 1 FROM public.admins
-    WHERE id = current_setting('app.current_user_id')::uuid
+    WHERE id = auth.uid()
   );
 END;
 $$ LANGUAGE plpgsql STABLE;
@@ -49,18 +51,18 @@ CREATE POLICY profiles_rls ON public.profiles
   FOR ALL
   USING (
     public.is_admin() OR
-    id = current_setting('app.current_user_id')::uuid
+    id = auth.uid()
   )
   WITH CHECK (
     public.is_admin() OR
-    id = current_setting('app.current_user_id')::uuid
+    id = auth.uid()
   );
 
 -- ===============================================================
 -- 5. Create the Notices Table and its RLS Policies
 -- ===============================================================
 CREATE TABLE IF NOT EXISTS public.notices (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY default gen_random_uuid (),,
     title VARCHAR(255) NOT NULL,
     message TEXT NOT NULL,
     time_off_incident TIMESTAMP with time zone,  -- When the time off incident occurred
@@ -80,18 +82,18 @@ CREATE POLICY notices_rls ON public.notices
   FOR ALL
   USING (
     public.is_admin() OR
-    submitted_by = current_setting('app.current_user_id')::uuid
+    submitted_by = auth.uid()
   )
   WITH CHECK (
     public.is_admin() OR
-    submitted_by = current_setting('app.current_user_id')::uuid
+    submitted_by = auth.uid()
   );
 
 -- ===============================================================
 -- 6. Create the Instructors Table and its RLS Policies
 -- ===============================================================
 CREATE TABLE IF NOT EXISTS public.instructors (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY default gen_random_uuid (),,
     profile_id uuid NOT NULL,
     rating_level VARCHAR(50),      -- e.g., "CFI", "CFII", etc.
     availability TEXT,
@@ -109,18 +111,18 @@ CREATE POLICY instructors_rls ON public.instructors
   FOR ALL
   USING (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   )
   WITH CHECK (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   );
 
 -- ===============================================================
 -- 7. Create the Resources Table and its RLS Policies
 -- ===============================================================
 CREATE TABLE IF NOT EXISTS public.resources (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY default gen_random_uuid (),,
     resource_type VARCHAR(50) NOT NULL CHECK (resource_type IN ('aircraft','simulator','classroom')),
     name VARCHAR(255) NOT NULL,
     status VARCHAR(50) NOT NULL DEFAULT 'available' CHECK (status IN ('available','maintenance','booked')),
@@ -144,43 +146,83 @@ CREATE POLICY resources_write_rls ON public.resources
 -- ===============================================================
 -- 8. Create the Logbook Table and its RLS Policies
 -- ===============================================================
-CREATE TABLE IF NOT EXISTS public.logbook (
-    id SERIAL PRIMARY KEY,
-    profile_id uuid NOT NULL,
-    resource_id INT NOT NULL,    -- References public.resources.id
-    flight_date DATE NOT NULL,
-    flight_time DECIMAL(5,2) NOT NULL,  -- Flight time in hours
-    notes TEXT,
-    created_at TIMESTAMP with time zone NOT NULL DEFAULT now(),
-    updated_at TIMESTAMP with time zone NOT NULL DEFAULT now(),
-    CONSTRAINT fk_logbook_profile FOREIGN KEY (profile_id)
-        REFERENCES public.profiles(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    CONSTRAINT fk_logbook_resource FOREIGN KEY (resource_id)
-        REFERENCES public.resources(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
+CREATE TABLE public.logbook (
+  id UUID NOT NULL default gen_random_uuid (),,
+  profile_id UUID NOT NULL,
+  resource_id UUID NOT NULL,
+  
+  -- Original columns
+  flight_date DATE NOT NULL,            -- Date of flight
+  flight_time NUMERIC(5,2) NOT NULL,    -- Total flight time (e.g. air time)
+  notes TEXT NULL,
+  
+  -- New time-related columns
+  block_off_time TIME WITHOUT TIME ZONE NOT NULL,  -- Time aircraft leaves the ramp
+  takeoff_time TIME WITHOUT TIME ZONE NOT NULL,    -- Time wheels leave the ground
+  landing_time TIME WITHOUT TIME ZONE NOT NULL,    -- Time wheels touch the ground
+  block_on_time TIME WITHOUT TIME ZONE NOT NULL,   -- Time aircraft is parked after flight
+  block_time NUMERIC(5,2) NOT NULL,             -- Total block time in hours (if desired)
+  
+  -- Additional fields
+  landings INT NOT NULL,                           -- Number of landings
+  flight_details JSONB NOT NULL DEFAULT '{}',   -- JSON for night flight, IFR time, etc.
+  fuel_left NUMERIC(5,2) NULL,                 -- Remaining fuel in gallons/liters
+  billing_info TEXT NULL,                      -- Billing information or reference
+  pax INT NOT NULL,                                -- Number of passengers
+  departure_place TEXT NOT NULL,                   -- Departure airport or location
+  arrival_place TEXT NOT NULL,                     -- Arrival airport or location
+  flight_type TEXT NOT NULL,                       -- Type of flight (e.g. 'VFR', 'IFR', 'Training')
+  
+  -- References to profiles for PIC and Student (if applicable)
+  pic_id UUID NOT NULL,
+  student_id UUID NULL,
+  
+  -- Timestamps
+  created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+  updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+  
+  -- Primary Key
+  CONSTRAINT logbook_pkey PRIMARY KEY (id),
+  
+  -- Foreign Keys
+  CONSTRAINT fk_logbook_profile
+    FOREIGN KEY (profile_id) REFERENCES profiles (id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT fk_logbook_resource
+    FOREIGN KEY (resource_id) REFERENCES resources (id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT fk_logbook_pic
+    FOREIGN KEY (pic_id) REFERENCES profiles (id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT fk_logbook_student
+    FOREIGN KEY (student_id) REFERENCES profiles (id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+)
+TABLESPACE pg_default;
 
 ALTER TABLE public.logbook ENABLE ROW LEVEL SECURITY;
+
 
 CREATE POLICY logbook_rls ON public.logbook
   FOR ALL
   USING (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   )
   WITH CHECK (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   );
 
 -- ===============================================================
 -- 9. Create the Flightplans Table and its RLS Policies
 -- ===============================================================
 CREATE TABLE IF NOT EXISTS public.flightplans (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY default gen_random_uuid (),,
     profile_id uuid NOT NULL,  -- Profile who created the plan
     route TEXT NOT NULL,
     notes TEXT,
@@ -198,20 +240,20 @@ CREATE POLICY flightplans_rls ON public.flightplans
   FOR ALL
   USING (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   )
   WITH CHECK (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   );
 
 -- ===============================================================
 -- 10. Create the Bookings Table and its RLS Policies
 -- ===============================================================
 CREATE TABLE IF NOT EXISTS public.bookings (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY default gen_random_uuid (),,
     profile_id uuid NOT NULL,    -- The person making the booking
-    resource_id INT NOT NULL,    -- References public.resources.id
+    resource_id UUID NOT NULL,    -- References public.resources.id
     start_time TIMESTAMP with time zone NOT NULL,
     end_time TIMESTAMP with time zone NOT NULL,
     created_at TIMESTAMP with time zone NOT NULL DEFAULT now(),
@@ -232,18 +274,18 @@ CREATE POLICY bookings_rls ON public.bookings
   FOR ALL
   USING (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   )
   WITH CHECK (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   );
 
 -- ===============================================================
 -- 11. Create the Blogs Table and its RLS Policies
 -- ===============================================================
 CREATE TABLE IF NOT EXISTS public.blogs (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY default gen_random_uuid (),,
     profile_id uuid NOT NULL,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
@@ -262,9 +304,9 @@ CREATE POLICY blogs_rls ON public.blogs
   FOR ALL
   USING (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   )
   WITH CHECK (
     public.is_admin() OR
-    profile_id = current_setting('app.current_user_id')::uuid
+    profile_id = auth.uid()
   );

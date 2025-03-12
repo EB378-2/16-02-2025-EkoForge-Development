@@ -7,10 +7,9 @@ import {
     ShowButton,
     DeleteButton,
 } from "@refinedev/mui";
-import { useTable } from "@refinedev/core";
+import { useShow, useTable } from "@refinedev/core";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { Box, Stack, Typography, Button } from "@mui/material";
-import Link from "next/link";
+import { Stack} from "@mui/material";
 
 interface Logbook {
     id: number;
@@ -38,6 +37,32 @@ interface Logbook {
     updated_at: string;
 }
 
+// Component to display a profile's full name based on profileId.
+function ProfileName({ profileId }: { profileId: string }) {
+    const { queryResult } = useShow({
+        resource: "profiles",
+        id: profileId,
+        meta: { select: "first_name,last_name" },
+        queryOptions: { enabled: !!profileId },
+    });
+    const profileData = queryResult?.data?.data as { first_name: string; last_name: string } | undefined;
+    if (!profileData) return <span>Loading...</span>;
+    return <span>{profileData.first_name} {profileData.last_name}</span>;
+}
+
+// Component to display a resources's name based on id.
+function ResourceName({ id }: { id: string }) {
+    const { queryResult } = useShow({
+        resource: "resources",
+        id: id,
+        meta: { select: "name" },
+        queryOptions: { enabled: !!id },
+    });
+    const profileData = queryResult?.data?.data as { name: string} | undefined;
+    if (!profileData) return <span>Loading...</span>;
+    return profileData.name;
+}
+
 export default function LogbookList() {
     const {
         tableQueryResult,
@@ -46,10 +71,6 @@ export default function LogbookList() {
         setCurrent,
         pageSize,
         setPageSize,
-        sorter,
-        setSorter,
-        filters,
-        setFilters,
     } = useTable<Logbook>({
         resource: "logbook", // This must match your resource configuration
         initialSorter: [
@@ -65,9 +86,18 @@ export default function LogbookList() {
     const total = pageCount * pageSize;
 
     const columns: GridColDef[] = [
-        { field: "id", headerName: "ID", width: 70 },
-        { field: "profile_id", headerName: "Profile ID", width: 150 },
-        { field: "resource_id", headerName: "Resource ID", width: 120 },
+        {
+            field: "profile_name",
+            headerName: "Billed Person",
+            width: 150,
+            renderCell: (params) => <ProfileName profileId={params.row.profile_id} />,
+        },
+        {
+            field: "resource_id",
+            headerName: "Resource",
+            width: 150,
+            renderCell: (params) => <ResourceName id={params.row.resource_id} />,
+        },
         { field: "flight_date", headerName: "Flight Date", width: 150 },
         { field: "flight_time", headerName: "Flight Time", width: 120 },
         { field: "notes", headerName: "Notes", flex: 1 },
@@ -89,8 +119,23 @@ export default function LogbookList() {
         { field: "departure_place", headerName: "Departure Place", width: 150 },
         { field: "arrival_place", headerName: "Arrival Place", width: 150 },
         { field: "flight_type", headerName: "Flight Type", width: 150 },
-        { field: "pic_id", headerName: "PIC ID", width: 150 },
-        { field: "student_id", headerName: "Student ID", width: 150 },
+        {
+            field: "pic_id",
+            headerName: "PIC ID",
+            width: 150,
+            renderCell: (params) => <ProfileName profileId={params.row.pic_id} />,
+        },
+        {
+            field: "student_id",
+            headerName: "Student ID",
+            width: 150,
+            renderCell: (params) =>
+                params.row.student_id ? (
+                    <ProfileName profileId={params.row.student_id} />
+                ) : (
+                    <span>N/A</span>
+                ),
+        },
         {
             field: "created_at",
             headerName: "Created At",
