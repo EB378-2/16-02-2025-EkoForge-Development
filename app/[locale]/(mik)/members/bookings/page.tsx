@@ -1,142 +1,402 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import NextLink from "next/link";
-import { motion } from "framer-motion";
-import { Box, Container, Typography, Button } from "@mui/material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import { formatISO, parseISO } from "date-fns";
+import { EventClickArg } from "@fullcalendar/core";
+import { Box, Typography, TextField, Button } from "@mui/material";
+import { useGetIdentity, useList, HttpError } from "@refinedev/core";
 
-const AboutBusinessPage: React.FC = () => {
-  const t = useTranslations("AboutBusiness");
-  const { mode } = useColorMode();
-    const theme = getTheme(mode);
+interface Booking {
+  id: string;
+  profile_id: string;
+  resource_id: string;
+  start_time: string;
+  end_time: string;
+  created_at: string;
+  updated_at: string;
+}
 
-  // Animation variants for Framer Motion.
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+export default function ResourceBookingCal() {
+  const t = useTranslations("HomePage");
+
+  // Get the current user's identity.
+  const { data: identity } = useGetIdentity<{ id: string }>();
+  const currentUserId = identity?.id || "default-user";
+
+  // Fetch bookings for the current user.
+  const { data, isLoading, isError } = useList<Booking, HttpError>({
+    resource: "bookings",
+    filters: [{ field: "profile_id", operator: "eq", value: currentUserId }],
+    meta: { select: "*" },
+  });
+
+  // Local state to hold bookings.
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  useEffect(() => {
+    if (data?.data) {
+      setBookings(data.data);
+    }
+  }, [data]);
+
+  // State for the selected booking and modal visibility.
+  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [localError, setLocalError] = useState("");
+  const [isEditable, setIsEditable] = useState(false);
+
+  // When a date range is selected, prepare a new booking.
+  const handleDateSelect = (selection: { start: Date; end: Date }) => {
+    setSelectedBooking({
+      id: "", // An empty id indicates a new booking.
+      profile_id: currentUserId,
+      resource_id: "default-resource", // Replace with an appropriate default if needed.
+      start_time: formatISO(selection.start),
+      end_time: formatISO(selection.end),
+      created_at: "",
+      updated_at: "",
+    });
+    setModalOpen(true);
+    setIsEditable(true);
   };
 
-  const slideInRight = {
-    hidden: { opacity: 0, x: 100 },
-    visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+  // Close the modal and reset state.
+  const closeModal = () => {
+    setModalOpen(false);
+    setLocalError("");
+    setSelectedBooking(null);
+    setIsEditable(false);
+  };
+
+  // Save: if id is empty, create a new booking; otherwise, update the booking.
+  const handleSave = () => {
+    if (!selectedBooking) return;
+    if (selectedBooking.id === "") {
+      // Create a new booking.
+      const newId = crypto.randomUUID ? crypto.randomUUID() : Date.now().toString();
+      const newBooking: Booking = {
+        ...selectedBooking,
+        id: newId,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      };
+      setBookings([...bookings, newBooking]);
+    } else {
+      // Update existing booking.
+      setBookings(
+        bookings.map((b) =>
+          b.id === selectedBooking.id
+            ? { ...selectedBooking, updated_at: new Date().toISOString() }
+            : b
+        )
+      );
+    }
+    closeModal();
+  };
+
+  // Delete the selected booking.
+  const handleDelete = () => {
+    if (selectedBooking && selectedBooking.id !== "") {
+      setBookings(bookings.filter((b) => b.id !== selectedBooking.id));
+      closeModal();
+    }
+  };
+
+  // Map bookings to FullCalendar events.
+  const events = bookings.map((booking) => ({
+    id: booking.id,
+    title: "Booking",
+    start: booking.start_time ? parseISO(booking.start_time).toISOString() : undefined,
+    end: booking.end_time ? parseISO(booking.end_time).toISOString() : undefined,
+    extendedProps: {
+      profile_id: booking.profile_id,
+      resource_id: booking.resource_id,
+    },
+  }));
+
+  // When an event is clicked, open the modal.
+  const handleEventClick = (info: EventClickArg) => {
+    const bookingId = info.event.id;
+    const booking = bookings.find((b) => b.id === bookingId);
+    if (booking) {
+      setSelectedBooking(booking);
+      setIsEditable(booking.profile_id === currentUserId);
+      setModalOpen(true);
+    }
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h3" sx={{ fontWeight: "bold", mb: 4, textAlign: "center" }}>
-        {t("title")}
-      </Typography>
+    <>
+      {/* Mobile View */}
+      <Box
+        sx={{
+          display: { xs: "block", sm: "none" },
+          p: 2,
+          backgroundColor: "background.paper",
+          borderRadius: 1,
+        }}
+      >
+        <FullCalendar
+          timeZone="local"
+          nowIndicator
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          initialView="timeGridDay"
+          headerToolbar={{
+            left: "",
+            center: "title prev,next today",
+            right: "",
+          }}
+          editable
+          selectable
+          scrollTime={new Date().toLocaleTimeString("it-IT")}
+          eventClick={handleEventClick}
+          select={handleDateSelect}
+          events={events}
+          height="auto"
+        />
+      </Box>
 
-      <Box component={motion.div} initial="hidden" whileInView="visible" variants={fadeInUp}>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("introParagraph1")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("introParagraph2")}
-        </Typography>
+      {/* Desktop View */}
+      <Box
+        sx={{
+          display: { xs: "none", sm: "block" },
+          mx: 2,
+          p: 2,
+          backgroundColor: "background.paper",
+          borderRadius: 1,
+          color: "text.primary",
+        }}
+      >
+        <FullCalendar
+          timeZone="local"
+          nowIndicator
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          headerToolbar={{
+            left: "title",
+            center: "dayGridMonth,timeGridWeek,timeGridDay",
+            right: "prev,next today",
+          }}
+          editable
+          selectable
+          eventClick={handleEventClick}
+          select={handleDateSelect}
+          events={events}
+          height="auto"
+        />
+      </Box>
 
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("harshRealityTitle")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("harshRealityText")}
-        </Typography>
-        <Box component="ul" sx={{ ml: 3, mb: 2 }}>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem1")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem2")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem3")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem4")}
-          </Typography>
-          <Typography component="li" variant="body1">
-            {t("harshRealityListItem5")}
-          </Typography>
-        </Box>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("benefitsTitle")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("benefitsIntro")}
-        </Typography>
-        <Box component="ul" sx={{ ml: 3, mb: 2 }}>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem1")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem2")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem3")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem4")}
-          </Typography>
-          <Typography component="li" variant="body1">
-            {t("benefitListItem5")}
-          </Typography>
-        </Box>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("packageTitle")}
-        </Typography>
-        <Box component="ul" sx={{ ml: 3, mb: 2 }}>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem1")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem2")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem3")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem4")}
-          </Typography>
-          <Typography component="li" variant="body1">
-            {t("packageListItem5")}
-          </Typography>
-        </Box>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("finalCallTitle")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.6 }}>
-          {t("finalCallText")}
-        </Typography>
-
-        <NextLink href={`https://calendly.com/ekoforge`} passHref>
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <Button
-              variant="contained"
-              size="large"
+      {/* Modal for creating/editing/viewing a booking */}
+      {modalOpen && selectedBooking && (
+        <Box
+          sx={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 10,
+            color: "text.primary",
+          }}
+        >
+          {selectedBooking.id === "" && (
+            // New Booking Modal
+            <Box
               sx={{
-                px: 4,
-                py: 1.5,
-                background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
-                color: theme.palette.common.white,
-                fontWeight: "bold",
-                borderRadius: 50,
+                backgroundColor: "background.paper",
+                p: 4,
+                borderRadius: 2,
+                maxWidth: { xs: "90%", sm: 400 },
+                width: "100%",
                 boxShadow: 3,
-                textTransform: "none",
               }}
             >
-              {t("bookNow")}
-            </Button>
-          </motion.div>
-        </NextLink>
-      </Box>
-    </Container>
-  );
-};
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                New Booking
+              </Typography>
+              <TextField
+                fullWidth
+                label="Start Time"
+                type="datetime-local"
+                value={
+                  formatISO(new Date(selectedBooking.start_time), {
+                    representation: "date",
+                  }) +
+                  "T" +
+                  new Date(selectedBooking.start_time).toLocaleTimeString("it-IT")
+                }
+                onChange={(e) =>
+                  setSelectedBooking({
+                    ...selectedBooking,
+                    start_time: new Date(e.target.value).toISOString(),
+                  })
+                }
+                sx={{ mb: 2 }}
+              />
+              <TextField
+                fullWidth
+                label="End Time"
+                type="datetime-local"
+                value={
+                  formatISO(new Date(selectedBooking.end_time), {
+                    representation: "date",
+                  }) +
+                  "T" +
+                  new Date(selectedBooking.end_time).toLocaleTimeString("it-IT")
+                }
+                onChange={(e) =>
+                  setSelectedBooking({
+                    ...selectedBooking,
+                    end_time: new Date(e.target.value).toISOString(),
+                  })
+                }
+                sx={{ mb: 2 }}
+              />
+              {localError && (
+                <Typography variant="body2" color="error" align="center" sx={{ mb: 2 }}>
+                  Error: {localError}
+                </Typography>
+              )}
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Button variant="contained" onClick={handleSave}>
+                  Save
+                </Button>
+                <Button variant="outlined" onClick={closeModal}>
+                  Cancel
+                </Button>
+              </Box>
+            </Box>
+          )}
 
-export default AboutBusinessPage;
+          {selectedBooking.id !== "" && isEditable && (
+            // Editable Booking Modal
+            <Box
+              sx={{
+                backgroundColor: "background.paper",
+                p: 4,
+                borderRadius: 2,
+                maxWidth: { xs: "90%", sm: 400 },
+                width: "100%",
+                boxShadow: 3,
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Edit Booking
+              </Typography>
+              <TextField
+                fullWidth
+                label="Start Time"
+                type="datetime-local"
+                value={
+                  formatISO(new Date(selectedBooking.start_time), {
+                    representation: "date",
+                  }) +
+                  "T" +
+                  new Date(selectedBooking.start_time).toLocaleTimeString("it-IT")
+                }
+                onChange={(e) =>
+                  setSelectedBooking({
+                    ...selectedBooking,
+                    start_time: new Date(e.target.value).toISOString(),
+                  })
+                }
+                sx={{ mb: 2 }}
+              />
+              <TextField
+                fullWidth
+                label="End Time"
+                type="datetime-local"
+                value={
+                  formatISO(new Date(selectedBooking.end_time), {
+                    representation: "date",
+                  }) +
+                  "T" +
+                  new Date(selectedBooking.end_time).toLocaleTimeString("it-IT")
+                }
+                onChange={(e) =>
+                  setSelectedBooking({
+                    ...selectedBooking,
+                    end_time: new Date(e.target.value).toISOString(),
+                  })
+                }
+                sx={{ mb: 2 }}
+              />
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Button variant="contained" onClick={handleSave}>
+                  Save
+                </Button>
+                <Button variant="contained" color="error" onClick={handleDelete}>
+                  Delete
+                </Button>
+                <Button variant="outlined" onClick={closeModal}>
+                  Cancel
+                </Button>
+              </Box>
+            </Box>
+          )}
+
+          {selectedBooking.id !== "" && !isEditable && (
+            // Read-only Modal
+            <Box
+              sx={{
+                backgroundColor: "background.paper",
+                p: 4,
+                borderRadius: 2,
+                maxWidth: { xs: "90%", sm: 400 },
+                width: "100%",
+                boxShadow: 3,
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                View Booking
+              </Typography>
+              <TextField
+                fullWidth
+                label="Start Time"
+                type="datetime-local"
+                value={
+                  formatISO(new Date(selectedBooking.start_time), {
+                    representation: "date",
+                  }) +
+                  "T" +
+                  new Date(selectedBooking.start_time).toLocaleTimeString("it-IT")
+                }
+                disabled
+                sx={{ mb: 2 }}
+              />
+              <TextField
+                fullWidth
+                label="End Time"
+                type="datetime-local"
+                value={
+                  formatISO(new Date(selectedBooking.end_time), {
+                    representation: "date",
+                  }) +
+                  "T" +
+                  new Date(selectedBooking.end_time).toLocaleTimeString("it-IT")
+                }
+                disabled
+                sx={{ mb: 2 }}
+              />
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography variant="body2" color="text.secondary">
+                    You do not have permission to edit this booking.
+                  </Typography>
+                  <Button variant="outlined" onClick={closeModal} sx={{ mt: 1 }}>
+                    Cancel
+                  </Button>
+                </Box>
+              </Box>
+            </Box>
+          )}
+        </Box>
+      )}
+    </>
+  );
+}

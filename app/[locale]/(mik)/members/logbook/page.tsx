@@ -1,142 +1,157 @@
 "use client";
 
 import React from "react";
-import { useTranslations } from "next-intl";
-import NextLink from "next/link";
-import { motion } from "framer-motion";
-import { Box, Container, Typography, Button } from "@mui/material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import {
+    List,
+    EditButton,
+    ShowButton,
+    DeleteButton,
+} from "@refinedev/mui";
+import { useTable } from "@refinedev/core";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { Box, Stack, Typography, Button } from "@mui/material";
+import Link from "next/link";
 
-const AboutBusinessPage: React.FC = () => {
-  const t = useTranslations("AboutBusiness");
-  const { mode } = useColorMode();
-    const theme = getTheme(mode);
+interface Logbook {
+    id: number;
+    profile_id: string;
+    resource_id: number;
+    flight_date: string; // ISO date string
+    flight_time: number;
+    notes?: string;
+    block_off_time?: string;
+    takeoff_time?: string;
+    landing_time?: string;
+    block_on_time?: string;
+    block_of_time?: number;
+    landings?: number;
+    flight_details: Record<string, any>;
+    fuel_left?: number;
+    billing_info?: string;
+    pax?: number;
+    departure_place?: string;
+    arrival_place?: string;
+    flight_type?: string;
+    pic_id?: string;
+    student_id?: string;
+    created_at: string;
+    updated_at: string;
+}
 
-  // Animation variants for Framer Motion.
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-  };
+export default function LogbookList() {
+    const {
+        tableQueryResult,
+        pageCount,
+        current,
+        setCurrent,
+        pageSize,
+        setPageSize,
+        sorter,
+        setSorter,
+        filters,
+        setFilters,
+    } = useTable<Logbook>({
+        resource: "logbook", // This must match your resource configuration
+        initialSorter: [
+            {
+                field: "id",
+                order: "asc",
+            },
+        ],
+        initialPageSize: 10,
+    });
 
-  const slideInRight = {
-    hidden: { opacity: 0, x: 100 },
-    visible: { opacity: 1, x: 0, transition: { duration: 1 } },
-  };
+    const rows = tableQueryResult?.data?.data ?? [];
+    const total = pageCount * pageSize;
 
-  return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h3" sx={{ fontWeight: "bold", mb: 4, textAlign: "center" }}>
-        {t("title")}
-      </Typography>
+    const columns: GridColDef[] = [
+        { field: "id", headerName: "ID", width: 70 },
+        { field: "profile_id", headerName: "Profile ID", width: 150 },
+        { field: "resource_id", headerName: "Resource ID", width: 120 },
+        { field: "flight_date", headerName: "Flight Date", width: 150 },
+        { field: "flight_time", headerName: "Flight Time", width: 120 },
+        { field: "notes", headerName: "Notes", flex: 1 },
+        { field: "block_off_time", headerName: "Block Off Time", width: 150 },
+        { field: "takeoff_time", headerName: "Takeoff Time", width: 150 },
+        { field: "landing_time", headerName: "Landing Time", width: 150 },
+        { field: "block_on_time", headerName: "Block On Time", width: 150 },
+        { field: "block_of_time", headerName: "Block Of Time", width: 150 },
+        { field: "landings", headerName: "Landings", width: 100 },
+        {
+            field: "flight_details",
+            headerName: "Flight Details",
+            flex: 1,
+            renderCell: ({ value }) => JSON.stringify(value),
+        },
+        { field: "fuel_left", headerName: "Fuel Left", width: 120 },
+        { field: "billing_info", headerName: "Billing Info", flex: 1 },
+        { field: "pax", headerName: "PAX", width: 100 },
+        { field: "departure_place", headerName: "Departure Place", width: 150 },
+        { field: "arrival_place", headerName: "Arrival Place", width: 150 },
+        { field: "flight_type", headerName: "Flight Type", width: 150 },
+        { field: "pic_id", headerName: "PIC ID", width: 150 },
+        { field: "student_id", headerName: "Student ID", width: 150 },
+        {
+            field: "created_at",
+            headerName: "Created At",
+            width: 180,
+            renderCell: ({ value }) => new Date(value).toLocaleString(),
+        },
+        {
+            field: "updated_at",
+            headerName: "Updated At",
+            width: 180,
+            renderCell: ({ value }) => new Date(value).toLocaleString(),
+        },
+        {
+            field: "actions",
+            headerName: "Actions",
+            width: 200,
+            renderCell: ({ row }) => (
+                <Stack direction="row" spacing={1}>
+                    <EditButton
+                        hideText
+                        size="small"
+                        variant="outlined"
+                        resourceNameOrRouteName="logbook"
+                        recordItemId={row.id}
+                    />
+                    <ShowButton
+                        hideText
+                        size="small"
+                        variant="outlined"
+                        resourceNameOrRouteName="logbook"
+                        recordItemId={row.id}
+                    />
+                    <DeleteButton
+                        hideText
+                        size="small"
+                        variant="outlined"
+                        resourceNameOrRouteName="logbook"
+                        recordItemId={row.id}
+                    />
+                </Stack>
+            ),
+            sortable: false,
+            filterable: false,
+        },
+    ];
 
-      <Box component={motion.div} initial="hidden" whileInView="visible" variants={fadeInUp}>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("introParagraph1")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("introParagraph2")}
-        </Typography>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("harshRealityTitle")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("harshRealityText")}
-        </Typography>
-        <Box component="ul" sx={{ ml: 3, mb: 2 }}>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem1")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem2")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem3")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("harshRealityListItem4")}
-          </Typography>
-          <Typography component="li" variant="body1">
-            {t("harshRealityListItem5")}
-          </Typography>
-        </Box>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("benefitsTitle")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.6 }}>
-          {t("benefitsIntro")}
-        </Typography>
-        <Box component="ul" sx={{ ml: 3, mb: 2 }}>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem1")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem2")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem3")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("benefitListItem4")}
-          </Typography>
-          <Typography component="li" variant="body1">
-            {t("benefitListItem5")}
-          </Typography>
-        </Box>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("packageTitle")}
-        </Typography>
-        <Box component="ul" sx={{ ml: 3, mb: 2 }}>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem1")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem2")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem3")}
-          </Typography>
-          <Typography component="li" variant="body1" sx={{ mb: 1 }}>
-            {t("packageListItem4")}
-          </Typography>
-          <Typography component="li" variant="body1">
-            {t("packageListItem5")}
-          </Typography>
-        </Box>
-
-        <Typography variant="h5" sx={{ fontWeight: "bold", mt: 4, mb: 2 }}>
-          {t("finalCallTitle")}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.6 }}>
-          {t("finalCallText")}
-        </Typography>
-
-        <NextLink href={`https://calendly.com/ekoforge`} passHref>
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <Button
-              variant="contained"
-              size="large"
-              sx={{
-                px: 4,
-                py: 1.5,
-                background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
-                color: theme.palette.common.white,
-                fontWeight: "bold",
-                borderRadius: 50,
-                boxShadow: 3,
-                textTransform: "none",
-              }}
-            >
-              {t("bookNow")}
-            </Button>
-          </motion.div>
-        </NextLink>
-      </Box>
-    </Container>
-  );
-};
-
-export default AboutBusinessPage;
+    return (
+        <List title="Logbook Entries">
+            <DataGrid
+                autoHeight
+                rows={rows}
+                columns={columns}
+                rowCount={total}
+                pageSizeOptions={[10, 20, 30, 50, 100]}
+                pagination
+                paginationModel={{ page: current - 1, pageSize }}
+                onPaginationModelChange={(model) => {
+                    setCurrent(model.page + 1);
+                    setPageSize(model.pageSize);
+                }}
+            />
+        </List>
+    );
+}
