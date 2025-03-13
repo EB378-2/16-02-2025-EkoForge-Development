@@ -190,7 +190,7 @@ export default async function RootLayout({
                             icon: <AirplaneTicketIcon />,
                             label: "Flight Planning",
                             parent: "members",
-                          }
+                          },
                         },
                         {
                           name: "flightplans",
@@ -233,6 +233,7 @@ export default async function RootLayout({
                         },
                         {
                           name: "profiles",
+                          identifier: "members_profile_user",
                           list: `/${locale}/members/profile`,
                           edit: `/${locale}/members/profile/edit/:id`,
                           meta: {

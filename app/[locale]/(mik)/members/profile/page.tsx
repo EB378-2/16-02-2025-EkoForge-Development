@@ -9,31 +9,33 @@ import {
   CardContent,
   CardMedia,
   CardActions,
+  Avatar,
 } from "@mui/material";
 import {
   useGetIdentity,
   useOne,
-  useUpdate,
   HttpError,
 } from "@refinedev/core";
 import { useTranslations } from "next-intl";
+import { useColorMode } from "@contexts/color-mode";
+import { getTheme } from "@theme/theme";
 import { EditButton } from "@refinedev/mui";
+
 interface ProfileData {
   id: string;
-  avatar?: string;
-  fullname: string;
-  username: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  phone: string;
-  streetaddress: string;
-  city: string;
-  country: string;
-  zip: string;
-  role: string;
+  phone_number: string;
+  avatar_url?: string;
+  ratings: string[]; 
+  flight_hours?: Record<string, number>;
 }
 
 export default function ProfilePage() {
   const t = useTranslations("Profile");
+  const { mode } = useColorMode();
+  const theme = getTheme(mode);
 
   // Get the current user's identity.
   const { data: identity } = useGetIdentity<{ id: string }>();
@@ -55,7 +57,7 @@ export default function ProfilePage() {
       {userId && profile && !isLoading && !isError && (
         <Grid container spacing={4}>
           {/* Left Column: Profile Card and Personal Notes */}
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={6}>
             <Grid container spacing={4}>
               {/* Profile Card */}
               <Grid item xs={12}>
@@ -64,7 +66,7 @@ export default function ProfilePage() {
                     component="div"
                     sx={{
                       height: 200,
-                      backgroundColor: "primary.main",
+                      backgroundColor: theme.palette.third.main,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -82,9 +84,9 @@ export default function ProfilePage() {
                         overflow: "hidden",
                       }}
                     >
-                      {profile.avatar ? (
-                        <img
-                          src={profile.avatar}
+                      {profile.avatar_url ? (
+                        <Avatar
+                          src={profile.avatar_url}
                           alt="Profile"
                           style={{
                             width: "100%",
@@ -94,8 +96,8 @@ export default function ProfilePage() {
                         />
                       ) : (
                         <Typography variant="h4" color="primary">
-                          {profile.fullname
-                            ? profile.fullname.charAt(0).toUpperCase()
+                          {profile.first_name
+                            ? profile.first_name.charAt(0).toUpperCase()
                             : "?"}
                         </Typography>
                       )}
@@ -103,27 +105,20 @@ export default function ProfilePage() {
                   </CardMedia>
                   <CardContent>
                     <Typography gutterBottom variant="h5">
-                      {profile.fullname || "No Name"}
+                      {profile.first_name + " " + profile.last_name || "No Name"}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {t("email")}: {profile.email}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {t("username")}: {profile.username}
+                      {t("phone")}: {profile.phone_number}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {t("phone")}: {profile.phone}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {t("address")}: {profile.streetaddress}, {profile.city},{" "}
-                      {profile.country} {profile.zip}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {t("role")}: {profile.role}
+                      Ratings: {profile.ratings && profile.ratings.length > 0 ? profile.ratings.join(", ") : "No ratings"}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <EditButton recordItemId={profile.id} />
+                    <EditButton hideText recordItemId={profile.id} />
                   </CardActions>
                 </Card>
               </Grid>

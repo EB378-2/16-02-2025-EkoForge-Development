@@ -11,7 +11,7 @@ import { getTheme } from "@theme/theme";
 const AboutBusinessPage: React.FC = () => {
   const t = useTranslations("AboutBusiness");
   const { mode } = useColorMode();
-    const theme = getTheme(mode);
+  const theme = getTheme(mode);
 
   // Animation variants for Framer Motion.
   const fadeInUp = {

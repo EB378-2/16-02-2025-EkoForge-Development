@@ -1,210 +1,224 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Box, Grid, Typography, TextField, Button, Avatar, Stack, FormControl, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  TextField,
+  Card,
+  CardContent,
+  CardMedia,
+  Avatar,
+  FormControl,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
 import { Edit } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
-import { useGetIdentity } from "@refinedev/core";
 import { Controller } from "react-hook-form";
+import { useGetIdentity } from "@refinedev/core";
 import { useTranslations } from "next-intl";
+import { useColorMode } from "@contexts/color-mode";
+import { getTheme } from "@theme/theme";
 
 interface ProfileData {
+  id: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  username: string;
-  fullname: string;
-  phone: string;
-  streetaddress: string;
-  city: string;
-  country: string;
-  zip: string;
-  role: string;
-  ratings: string[]; // Aviation related ratings stored as an array of strings.
+  phone_number: string;
+  avatar_url?: string;
+  ratings: string[]; 
 }
 
-export default function ProfileEdit() {
+export default function ProfileEditPage() {
   const t = useTranslations("Profile");
+  const { mode } = useColorMode();
+  const theme = getTheme(mode);
 
   // Get the current user's identity.
   const { data: identity } = useGetIdentity<{ id: string }>();
   const userId = identity?.id ?? "";
 
-  // useForm hook to manage the edit form.
   const {
     saveButtonProps,
-    refineCore: { queryResult, formLoading },
+    refineCore: { queryResult, onFinish, formLoading },
+    control,
     register,
     handleSubmit,
-    control,
     reset,
     formState: { errors },
   } = useForm<ProfileData>({
+    // resource: "profiles",
     defaultValues: {},
     refineCoreProps: { meta: { select: "*" } },
   });
 
-  // Get current profile data if available.
-  const profileData = queryResult?.data?.data as ProfileData | undefined;
+  // Extract profile data from query result.
+  const profile = queryResult?.data?.data;
 
-  // Reset form values when profile data is fetched.
+  // Define rating options.
+  const ratingOptions = ["Student", "LAPL", "PPL", "CPL", "ATPL", "NF", "IR", "Multi-Engine", "CFI", "CFII", "DPE"];
+
+  // Reset form values when profile data is available.
   useEffect(() => {
-    if (profileData) {
-      reset(profileData);
+    if (profile) {
+      reset(profile);
     }
-  }, [profileData, reset]);
+  }, [profile, reset]);
 
   if (formLoading || !userId) {
     return <Typography>Loading profile...</Typography>;
   }
 
-  if (!profileData) {
+  if (!profile) {
     return <Typography>Error loading profile</Typography>;
   }
 
-  // Define the options for aviation related ratings.
-  const ratingOptions = ["VFR", "IFR", "Night", "Multi-Engine", "Instructor"];
+  const onSubmit = (data: ProfileData) => {
+    onFinish(data);
+  };
 
   return (
     <Edit isLoading={formLoading} saveButtonProps={saveButtonProps}>
       <Box
         component="form"
-        sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+        sx={{ p: 4 }}
         autoComplete="off"
       >
-        {/* Email */}
-        <TextField
-          {...register("email", { required: "Email is required" })}
-          error={!!errors.email}
-          helperText={errors.email ? String(errors.email.message) : ""}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label="Email"
-        />
-
-        {/* Username */}
-        <TextField
-          {...register("username", { required: "Username is required" })}
-          error={!!errors.username}
-          helperText={errors.username ? String(errors.username.message) : ""}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label="Username"
-        />
-
-        {/* Full Name */}
-        <TextField
-          {...register("fullname", { required: "Full Name is required" })}
-          error={!!errors.fullname}
-          helperText={errors.fullname ? String(errors.fullname.message) : ""}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label="Full Name"
-        />
-
-        {/* Phone */}
-        <TextField
-          {...register("phone", { required: "Phone is required" })}
-          error={!!errors.phone}
-          helperText={errors.phone ? String(errors.phone.message) : ""}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label="Phone"
-        />
-
-        {/* Street Address */}
-        <TextField
-          {...register("streetaddress", { required: "Street Address is required" })}
-          error={!!errors.streetaddress}
-          helperText={errors.streetaddress ? String(errors.streetaddress.message) : ""}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label="Street Address"
-        />
-
-        {/* City */}
-        <TextField
-          {...register("city", { required: "City is required" })}
-          error={!!errors.city}
-          helperText={errors.city ? String(errors.city.message) : ""}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label="City"
-        />
-
-        {/* Country */}
-        <TextField
-          {...register("country", { required: "Country is required" })}
-          error={!!errors.country}
-          helperText={errors.country ? String(errors.country.message) : ""}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label="Country"
-        />
-
-        {/* Zip Code */}
-        <TextField
-          {...register("zip", { required: "Zip is required" })}
-          error={!!errors.zip}
-          helperText={errors.zip ? String(errors.zip.message) : ""}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label="Zip Code"
-        />
-
-        {/* Role */}
-        <TextField
-          {...register("role", { required: "Role is required" })}
-          error={!!errors.role}
-          helperText={errors.role ? String(errors.role.message) : ""}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label="Role"
-        />
-
-        {/* Aviation Ratings Checkbox Group */}
-        <Controller
-          name="ratings"
-          control={control}
-          render={({ field }) => {
-            const currentRatings: string[] = field.value || [];
-            const handleCheckboxChange = (option: string, checked: boolean) => {
-              let newRatings = currentRatings;
-              if (checked) {
-                newRatings = [...currentRatings, option];
-              } else {
-                newRatings = currentRatings.filter((rating) => rating !== option);
-              }
-              field.onChange(newRatings);
-            };
-            return (
-              <FormControl component="fieldset" sx={{ mt: 2 }}>
-                <Typography variant="h6">Aviation Ratings</Typography>
-                <FormGroup row>
-                  {ratingOptions.map((option) => (
-                    <FormControlLabel
-                      key={option}
-                      control={
-                        <Checkbox
-                          checked={currentRatings.includes(option)}
-                          onChange={(e) => handleCheckboxChange(option, e.target.checked)}
-                        />
-                      }
-                      label={option}
+        <Grid container spacing={4}>
+          {/* Left Column: Avatar */}
+          <Grid item xs={12} md={4}>
+            <Card>
+              <CardMedia
+                component="div"
+                sx={{
+                  height: 200,
+                  backgroundColor: theme.palette.third.main,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 100,
+                    minHeight: 100,
+                    borderRadius: "50%",
+                    backgroundColor: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                  }}
+                >
+                  {profile.avatar_url ? (
+                    <Avatar
+                      src={profile.avatar_url}
+                      alt="Profile"
+                      sx={{ width: "100%", height: "100%" }}
                     />
-                  ))}
-                </FormGroup>
-              </FormControl>
-            );
-          }}
-        />
+                  ) : (
+                    <Typography variant="h4" color="primary">
+                      {profile.first_name ? profile.first_name.charAt(0).toUpperCase() : "?"}
+                    </Typography>
+                  )}
+                </Box>
+              </CardMedia>
+              <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                  Change Avatar (Not Implemented)
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          {/* Right Column: Editable Fields */}
+          <Grid item xs={12} md={8}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  label="First Name"
+                  defaultValue={profile.first_name}
+                  {...register("first_name", { required: "First name is required" })}
+                  error={!!errors.first_name}
+                  helperText={errors.first_name?.message?.toString()}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  label="Last Name"
+                  defaultValue={profile.last_name}
+                  {...register("last_name", { required: "Last name is required" })}
+                  error={!!errors.last_name}
+                  helperText={errors.last_name?.message?.toString()}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Email"
+                  defaultValue={profile.email}
+                  {...register("email", { required: "Email is required" })}
+                  error={!!errors.email}
+                  helperText={errors.email?.message?.toString()}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Phone Number"
+                  defaultValue={profile.phone_number}
+                  {...register("phone_number")}
+                  error={!!errors.phone_number}
+                  helperText={errors.phone_number?.message?.toString()}
+                />
+              </Grid>
+              <Controller
+                name="ratings"
+                control={control}
+                render={({ field }) => {
+                  const currentRatings: string[] = field.value || [];
+                  const handleCheckboxChange = (option: string, checked: boolean) => {
+                    let newRatings = currentRatings;
+                    if (checked) {
+                      newRatings = [...currentRatings, option];
+                    } else {
+                      newRatings = currentRatings.filter((rating) => rating !== option);
+                    }
+                    field.onChange(newRatings);
+                  };
+                  return (
+                    <FormControl component="fieldset" sx={{ mt: 2 }}>
+                      <Typography variant="h6">Aviation Ratings</Typography>
+                      <FormGroup row>
+                        {ratingOptions.map((option) => (
+                          <FormControlLabel
+                            key={option}
+                            control={
+                              <Checkbox
+                                checked={currentRatings.includes(option)}
+                                onChange={(e) =>
+                                  handleCheckboxChange(option, e.target.checked)
+                                }
+                              />
+                            }
+                            label={option}
+                          />
+                        ))}
+                      </FormGroup>
+                    </FormControl>
+                  );
+                }}
+              />
+              {/* Additional fields can be added below as needed */}
+            </Grid>
+          </Grid>
+        </Grid>
       </Box>
     </Edit>
   );

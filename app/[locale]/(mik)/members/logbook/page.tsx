@@ -9,7 +9,7 @@ import {
 } from "@refinedev/mui";
 import { useShow, useTable } from "@refinedev/core";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { Stack} from "@mui/material";
+import { Stack } from "@mui/material";
 
 interface Logbook {
     id: number;
