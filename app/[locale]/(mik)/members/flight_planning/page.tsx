@@ -7,13 +7,12 @@ import {
     ShowButton,
     DeleteButton,
 } from "@refinedev/mui";
-import { useTable, useShow } from "@refinedev/core";
+import { useTable } from "@refinedev/core";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { Box, Stack, Typography, Button } from "@mui/material";
-import Link from "next/link";
+import { Stack } from "@mui/material";
 
 interface FlightPlan {
-    id: number;
+    id: string;
     profile_id: string;
     route: string;
     notes?: string;
@@ -21,20 +20,8 @@ interface FlightPlan {
     updated_at: string;
 }
 
-// Component to display a profile's full name based on profileId.
-function ProfileName({ profileId }: { profileId: string }) {
-    const { queryResult } = useShow({
-        resource: "profiles",
-        id: profileId,
-        meta: { select: "first_name,last_name" },
-        queryOptions: { enabled: !!profileId },
-    });
-    const profileData = queryResult?.data?.data as { first_name: string; last_name: string } | undefined;
-    if (!profileData) return <span>Loading...</span>;
-    return <span>{profileData.first_name} {profileData.last_name}</span>;
-}
 
-export default function FlightPlansList() {
+export default function LogbookList() {
     const {
         tableQueryResult,
         pageCount,
@@ -43,7 +30,7 @@ export default function FlightPlansList() {
         pageSize,
         setPageSize,
     } = useTable<FlightPlan>({
-        resource: "flightplans",
+        resource: "flightplans", // This must match your resource configuration
         initialSorter: [
             {
                 field: "id",
@@ -57,15 +44,9 @@ export default function FlightPlansList() {
     const total = pageCount * pageSize;
 
     const columns: GridColDef[] = [
-        { field: "id", headerName: "ID", width: 70 },
-        {
-            field: "profile_name",
-            headerName: "Profile",
-            width: 150,
-            renderCell: (params) => <ProfileName profileId={params.row.profile_id} />,
-        },
-        { field: "route", headerName: "Route", flex: 1 },
-        { field: "notes", headerName: "Notes", flex: 1 },
+        { field: "flight_date", headerName: "Flight Date", width: 150 },
+        { field: "route", headerName: "Route", width: 150 },
+        { field: "notes", headerName: "Notes", width: 150 },
         {
             field: "created_at",
             headerName: "Created At",
@@ -88,21 +69,21 @@ export default function FlightPlansList() {
                         hideText
                         size="small"
                         variant="outlined"
-                        resourceNameOrRouteName="flightplans"
+                        resourceNameOrRouteName="logbook"
                         recordItemId={row.id}
                     />
                     <ShowButton
                         hideText
                         size="small"
                         variant="outlined"
-                        resourceNameOrRouteName="flightplans"
+                        resourceNameOrRouteName="logbook"
                         recordItemId={row.id}
                     />
                     <DeleteButton
                         hideText
                         size="small"
                         variant="outlined"
-                        resourceNameOrRouteName="flightplans"
+                        resourceNameOrRouteName="logbook"
                         recordItemId={row.id}
                     />
                 </Stack>
@@ -113,7 +94,7 @@ export default function FlightPlansList() {
     ];
 
     return (
-        <List title="Flight Plans">
+        <List title="FlightPlans">
             <DataGrid
                 autoHeight
                 rows={rows}

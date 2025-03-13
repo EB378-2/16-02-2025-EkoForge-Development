@@ -6,24 +6,41 @@ import {
     EditButton,
     ShowButton,
     DeleteButton,
-} from "@refinedev/mui";
-import { useTable } from "@refinedev/core";
+    } from "@refinedev/mui";
+import { useOne, useTable } from "@refinedev/core";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { Box, Stack, Typography, Button } from "@mui/material";
-import Link from "next/link";
+import { Stack, Typography } from "@mui/material";
 
-interface Notice {
+// Define the FlightPlan interface based on your table.
+interface FlightPlan {
     id: string;
-    title: string;
-    message: string;
-    time_off_incident?: string;
-    submitted_by: string;
-    extra_parameters?: Record<string, any>;
+    profile_id: string;
+    route: string;
+    notes?: string;
     created_at: string;
     updated_at: string;
 }
 
-export default function NoticesList() {
+// Component to display a profile's full name based on profileId.
+function ProfileName({ profileId }: { profileId: string }) {
+    const { data } = useOne({
+        resource: "profiles",
+        id: profileId,
+        meta: { select: "first_name,last_name" },
+        queryOptions: { enabled: !!profileId },
+    });
+    const profileData = data?.data as
+      | { first_name: string; last_name: string }
+      | undefined;
+    if (!profileData) return <Typography variant="caption">Loading...</Typography>;
+    return (
+        <Typography variant="caption">
+            {profileData.first_name} {profileData.last_name}
+        </Typography>
+    );
+}
+
+export default function FlightPlansList() {
     const {
         tableQueryResult,
         pageCount,
@@ -31,18 +48,9 @@ export default function NoticesList() {
         setCurrent,
         pageSize,
         setPageSize,
-        sorter,
-        setSorter,
-        filters,
-        setFilters,
-    } = useTable<Notice>({
-        resource: "notices", // Must match your resource configuration
-        initialSorter: [
-            {
-                field: "id",
-                order: "asc",
-            },
-        ],
+    } = useTable<FlightPlan>({
+        resource: "flightplans",
+        initialSorter: [{ field: "created_at", order: "desc" }],
         initialPageSize: 10,
     });
 
@@ -50,49 +58,25 @@ export default function NoticesList() {
     const total = pageCount * pageSize;
 
     const columns: GridColDef[] = [
+        { field: "id", headerName: "ID", width: 250 },
         {
-            field: "id",
-            headerName: "ID",
-            width: 180,
+            field: "profile_id",
+            headerName: "Created By",
+            width: 150,
+            renderCell: (params) => <ProfileName profileId={params.row.profile_id} />,
         },
-        {
-            field: "title",
-            headerName: "Title",
-            width: 200,
-        },
-        {
-            field: "message",
-            headerName: "Message",
-            flex: 1,
-        },
-        {
-            field: "time_off_incident",
-            headerName: "Time Off Incident",
-            width: 200,
-            renderCell: ({ value }) =>
-                value ? new Date(value).toLocaleString() : "-",
-        },
-        {
-            field: "submitted_by",
-            headerName: "Submitted By",
-            width: 180,
-        },
-        {
-            field: "extra_parameters",
-            headerName: "Extra Parameters",
-            flex: 1,
-            renderCell: ({ value }) => (value ? JSON.stringify(value) : "-"),
-        },
+        { field: "route", headerName: "Route", width: 200 },
+        { field: "notes", headerName: "Notes", width: 300 },
         {
             field: "created_at",
             headerName: "Created At",
-            width: 200,
+            width: 180,
             renderCell: ({ value }) => new Date(value).toLocaleString(),
         },
         {
             field: "updated_at",
             headerName: "Updated At",
-            width: 200,
+            width: 180,
             renderCell: ({ value }) => new Date(value).toLocaleString(),
         },
         {
@@ -105,21 +89,21 @@ export default function NoticesList() {
                         hideText
                         size="small"
                         variant="outlined"
-                        resourceNameOrRouteName="notices"
+                        resourceNameOrRouteName="flightplans"
                         recordItemId={row.id}
                     />
                     <ShowButton
                         hideText
                         size="small"
                         variant="outlined"
-                        resourceNameOrRouteName="notices"
+                        resourceNameOrRouteName="flightplans"
                         recordItemId={row.id}
                     />
                     <DeleteButton
                         hideText
                         size="small"
                         variant="outlined"
-                        resourceNameOrRouteName="notices"
+                        resourceNameOrRouteName="flightplans"
                         recordItemId={row.id}
                     />
                 </Stack>
@@ -130,7 +114,7 @@ export default function NoticesList() {
     ];
 
     return (
-        <List title="Safety Notices">
+        <List title="Flight Plans">
             <DataGrid
                 autoHeight
                 rows={rows}

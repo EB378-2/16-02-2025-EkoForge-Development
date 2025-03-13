@@ -43,9 +43,9 @@ export default function MembersList() {
         {
             field: "avatar_url",
             headerName: "Avatar",
-            width: 100,
+            width: 75,
             renderCell: ({row}) => (
-                <Avatar sx={{ margin: "auto" }} src={row.value} alt={row.first_name} />
+                <Avatar sx={{ margin: "auto" }} src={row.avatar_url} alt={row.first_name} />
             ),
         },
         {
@@ -69,7 +69,7 @@ export default function MembersList() {
         {
             field: "actions",
             headerName: "Actions",
-            width: 200,
+            width: 75,
             renderCell: ({ row }) => (
                     <ShowButton
                         hideText
