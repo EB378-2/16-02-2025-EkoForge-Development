@@ -35,6 +35,7 @@ import { authProviderClient } from "@/providers/auth-provider/auth-provider.clie
 import { dataProvider } from "@/providers/data-provider";
 import type { Viewport } from "next";
 
+import { accessControlProvider } from "@/providers/access-provider"
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -118,6 +119,9 @@ export default async function RootLayout({
                       authProvider={authProviderClient}
                       dataProvider={dataProvider}
                       notificationProvider={useNotificationProvider}
+                      accessControlProvider={{
+                        can: accessControlProvider,
+                      }}
                       resources={[
                         {
                           name: "home",
@@ -156,8 +160,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "profiles",
-                          identifier: "members",
+                          name: "members_dropdown",
                           meta: {
                             
                             label: "Members",
@@ -173,7 +176,7 @@ export default async function RootLayout({
                           meta: {
                             icon: <BroadcastOnHomeIcon />,
                             label: "Dashboard",
-                            parent: "members",
+                            parent: "members_dropdown",
                             canDelete: true,
                           },
                         },
@@ -187,7 +190,7 @@ export default async function RootLayout({
                           meta: {
                             canDelete: true,
                             icon: <GppMaybeIcon />,
-                            parent: "members",
+                            parent: "members_dropdown",
                             label: "Saftey Notice",
                           },
                         },
@@ -197,7 +200,7 @@ export default async function RootLayout({
                           meta: {
                             icon: <AirplaneTicketIcon />,
                             label: "Flight Planning",
-                            parent: "members",
+                            parent: "members_dropdown",
                           },
                         },
                         {
@@ -248,7 +251,7 @@ export default async function RootLayout({
                           meta: {
                             icon: <AccountBoxIcon />,
                             label: "Profile",
-                            parent: "members",
+                            parent: "members_dropdown",
                           },
                         },
                         {
@@ -260,7 +263,7 @@ export default async function RootLayout({
                           meta: {
                             canDelete: true,
                             icon: <CalendarMonthIcon />,
-                            parent: "members",
+                            parent: "members_dropdown",
                             label: "Booking Calendar",
                           },
                         },
@@ -273,7 +276,7 @@ export default async function RootLayout({
                           meta: {
                             canDelete: true,
                             icon: <BookIcon />,
-                            parent: "members",
+                            parent: "members_dropdown",
                             label: "Logbook",
                           },
                         },
@@ -284,7 +287,7 @@ export default async function RootLayout({
                           show: `/${locale}/members/statistics/show/:id`,
                           meta: {
                             icon: <AnalyticsIcon />,
-                            parent: "members",
+                            parent: "members_dropdown",
                             label: "Flight Statistics",
                           },
                         },
@@ -295,7 +298,7 @@ export default async function RootLayout({
                           meta: {
                             icon: <LibraryBooksIcon />,
                             label: "Handbooks",
-                            parent: "members",
+                            parent: "members_dropdown",
                           },
                         },
                         {
@@ -305,7 +308,7 @@ export default async function RootLayout({
                           meta: {
                             icon: <RuleIcon />,
                             label: "Instructions",
-                            parent: "members",
+                            parent: "members_dropdown",
                           },
                         },
                         {
@@ -316,7 +319,7 @@ export default async function RootLayout({
                           meta: {
                             icon: <Groups3Icon />,
                             label: "Members",
-                            parent: "members",
+                            parent: "members_dropdown",
                           },
                         },
                         {
@@ -325,7 +328,7 @@ export default async function RootLayout({
                           meta: {
                             icon: <SchoolIcon />,
                             label: "Flight School",
-                            parent: "members",
+                            parent: "members_dropdown",
                           },
                         },
                         {

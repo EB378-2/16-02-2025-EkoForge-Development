@@ -37,6 +37,7 @@
     "@refinedev/react-hook-form": "^4.8.14",
     "@refinedev/supabase": "^5.7.4",
     "@supabase/ssr": "^0.3.0",
+    "casbin": "^5.38.0",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.0.6",
     "js-cookie": "^3.0.5",

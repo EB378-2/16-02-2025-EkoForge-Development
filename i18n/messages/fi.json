@@ -1,111 +1,193 @@
 {
-  "NavbarLinks": {
-    "navLink1": "Mitä asiakkaamme sanovat meistä",
-    "navLink2": "Yhteystiedot",
-    "navLink3": "Verkkosivuesimerkit",
-    "navLink4": "Varaa tapaaminen"
-  },
-  "HomePage": {
-    "simple": "Älykäs.",
-    "elegant": "Moderni.",
-    "effective": "Voimakas.",
-    "HeroSubTitle": "Verkkosivut ja digitaaliset ratkaisut, jotka auttavat startup-yrityksiä ja pk-yrityksiä lanseeraamaan, kasvamaan ja menestymään – nopeasti.",
-    "CTA": "Varaa myyntipuhelu",
-    "Contact Us": "Ota yhteyttä",
-    "disrupt": "Miten tämä toimii?",
-    "StepOne": "Vaihe 1: Valitse brändi yrityksellesi",
-    "StepTwo": "Vaihe 2: Hanki tehokas verkkosivusto tai sovellus",
-    "StepThree": "Vaihe 3: Saavuta asiakkaasi tehokkaalla SEO:lla",
-    "StepOneText": "Jos et ole vielä valinnut, autamme sinua löytämään brändin, joka resonoi yrityksesi ja asiakkaidesi kanssa.",
-    "StepTwoText": "Suunnittelemme ja kehitämme verkkosivuston, joka on räätälöity yrityksesi ja asiakkaidesi tarpeisiin.",
-    "StepThreeText": "Autamme sinua tavoittamaan asiakkaasi tehokkailla hakukoneoptimoinnin ja digitaalisen markkinoinnin strategioilla.",
-    "Call-To-Action": "Siirry verkkoon ja ala voittaa jo tänään",
-    "Call-To-Action-Sub": "Asiakkaat etsivät sinua juuri nyt. Varmistetaan, että he löytävät sinut.",
-    "Book Now": "KLIKKAA TÄSTÄ JA ALOITA!",
-    "Call-To-Action-Note": "Lue lisää meistä",
-    "why": "> Miksi tarvitsen verkkosivut? <"
-  },
-  "Contact": {
-    "title": "Ota yhteyttä",
-    "name": "Nimi",
-    "emailentry": "Sähköpostiosoite",
-    "reason": "Miten voimme auttaa sinua?",
-    "send": "Lähetä viesti",
-    "contact information": "Yhteystiedot"
-  },
-  "Testimonials": {
-    "title": "Asiakaspalautteet"
-  },
-  "Footer": {
-    "aboutText": "Teemme yhteistyötä yrittäjien kanssa luodaksemme kauniita verkkokokemuksia asiakkaille.",
-    "navigation": "Navigointi",
-    "navLink1": "Varaa tapaaminen",
-    "navLink2": "Asiakaspalautteet",
-    "navLink3": "Ota yhteyttä",
-    "navLink4": "Verkkosivuesimerkit",
-    "login": "Kirjaudu sisään",
-    "socialmedia": "Sosiaalinen media",
-    "instagram": "Instagram",
-    "facebook": "Facebook",
-    "linkedin": "LinkedIn",
-    "company": "Yritys",
-    "about": "Tietoa meistä",
-    "legal": "Laillisuus",
-    "terms": "Käyttöehdot",
-    "privacy": "Tietosuojakäytäntö",
-    "license": "Lisenssisopimus",
-    "rights": "Kaikki oikeudet pidätetään."
-  },
   "AboutBusiness": {
-    "title": "Yrityksesi tarvitsee enemmän kuin vain verkkosivut – se tarvitsee myyntikoneen",
-    "introParagraph1": "Nykyajan digitaalisessa maailmassa verkkosivustosi ei ole vain online-esite – se on yrityksesi tehokkain myyntityökalu. Silti liian monet yrittäjät tyytyvät tee-se-itse-verkkosivurakentajiin, jotka jättävät heidät turhautuneiksi ja ilman asiakkaita.",
-    "introParagraph2": "Jos verkkosivustosi ei houkuttele kävijöitä, luo luottamusta ja tuota myyntiä, se ei ole vain huono – se maksaa sinulle rahaa joka päivä.",
-    "harshRealityTitle": "Karut faktat: Huono verkkosivusto on pahempi kuin ei verkkosivustoa ollenkaan",
-    "harshRealityText": "Ajattele viimeistä kertaa, kun etsit yritystä verkosta. Päädyitkö sivustolle, joka näytti vanhentuneelta, latautui hitaasti tai oli vaikea navigoida? Poistuit heti. Näin käy myös potentiaalisille asiakkaillesi.",
-    "harshRealityListItem1": "❌ Saa sinut näyttämään epäammattimaiselta – Ensivaikutelmilla on merkitystä.",
-    "harshRealityListItem2": "❌ Menetät asiakkaita kilpailijoille – Hidas tai sekava sivusto ajaa asiakkaat pois.",
-    "harshRealityListItem3": "❌ Hukkaa aikaasi ja rahojasi – DIY-verkkosivut eivät usein toimi kunnolla.",
-    "harshRealityListItem4": "❌ Ei näy Googlessa – Huono hakukoneoptimointi tarkoittaa, että potentiaaliset asiakkaat eivät löydä sinua.",
-    "harshRealityListItem5": "❌ Ei muunna kävijöitä maksaviksi asiakkaiksi – Sivustosi tulisi tuottaa liidejä ja myyntiä.",
-    "benefitsTitle": "Mitä huippuluokan verkkosivusto voi tehdä yrityksellesi?",
-    "benefitsIntro": "Huippuluokan verkkosivusto on kuin yrityksesi tehokkain työntekijä – se työskentelee 24/7 houkutellakseen, muuntaakseen ja säilyttääkseen asiakkaita.",
-    "benefitListItem1": "✅ Rakentaa luottamusta ja uskottavuutta – Tyylikäs, moderni sivusto vahvistaa yrityksesi imagoa.",
-    "benefitListItem2": "✅ Houkuttelee enemmän asiakkaita – Asiantunteva SEO tuo tasaisesti liikennettä.",
-    "benefitListItem3": "✅ Muuntaa kävijät asiakkaiksi – Selkeä, vakuuttava muotoilu ohjaa toimintaa.",
-    "benefitListItem4": "✅ Toimii kaikilla laitteilla – Mobiiliystävällinen sivusto tavoittaa laajemman yleisön.",
-    "benefitListItem5": "✅ Skaalautuu liiketoimintasi mukana – Räätälöidyt ratkaisut kasvavat yrityksesi tarpeiden mukana.",
-    "packageTitle": "Mitä verkkosivupakettisi sisältää?",
-    "packageListItem1": "🔹 Tyylikäs, mobiiliystävällinen design",
-    "packageListItem2": "🔹 Hakukoneoptimointi (SEO)",
-    "packageListItem3": "🔹 Myyntiä lisäävä copywriting",
-    "packageListItem4": "🔹 Salamannopea latausnopeus",
-    "packageListItem5": "🔹 Helppokäyttöiset yhteys- ja varauslomakkeet",
-    "finalCallTitle": "Valmis viemään liiketoimintasi seuraavalle tasolle?",
-    "finalCallText": "Huono verkkosivusto maksaa sinulle myyntiä joka päivä. Älä anna toisen asiakkaan mennä ohi. Investoi tehokkaaseen verkkosivustoon tänään ja katso, kuinka liiketoimintasi kasvaa.",
+    "title": "Miksi yrityksesi tarvitsee enemmän kuin vain verkkosivuston – se tarvitsee myyntikoneen",
+    "introParagraph1": "Nykyisessä digitaalisessa maailmassa verkkosivustosi ei ole vain online-esite – se on yrityksesi tehokkain myyntityökalu. Silti monet yritysten omistajat tyytyvät geneerisiin, itse tehtyihin verkkosivustorakentajiin, jotka jättävät heidät turhautuneiksi ja jumiin sivuston kanssa, joka näyttää hyvältä mutta ei tuo asiakkaita.",
+    "introParagraph2": "Jos verkkosivustosi ei houkuttele vierailijoita, luo luottamusta ja muunna myyntiä, se ei ole vain huono verkkosivusto – se maksaa sinulle rahaa joka päivä.",
+    "harshRealityTitle": "Kova totuus: Huono verkkosivusto on pahempi kuin ei verkkosivustoa",
+    "harshRealityText": "Muistele viimeistä kertaa kun etsit yritystä verkosta. Löysitkö verkkosivuston, joka näytti vanhentuneelta, kesti ikuisuuden latautua tai teki tarpeidesi löytämisen vaikeaksi? Lähdit pois. Juuri näin käy, kun potentiaaliset asiakkaat kohtaavat huonosti suunnitellun verkkosivuston.",
+    "harshRealityListItem1": "❌ Näyttää epäammattimaiselta – Ensivaikutelmat ovat tärkeitä.",
+    "harshRealityListItem2": "❌ Menettää asiakkaita kilpailijoille – Hidas tai sekava sivusto ajaa asiakkaat pois.",
+    "harshRealityListItem3": "❌ Tuhlaa aikaasi ja rahasi – DIY-rakentajat jättävät usein sinut toimimattoman sivuston kanssa.",
+    "harshRealityListItem4": "❌ Ei näy Googlessa – Huono SEO tarkoittaa, että potentiaaliset asiakkaat eivät löydä sinua.",
+    "harshRealityListItem5": "❌ Epäonnistuu muuttamaan vierailijat maksaviksi asiakkaiksi – Sivustosi pitäisi tuoda liidejä ja myyntiä.",
+    "benefitsTitle": "Mitä korkeasuoritteinen verkkosivusto voi tehdä yrityksellesi",
+    "benefitsIntro": "Korkeasuoritteisen verkkosivuston pitäisi olla kovimpia työntekijöitäsi, työskennellen 24/7 asiakkaiden houkuttelemiseksi, muuntamiseksi ja pitämiseksi.",
+    "benefitListItem1": "✅ Luo luottamusta ja uskottavuutta – Tyylikäs, moderni sivusto parantaa ammattikuvaasi.",
+    "benefitListItem2": "✅ Houkuttele enemmän asiakkaita – Asiantunteva SEO tuo jatkuvaa liikennettä.",
+    "benefitListItem3": "✅ Muunna vierailijat asiakkaiksi – Selkeä, vakuuttava suunnittelu ohjaa toimintaan.",
+    "benefitListItem4": "✅ Toimii kaikilla laitteilla – Mobiiliystävällinen sivusto saavuttaa laajemman yleisön.",
+    "benefitListItem5": "✅ Skaalautuu yrityksesi mukana – Mukautetut ratkaisut kasvavat tarpeidesi mukana.",
+    "packageTitle": "Mitä mukautettu verkkosivustopakettisi sisältää?",
+    "packageListItem1": "🔹 Upea, Mobiiliystävällinen Suunnittelu",
+    "packageListItem2": "🔹 SEO-Optimointi",
+    "packageListItem3": "🔹 Korkean konversion kopiointi",
+    "packageListItem4": "🔹 Salamannopea nopeus",
+    "packageListItem5": "🔹 Helppokäyttöiset Yhteydenotto- ja Varaustilauslomakkeet",
+    "finalCallTitle": "Valmiina viemään yrityksesi seuraavalle tasolle?",
+    "finalCallText": "Huono verkkosivusto maksaa sinulle menetettyjä myyntejä joka päivä. Älä anna yhdenkään asiakkaan lipsahtaa käsistäsi. Investoi korkean konversion verkkosivustoon tänään ja katso yrityksesi nousun.",
     "bookNow": "Varaa nyt"
   },
   "Profile": {
     "username": "Käyttäjätunnus",
     "email": "Sähköposti",
-    "phone": "Puhelinnumero",
+    "phone": "Puhelin",
     "address": "Osoite",
-    "role": "Rooli"
+    "role": "Rooli",
+    "section": {
+      "title": "Ilmoitukset ja keskustelu"
+    },
+    "section1": {
+      "title": "WhatsApp-ryhmät",
+      "linkInfo": "MIK info (Ilmoitukset, varusteiden tiedot jne.)",
+      "linkInfoUrl": "https://chat.whatsapp.com/H7ORSRxQMQjInO4hwjN8ER",
+      "linkChat": "MIK pulinajakso (Jäsenten keskustelu)",
+      "linkChatUrl": "https://chat.whatsapp.com/ICDocWfKA6xCbDWwKOZAmU"
+    },
+    "section2": {
+      "title": "Sähköposti-ilmoitukset",
+      "ihq": "IHQ-ilmoitukset",
+      "ihqUrl": "https://groups.google.com/a/mik.fi/forum/#!forum/ihq-info",
+      "stl": "STL-ilmoitukset",
+      "stlUrl": "https://groups.google.com/a/mik.fi/forum/#!forum/stl-info"
+    },
+    "section3": {
+      "title": "Sähköinen lentoloki ja laskutus",
+      "body1": "Kaikki lennot on kirjattava lentokoneen matkalokikirjaan ja sähköiseen lentolokiin osoitteessa",
+      "logbook": "www.mik.fi/kirja",
+      "logbookUrl": "http://www.mik.fi/kirja",
+      "body2": "Kirjaa tiedot välittömästi lennon jälkeen ja tarkista tiedot uudelleen. Laskutus tapahtuu kuukausittain sähköpostitse. Varmista, että sähköpostiosoitteesi on ajan tasalla.",
+      "body3": "Tarkistamme lentokoneen kirjan ja sähköisen lokin vähintään kuukausittain. Varmista lentoaikojen ja kokonaisaikojen oikea laskenta. Oppilaan ja ohjaajan on varmistettava, että lohkoajat vastaavat koulutustietoja."
+    },
+    "section4": {
+      "title": "Henkilökohtaiset tilit",
+      "body": "Kerhon verkkosivusto käyttää nyt samoja kirjautumistietoja kuin varausjärjestelmä. Jos käytät jaettua tietokonetta, älä valitse 'pysy kirjautuneena' kirjautuessasi sisään."
+    },
+    "section5": {
+      "title": "Varaus- ja keskustelufoorumi sekä jäsenuutiset",
+      "body": "Varaus- ja keskustelufoorumit ovat saatavilla Jäsenet-valikosta vasemmalla. Jäsenuutiset näkyvät Koti / Tämänhetkinen -sivulla kirjautumisen jälkeen."
+    }    
   },
-  "AboutUs": {
-    "title": "Tietoa meistä",
-    "subtitle": "Sitoutunut huippuosaamiseen ja innovaatioon.",
-    "cta": "Keskustellaan",
-    "ourStoryTitle": "Tarinaamme",
-    "ourStoryText": "Perustettu vuonna 2024, matkallamme oli visio muuttaa alaa. Olemme sitoutuneet tarjoamaan huippuosaamista jokaisessa projektissa.",
-    "ourMissionTitle": "Missiomme",
-    "ourMissionText": "Tavoitteenamme on vahvistaa pk-yrityksiä innovatiivisilla ratkaisuilla, rehellisyydellä ja intohimolla menestykseen.",
-    "ourValuesTitle": "Arvomme",
-    "ourValuesText": "Meitä ohjaavat ydinperiaatteemme: huippuosaaminen, rehellisyys ja innovaatio. Uskomme vahvoihin asiakassuhteisiin ja erinomaisten tulosten tuottamiseen.",
-    "ourPhilosophyTitle": "Filosofiamme",
-    "ourPhilosophyText": "Uskomme henkilökohtaiseen lähestymistapaan, jossa yhdistyvät huipputeknologia ja tinkimätön sitoutuminen laatuun. Jokainen projekti on osoitus intohimostamme ja visiostamme parempaa tulevaisuutta varten.",
-    "ourApproachTitle": "Lähestymistapamme",
-    "ourApproachText": "Teemme tiivistä yhteistyötä asiakkaidemme kanssa ja syvennymme heidän tarpeisiinsa. Räätälöimällä ratkaisut varmistamme pysyvän vaikutuksen ja mitattavan menestyksen.",
-    "contactTitle": "Ota yhteyttä",
-    "contactSubtitle": "Haluaisimme kuulla sinusta! Ota yhteyttä ja aloitetaan keskustelu."
+  "FlightPlanList": {
+    "flightPlanning": "Lennonsuunnittelu",
+    "aircraftReservation": {
+      "title": "Lentokonevaraus",
+      "description": "Näytä ja varaa haluamasi lentokone.",
+      "buttonText": "Näytä varaukset"
+    },
+    "aviationWeather": {
+      "title": "Ilmailusää",
+      "description": "Tarkista uusimmat ilmailusäät ja reittitiedotteet.",
+      "buttonText": "Ilmailusää"
+    },
+    "flightLogbook": {
+      "title": "Lentoloki",
+      "description": "Näytä ja hallinnoi lentolokiasi.",
+      "buttonText": "Näytä loki"
+    },
+    "maintenance": {
+      "title": "Huoltosuunnitelma ja tunnit",
+      "description": "Näytä huoltosuunnitelmat ja lentokoneen tuntitiedot.",
+      "buttonText": "Näytä tunnit"
+    },
+    "flightPlan": {
+      "title": "Lentosuunnitelma",
+      "description": "Kirjallinen lentosuunnitelma (FPL) lähetetään verkossa ANS Finlandin verkkosivuston kautta. Muista vahvistaa suunnitelmasi soittamalla Helsinki-Vantaan tiedotukseen. Klikkaa alla olevaa linkkiä täyttääksesi FPL-lomakkeen kerhon lentokoneen perustiedoilla.",
+      "buttonText": "Lähetä lentosuunnitelma tästä"
+    },
+    "flightPlans": "Omat lentosuunnitelmat",
+    "dataGrid": {
+      "route": "Reitti",
+      "notes": "Muistiinpanot",
+      "actions": "Toiminnot"
+    },
+    "error": {
+      "fetchFlightPlans": "Virhe haettaessa lentosuunnitelmia."
+    },
+    "GeneralResources": "Yleiset resurssit",
+    "GeneralResourcesDescription": "Pääsy yleisiin resursseihin lennonsuunnitteluun ja ilmailusään.",
+    "ais": "AIS - Online AIP",
+    "ilmailusaa": "Ilmailusää - Sääinformaatio",
+    "FLYK": "FLYK - Lentokartat",
+    "lentopaikat": "Lentopaikat - Kartat jne.",
+    "GeneralResourcesDescriptionTwo": "Varusteiden ohjeasiakirjat jne.",
+    "GeneralResourcesDescriptionTwoText": "Täältä löydät varusteiden ohjeasiakirjat jne.",
+    "instructions": "Varusteiden ohjeet/asiakirjat",
+    "GeneralResourcesDescriptionThree": "Laivastokohtaiset tiedotelistat",
+    "GeneralResourcesDescriptionThreeText": "Täältä löydät laivastokohtaiset tiedotelistat.",
+    "ihqInfo": "OH-IHQ, DV20",
+    "stlInfo": "OH-STL, DA40",
+    "GeneralResourcesDescriptionFour": "Kansainväliset lennonsuunnitteluresurssit",
+    "GeneralResourcesDescriptionFourText": "Täältä löydät kansainväliset lennonsuunnitteluresurssit.",
+    "internationalFlightPlanning": "Kansainvälinen lennonsuunnittelu"
+  },
+  "InternationalFlightPlanning": {
+    "title": "Kansainvälinen lennonsuunnittelu",
+    "section1": {
+      "title": "Kansainvälisen lennonsuunnittelun huomioitavaa",
+      "content": "Kun lennät kansainvälisesti, ota huomioon mahdolliset laskeutumis- ja navigointimaksut, koska Suomen kausikorttijärjestelmä ei kata ulkomailla aiheutuvia kuluja. Nämä kustannukset maksetaan yleensä luottokortilla tai käteisellä määränpään tiedotuksessa. Lentokentän henkilökunta on ystävällistä ja voi auttaa tarvittaessa. Polttoaineen tankkaus ulkomailla veloitetaan kerhon tuntihinnasta – lentokoneen käsikirjoihin piilotetut luottokortit eivät kuitenkaan välttämättä ole ideaaleja. On suositeltavaa kantaa käteistä varotoimena ja säilyttää polttoainekuitti – voit saada polttoainelaskun hyvitettyä palattuaasi kotiin jättämällä vapaamuotoisen hakemuksen lennonvalmistelualueelle pankkitilinumerosi ja polttoainekuitin liitteenä."
+    },
+    "section2": {
+      "title": "Kirjallinen lentosuunnitelma",
+      "content": "Muista aina jättää kirjallinen lentosuunnitelma kansainvälisille lennoille. Suunnitelma on toimitettava vähintään tunti ennen kansallisen rajan ylittämistä. Koska Schengen-sopimus kattaa useimmat naapurimaat, tämä on yleensä ainoa rajan ylitykseen liittyvä muodollisuus.",
+      "linkText": "Lue lisää lennonsuunnittelusta",
+      "linkUrl": "https://example.com/flight-plan"
+    },
+    "section3": {
+      "title": "Vesialueiden ylitykset",
+      "content": "Jokainen paikka kerhon lentokoneissa on varustettu CO2-kasetteja sisältävillä pelastusliiveillä (yleisesti tunnettuina 'pop-liiveinä'), joita on käytettää vesialueita ylittäessä. Säännöt edellyttävät niiden käyttöä yli 50 meripeninkulman vesistöjen ylityksissä, mutta on suositeltavaa käyttää niitä aina, kun lennetään huomattavan matkan päähän rannikosta.",
+      "linkText": "Lisää turvalaitteista",
+      "linkUrl": "https://example.com/water-crossings"
+    },
+    "section4": {
+      "title": "Viro",
+      "content": "Viro on osa EU:ta ja Schengen-aluetta, joten tulli- ja passimuodollisuudet eivät ole huolenaihe. Voit aloittaa lennon mistä tahansa Suomen lentokentältä ja laskeutua mihin tahansa Viron lentokentälle. Viro, erityisesti Malmin näkökulmasta, on erinomainen matkakohde – jopa lyhyt lento tarjoaa paljon nähtävää. Tallinnan laskeutumismaksut ovat korkeammat verrattuna esimerkiksi Saarenmaan lentokenttiin.",
+      "linkText": "Tutustu Viroon",
+      "linkUrl": "https://example.com/estonia"
+    },
+    "section5": {
+      "title": "Ruotsi",
+      "content": "Ruotsi on myös osa EU:ta ja Schengen-aluetta, joten menettely on sama kuin Virossa. Jos suunnittelet lentää useille Ruotsin lentokentille, voi olla kannattavaa ostaa paikallinen 'viikkokortti', joka kattaa laskeutumismaksut useimmissa lentokentissä kohtuuhintaan viikoksi. Ruotsin liikenneviraston lennonsuunnittelusivusto tarjoaa säätä, Ruotsin AIP:n ja NOTAMit läntiselle naapurillemme.",
+      "linkText": "Tutustu Ruotsiin",
+      "linkUrl": "https://example.com/sweden"
+    },
+    "section6": {
+      "title": "Latvia",
+      "content": "Riika on suosittu kohde – vilkas eurooppalainen kaupunki vain muutaman tunnin lennon päässä ja yleinen pysähdyspaikka monille kesälomalennoille. Rii",
+      "linkText": "Lue lisää Latviasta",
+      "linkUrl": "https://example.com/latvia"
+    },
+    "section7": {
+      "title": "Liettua",
+      "content": "Liettuassa lennonjohto tarjoaa myös tietoja muista lentokoneista hallitun ilmatilan ulkopuolella. Maksut ovat kohtuullisia ja yleensä alhaisemmat kuin Latviassa. 100LL-polttoaineen saatavuus on hieman parempi, mutta edellyttää silti suunnittelua. Suosittuja kohteita ovat muun muassa Palanga, joka tunnetaan hiekkarannoistaan, Klaipeda – josta lyhyt lento vie sinut Kuurinkynnäkkeelle – ja Kaunas, jossa on polttoainetäydennysmahdollisuus yhdessä AFIS-tyylisen palvelun kanssa yleisilmailukentällä S. Darius ja S. Girėnas (Aleksotas).",
+      "linkText": "Vieraile Liettuassa",
+      "linkUrl": "https://example.com/lithuania"
+    },
+    "section8": {
+      "title": "Eurocontrolin AIP-palvelu",
+      "content": "Eurocontrol, Euroopan ilmatilasta vastaava yhteistyöelin, tarjoaa palvelun, joka tarjoaa jäsenvaltioiden ilmailumanuaalit (AIP) PDF-muodossa. Tämä palvelu edellyttää ilmaista rekisteröitymistä. Lisäksi Eurocontrolin verkkosivusto tarjoaa suorat linkit jäsenvaltioiden yksittäisiin AIP-palveluihin.",
+      "linkText": "Käytä Eurocontrolia",
+      "linkUrl": "https://example.com/eurocontrol"
+    },
+    "internationalFlightPlans": "Kansainväliset lentosuunnitelmat",
+    "dataGrid": {
+      "id": "ID",
+      "route": "Reitti",
+      "notes": "Muistiinpanot",
+      "actions": "Toiminnot"
+    },
+    "error": {
+      "fetchInternationalFlightPlans": "Virhe haettaessa kansainvälisiä lentosuunnitelmia."
+    }
+  },
+  "FlightClub": {
+    "title": "Malmin Ilmailukerho",
+    "intro": "Upeita hetkiä hyvässä seurassa, jalat vankasti irti maasta! Ilmailu ei ole vain lentämisestä ja lentokoneiden suorituskyvystä – se on myös yhdessäolosta ja kokemusten jakamisesta lentäjätovereiden kanssa sekä ilmassa että maassa. Jos et pääse kotoasi puhumaan lentämisestä tarpeeksi, löydät kerhostamme samanhenkisiä ystäviä jakamaan intohimosi ja tietosi. Tervetuloa nauttimaan lentämisen jännityksestä kerhomme lentokoneilla tai simulaattorilla!",
+    "activitiesTitle": "Aktiivinen yhteisö",
+    "activitiesText": "Liity kerhoomme ja uppoudu ilmailun maailmaan. Koulutamme yksityislentäjiä (LAPL tai PPL -luvat) ja meillä on aktiivinen nuorisotoiminta, joka keskittyy lentosimulaattoriimme. Järjestämme myös mielenkiintoisia luentoja ja lentomatkoja.",
+    "aboutUsTitle": "Tietoa Malmin Ilmailukerhosta",
+    "aboutUsText": "Yhdistyksemme perustettiin vuonna 1988 ja se on Suomen Ilmailuliiton jäsen. Meillä on noin 300 jäsentä. Järjestämme erilaisia tapahtumia ympäri vuoden, mikä tarjoaa runsaasti mahdollisuuksia osallistua ilmailuun liittyviin aktiviteetteihin. Tehtävämme on edistää turvallista ja miellyttävää lentämistä samalla kun tuo yhteen ilmailun harrastajia pääkaupunkiseudulta. Kehitämme kerhoamme jatkuvasti vastaamaan jäseniemme tarpeisiin.",
+    "joinUsTitle": "Kiinnostuitko? Liity joukkoomme!",
+    "joinUsText": "Kiinnostuitko? Ota meihin yhteyttä ja liity jäseneksi! Autamme sinua pääsemään alkuun tässä upeassa harrastuksessa.",
+    "joinNow": "Liity nyt"
   }
 }

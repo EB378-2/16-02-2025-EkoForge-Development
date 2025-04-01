@@ -1,61 +1,5 @@
 {
-  "NavbarLinks": {
-    "navLink1": "What Do Our Clients Say About Us",
-    "navLink2": "Contact",
-    "navLink3": "Web Examples",
-    "navLink4": "Book a Meeting"
-  },
-  "HomePage": {
-    "simple": "Smart.",
-    "elegant": "Sleek.",
-    "effective": "Powerful.",
-    "HeroSubTitle": "Websites and digital solutions designed to help startups and small businesses launch, scale, and grow—fast.",
-    "CTA": "Book a Sales Call",
-    "Contact Us": "Contact Us",
-    "disrupt": "So, How Exactly Does This Work?",
-    "StepOne": "Step 1: Select A Brand For Your Business",
-    "StepTwo": "Step 2: Get Yourself A Effective Website/App",
-    "StepThree": "Step 3: Get Infront Of Your Customers With Powerful SEO",
-    "StepOneText": "If you haven't already, we will help you select a brand that resonates with your business and your customers.",
-    "StepTwoText": "We will design and develop a website that is tailored to your business and your customers.",
-    "StepThreeText": "We will help you get infront of your customers with powerful SEO and digital marketing strategies.",
-    "Call-To-Action": "Get Online & Start Winning Today",
-    "Call-To-Action-Sub": "Customers are searching for you right now. Let’s make sure they find you.",
-    "Book Now": "CLICK HERE TO START!",
-    "Call-To-Action-Note": "Find out more about us",
-    "why": "> Why Do I Need A Website? <"
-  },
-  "Contact": {
-    "title": "Contact Us",
-    "name": "Name",
-    "emailentry": "Email Address",
-    "reason": "How can we assist you?",
-    "send": "Send Message",
-    "contact information": "Contact Information"
-  },
-  "Testimonials": {
-    "title": "Testimonials"
-  },
-  "Footer": {
-    "aboutText": "Working with entreprenuers to create beautiful web experiances for clients.",
-    "navigation": "Navigation",
-    "navLink1": "Book a Meeting",
-    "navLink2": "Testimonials",
-    "navLink3": "Contact",
-    "navLink4": "Web Examples",
-    "login": "Login",
-    "socialmedia": "Social Media",
-    "instagram": "Instagram",
-    "facebook": "Facebook",
-    "linkedin": "LinkedIn",
-    "company": "Company",
-    "about": "About Us",
-    "legal": "Legal",
-    "terms": "Terms of Service",
-    "privacy": "Privacy Policy",
-    "license": "License Agreement",
-    "rights": "All rights reserved."
-  },
+ 
   "AboutBusiness": {
     "title": "Why Your Business Needs More Than Just a Website—It Needs a Sales-Generating Machine",
     "introParagraph1": "In today’s digital world, your website isn’t just an online brochure—it’s your business’s most powerful sales tool. Yet, too many business owners settle for generic, do-it-yourself website builders that leave them frustrated and stuck with a site that looks nice but doesn’t actually bring in customers.",
@@ -124,24 +68,6 @@
       "body": "Booking and discussion forums are available in the Members menu on the left. Member news is visible on the Home / Current page after logging in."
     }    
   },
-  "AboutUs":{
-    "title": "About Us",
-    "subtitle": "Committed to excellence and innovation.",
-    "cta":"Let's Chat",
-    "ourStoryTitle": "Our Story",
-    "ourStoryText": "Founded in 2024, our journey started with a vision to transform the industry. We are committed to delivering excellence in every project.",
-    "ourMissionTitle": "Our Mission",
-    "ourMissionText": "Our mission is to empower small businesses through innovative solutions, integrity, and a passion for success.",
-    "ourValuesTitle": "Our Values",
-    "ourValuesText": "We are driven by our core values of excellence, integrity, and innovation. We believe in creating lasting relationships with our clients and delivering exceptional results.",
-    "ourPhilosophyTitle": "Our Philosophy",
-    "ourPhilosophyText": "We believe in a personalized approach that combines cutting-edge technology with an unwavering commitment to quality. Every project is a testament to our passion and vision for a better future.",
-    "ourApproachTitle": "Our Approach",
-    "ourApproachText": "We partner closely with our clients, taking the time to understand their unique needs. By crafting bespoke solutions, we ensure lasting impact and measurable success.",
-    "contactTitle": "Contact Us",
-    "contactSubtitle": "We'd love to hear from you! Reach out and let’s start a conversation."    
-  },
-
 
   "FlightPlanList": {
     "flightPlanning": "Flight Planning",
@@ -254,5 +180,17 @@
     "error": {
       "fetchInternationalFlightPlans": "An error occurred while fetching international flight plans."
     }
+  },
+  "FlightClub": {
+    "title": "Malmi Aviation Club",
+    "intro": "Great moments in good company, with your feet firmly off the ground! Aviation is not just about flying and aircraft performance—it’s also about enjoying time together and sharing experiences with fellow pilots both in the air and on the ground. If you don’t get to talk enough about flying at home, you’ll find like-minded friends at our club to share your passion and knowledge. Welcome to enjoy the thrill of flying with our club’s aircraft or simulator!",
+    "activitiesTitle": "Active Community",
+    "activitiesText": "Join our club to immerse yourself in the world of aviation. We train private pilots (LAPL or PPL licenses) and have an active youth program centered around our flight simulator. We also organize interesting lectures and flying trips.",
+    "aboutUsTitle": "About Malmi Aviation Club",
+    "aboutUsText": "Our association was founded in 1988 and is a member of the Finnish Aeronautical Association. We have about 300 members. We organize various events throughout the year, ensuring plenty of opportunities to engage in aviation-related activities. Our mission is to promote safe and enjoyable flying while bringing together aviation enthusiasts from the Helsinki metropolitan area. We continuously develop our club to meet the needs of our members.",
+    "joinUsTitle": "Interested? Join Us!",
+    "joinUsText": "Interested? Get in touch with us and become a member! We will help you get started in this fantastic hobby.",
+    "joinNow": "Join Now"
   }
+  
 }
