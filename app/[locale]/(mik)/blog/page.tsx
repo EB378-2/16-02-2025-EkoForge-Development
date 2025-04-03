@@ -24,6 +24,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
+import { ShowButton } from "@refinedev/mui";
 
 const BlogPage: React.FC = () => {
   const t = useTranslations("Blog");
@@ -219,16 +220,10 @@ function ProfileName({ profileId }: { profileId: string }) {
                       </Box>
                     </CardContent>
                     <Box sx={{ p: 2 }}>
-                      <Button
-                        size="small"
-                        onClick={() => show("blogs", post.id)}
-                        sx={{
-                          fontWeight: 600,
-                          textTransform: "none",
-                        }}
-                      >
-                        {t("readMore")}
-                      </Button>
+                      <ShowButton 
+                        resource="blogs"
+                        recordItemId={post.id}
+                      >{t("readMore")}</ShowButton>
                     </Box>
                   </Card>
                 </motion.div>
