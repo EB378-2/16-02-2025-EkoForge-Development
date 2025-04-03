@@ -1,0 +1,373 @@
+"use client";
+
+import React, { useState } from "react";
+import { useList, useNavigation, useOne, useShow } from "@refinedev/core";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import { 
+  Box, 
+  Container, 
+  Typography, 
+  Button, 
+  Card, 
+  CardContent, 
+  CardMedia, 
+  Grid, 
+  Accordion, 
+  AccordionSummary, 
+  AccordionDetails,
+  Chip,
+  useTheme,
+  Divider,
+  Skeleton
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import PersonIcon from "@mui/icons-material/Person";
+
+const BlogPage: React.FC = () => {
+  const t = useTranslations("Blog");
+  const theme = useTheme();
+  const { show } = useNavigation();
+  const [expanded, setExpanded] = useState(false);
+
+  // Get latest posts (sorted by createdAt desc)
+  const { data: latestPosts, isLoading: isLoadingLatest } = useList({
+    resource: "blogs",
+    pagination: { current: 1, pageSize: 3 },
+    sorters: [{ field: "created_at", order: "desc" }],
+    queryOptions: {
+      select: (data) => ({
+        ...data,
+        data: data.data.map((post: any) => ({
+          ...post,
+          created_at: new Date(post.created_at).toLocaleDateString(),
+        })),
+      }),
+    },
+  });
+
+
+// Component to display a profile's full name based on profileId.
+function ProfileName({ profileId }: { profileId: string }) {
+  const { queryResult } = useShow({
+    resource: "profiles",
+    id: profileId,
+    meta: { select: "first_name,last_name" },
+    queryOptions: { enabled: !!profileId },
+  });
+  const profileData = queryResult?.data?.data as { first_name: string; last_name: string } | undefined;
+  if (!profileData) return <span>Loading...</span>;
+  return <span>{profileData.first_name} {profileData.last_name}</span>;
+}
+
+  // Get older posts (excluding the latest 3)
+  const { data: olderPosts, isLoading: isLoadingOlder } = useList({
+    resource: "blogs",
+    pagination: { current: 1, pageSize: 50 },
+    sorters: [{ field: "created_at", order: "desc" }],
+    queryOptions: {
+      enabled: expanded,
+      select: (data) => ({
+        ...data,
+        data: data.data
+          .slice(3) // Skip the first 3 (latest) posts
+          .map((post: any) => ({
+            ...post,
+            created_at: new Date(post.created_at).toLocaleDateString(),
+          })),
+      }),
+    },
+  });
+
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const staggerContainer = {
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const toggleOlderPosts = () => {
+    setExpanded(!expanded);
+  };
+
+  return (
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      {/* Page Header */}
+      <Box sx={{ mb: 6, textAlign: "center" }}>
+        <Typography 
+          variant="h2" 
+          sx={{ 
+            fontWeight: 700, 
+            mb: 2,
+            color: theme.palette.text.primary,
+          }}
+        >
+          {t("title")}
+        </Typography>
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            color: theme.palette.text.secondary,
+            maxWidth: 700,
+            mx: "auto",
+          }}
+        >
+          {t("subtitle")}
+        </Typography>
+      </Box>
+
+      {/* Latest Posts */}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+      >
+        <Typography 
+          variant="h5" 
+          sx={{ 
+            fontWeight: 600, 
+            mb: 3,
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          <CalendarTodayIcon fontSize="small" />
+          {t("latestPosts")}
+        </Typography>
+
+        <Grid container spacing={4} sx={{ mb: 6 }}>
+          {isLoadingLatest ? (
+            Array(3).fill(0).map((_, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Skeleton variant="rectangular" height={200} sx={{ mb: 2 }} />
+                <Skeleton variant="text" width="60%" />
+                <Skeleton variant="text" />
+                <Skeleton variant="text" width="80%" />
+              </Grid>
+            ))
+          ) : (
+            latestPosts?.data.map((post: any) => (
+              <Grid item xs={12} md={4} key={post.id}>
+                <motion.div variants={fadeInUp}>
+                  <Card
+                    sx={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                      "&:hover": {
+                        transform: "translateY(-5px)",
+                        boxShadow: theme.shadows[6],
+                      },
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      height="200"
+                      image={post.image_link || "/ihq.jpeg"}
+                      alt={post.title}
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography 
+                        gutterBottom 
+                        variant="h6" 
+                        component="div"
+                        sx={{ fontWeight: 600 }}
+                      >
+                        {post.title}
+                      </Typography>
+                      <Typography 
+                        variant="body2" 
+                        color="text.secondary"
+                        sx={{ mb: 2 }}
+                      >
+                        {post.content.length > 100
+                          ? `${post.content.slice(0, 100)}...`
+                          : post.content}
+                      </Typography>
+                      <Box 
+                        sx={{ 
+                          display: "flex", 
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          mt: "auto",
+                        }}
+                      >
+                        <Typography 
+                          variant="caption" 
+                          sx={{ 
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 0.5,
+                          }}
+                        >
+                          <PersonIcon fontSize="small" />
+                          <ProfileName profileId={post.profile_id}/>
+                        </Typography>
+                        <Typography variant="caption">
+                          {post.created_at}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                    <Box sx={{ p: 2 }}>
+                      <Button
+                        size="small"
+                        onClick={() => show("blogs", post.id)}
+                        sx={{
+                          fontWeight: 600,
+                          textTransform: "none",
+                        }}
+                      >
+                        {t("readMore")}
+                      </Button>
+                    </Box>
+                  </Card>
+                </motion.div>
+              </Grid>
+            ))
+          )}
+        </Grid>
+      </motion.div>
+
+      {/* Older Posts */}
+      <Box sx={{ mb: 4 }}>
+        <Accordion 
+          expanded={expanded} 
+          onChange={toggleOlderPosts}
+          sx={{
+            bgcolor: "transparent",
+            boxShadow: "none",
+            "&:before": {
+              display: "none",
+            },
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            sx={{
+              px: 2,
+              "& .MuiAccordionSummary-content": {
+                justifyContent: "space-between",
+                alignItems: "center",
+              },
+            }}
+          >
+            <Typography variant="h5" sx={{ fontWeight: 600 }}>
+              {t("olderPosts")}
+            </Typography>
+            <Typography variant="body2" sx={{ color: "text.secondary" }}>
+              {expanded ? t("hide") : t("show")} ({olderPosts?.total || 0})
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails sx={{ px: 3 }}>
+            {isLoadingOlder ? (
+              <Box sx={{ width: "100%" }}>
+                {Array(5).fill(0).map((_, index) => (
+                  <Skeleton key={index} height={60} sx={{ mb: 1 }} />
+                ))}
+              </Box>
+            ) : (
+              <Box
+                component="ul"
+                sx={{
+                  listStyle: "none",
+                  p: 0,
+                  m: 0,
+                }}
+              >
+                {olderPosts?.data.map((post: any) => (
+                  <motion.li
+                    key={post.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Box
+                      component="article"
+                      sx={{
+                        py: 2,
+                        borderBottom: `1px solid ${theme.palette.divider}`,
+                        "&:hover": {
+                          bgcolor: theme.palette.action.hover,
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          gap: 2,
+                        }}
+                      >
+                        <Box>
+                          <Typography 
+                            variant="subtitle1"
+                            sx={{ 
+                              fontWeight: 500,
+                              cursor: "pointer",
+                              "&:hover": {
+                                color: theme.palette.primary.main,
+                              },
+                            }}
+                            onClick={() => show("posts", post.id)}
+                          >
+                            {post.title}
+                          </Typography>
+                          <Typography 
+                            variant="body2" 
+                            color="text.secondary"
+                            sx={{ display: "flex", gap: 2, mt: 0.5 }}
+                          >
+                            <span>{post.author}</span>
+                            <span>•</span>
+                            <span>{post.created_at}</span>
+                          </Typography>
+                        </Box>
+                        <Chip
+                          label={post.category}
+                          size="small"
+                          sx={{ 
+                            bgcolor: theme.palette.grey[200],
+                          }}
+                        />
+                      </Box>
+                    </Box>
+                  </motion.li>
+                ))}
+              </Box>
+            )}
+          </AccordionDetails>
+        </Accordion>
+      </Box>
+
+      {/* Empty State */}
+      {!isLoadingLatest && latestPosts?.data.length === 0 && (
+        <Box sx={{ 
+          textAlign: "center", 
+          py: 10,
+          bgcolor: theme.palette.background.paper,
+          borderRadius: 2,
+        }}>
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            {t("noPosts")}
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            {t("checkBackLater")}
+          </Typography>
+        </Box>
+      )}
+    </Container>
+  );
+};
+
+export default BlogPage;

@@ -20,6 +20,7 @@ m = g(r.sub, p.sub) && keyMatch(r.obj, p.obj) && regexMatch(r.act, p.act)
 export const adapter = new StringAdapter(`
 // Public resources accessible to everyone (anonymous), regardless of login status.
 p, anonymous, home, (list)|(show)
+p, anonymous, blogsHome, (list)|(show)
 p, anonymous, flightschool, (list)|(show)
 p, anonymous, club, (list)|(show)
 p, anonymous, catalog, (list)|(show)
@@ -27,6 +28,9 @@ p, anonymous, catalog, (list)|(show)
 // Also include policies for logged-in roles.
 p, admin, home, (list)|(show)
 p, member, home, (list)|(show)
+
+p, admin, blogsHome, (list)|(show)
+p, member, blogsHome, (list)|(show)
 
 p, admin, flightschool, (list)|(show)
 p, member, flightschool, (list)|(show)
