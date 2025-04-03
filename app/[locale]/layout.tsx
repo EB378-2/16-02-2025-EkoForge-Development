@@ -1,6 +1,6 @@
 import { DevtoolsProvider } from "../../providers/devtools";
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import BookIcon from '@mui/icons-material/Book';
@@ -36,6 +36,11 @@ import { dataProvider } from "@/providers/data-provider";
 import type { Viewport } from "next";
 
 import { accessControlProvider } from "@/providers/access-provider"
+
+
+import { Header } from "@/components/header";
+import { ThemedLayoutV2 } from "@refinedev/mui";
+import { CustomSider } from "@/components/CustomSider";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -125,7 +130,6 @@ export default async function RootLayout({
                       resources={[
                         {
                           name: "home",
-                          identifier: "home_public",
                           list: `/${locale}/home`,
                           meta: {
                             icon: <BroadcastOnHomeIcon />,
@@ -133,8 +137,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "flight school",
-                          identifier: "flight_school_public",
+                          name: "flightschool",                          
                           list: `/${locale}/flight_school`,
                           meta: {
                             label: "Flight School",
@@ -142,8 +145,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "aviation club",
-                          identifier: "aviation_club_public",
+                          name: "club",
                           list: `/${locale}/club`,
                           meta: {
                             label: "Aviation Club",
@@ -151,8 +153,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "resources",
-                          identifier: "resources_public",
+                          name: "catalog",
                           list: `/${locale}/aircraft`,
                           meta: {
                             label: "Aircraft and simulators",
@@ -195,7 +196,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name:"flightplans",
+                          name:"flightplans_dropdown",
                           identifier: "flight_planning_members",
                           meta: {
                             icon: <AirplaneTicketIcon />,
@@ -218,7 +219,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "flightplans",
+                          name: "flightplans_int",
                           identifier: "international_flight_planning",
                           list: `/${locale}/members/international_flight_planning`,
                           create: `/${locale}/members/international_flight_planning/create`,
@@ -281,10 +282,9 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "logbook",
+                          name: "stats",
                           identifier: "statistics",
                           list: `/${locale}/members/statistics`,
-                          show: `/${locale}/members/statistics/show/:id`,
                           meta: {
                             icon: <AnalyticsIcon />,
                             parent: "members_dropdown",
@@ -312,7 +312,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "profiles",
+                          name: "profiles_list",
                           identifier: "members_list",
                           list: `/${locale}/members/members`,
                           edit: `/${locale}/members/members/show/:id`,
@@ -323,7 +323,7 @@ export default async function RootLayout({
                           },
                         },
                         {
-                          name: "flight_school",
+                          name: "flightschool_members",
                           identifier: "flight_school_members",
                           meta: {
                             icon: <SchoolIcon />,
@@ -362,7 +362,12 @@ export default async function RootLayout({
                         },
                       }}
                     >
-                      {children}
+                      <ThemedLayoutV2 
+                        Header={Header}
+                        Sider={CustomSider}
+                      >
+                        {children}
+                      </ThemedLayoutV2>
                       <RefineKbar />
                     </Refine>
                   </DevtoolsProvider>

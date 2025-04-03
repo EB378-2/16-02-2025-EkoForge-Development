@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useTranslations } from "next-intl";
 import { RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import { useColorMode } from "@contexts/color-mode";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -15,7 +14,6 @@ interface NavbarProps extends RefineThemedLayoutV2HeaderProps {
 }
 
 const Lang: React.FC<NavbarProps> = ({ locale }) => {
-  const t = useTranslations("NavbarLinks");
   const { mode } = useColorMode();
   const theme = getTheme(mode);
 

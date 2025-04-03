@@ -1,8 +1,7 @@
-import { Header } from "../../../../components/header";
-import { authProviderServer } from "../../../../providers/auth-provider/auth-provider.server";
-import { ThemedLayoutV2 } from "@refinedev/mui";
+import { authProviderServer } from "@/providers/auth-provider/auth-provider.server";
 import { redirect } from "next/navigation";
 import React from "react";
+import { CanAccess } from "@refinedev/core";
 
 export default async function Layout({ children }: React.PropsWithChildren) {
   const data = await getData();
@@ -11,7 +10,7 @@ export default async function Layout({ children }: React.PropsWithChildren) {
     return redirect(data?.redirectTo || "/login");
   }
 
-  return <ThemedLayoutV2 Header={Header}>{children}</ThemedLayoutV2>;
+  return <CanAccess  fallback={<div>You cannot access this section</div>}>{children}</CanAccess>;
 }
 
 async function getData() {
