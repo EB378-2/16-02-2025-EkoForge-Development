@@ -20,6 +20,7 @@ import ChecklistIcon from '@mui/icons-material/Checklist';
 import PublicIcon from '@mui/icons-material/Public';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
+import HomeIcon from '@mui/icons-material/Home';
 
 import {
   RefineSnackbarProvider,
@@ -132,7 +133,7 @@ export default async function RootLayout({
                           name: "home",
                           list: `/${locale}/home`,
                           meta: {
-                            icon: <BroadcastOnHomeIcon />,
+                            icon: <HomeIcon />,
                             label: "Home",
                           },
                         },
