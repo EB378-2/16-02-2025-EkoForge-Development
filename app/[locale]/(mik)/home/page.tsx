@@ -376,7 +376,7 @@ const AviationHomePage: React.FC = () => {
                       variant="body1"
                       sx={{ fontStyle: "italic", mb: 3, fontSize: "1.1rem" }}
                     >
-                      "{t(`testimonialText${item}`)}"
+                      &quot;{t(`testimonialText${item}`)}&quot;
                     </Typography>
                     <Box sx={{ display: "flex", alignItems: "center" }}>
                       <Box
