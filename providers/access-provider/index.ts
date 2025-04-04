@@ -19,7 +19,9 @@ export const accessControlProvider = async ({
   // First check if we're dealing with list access
   if (action === "list") {
     const can = await enforcer.enforce(role, resource, "list");
-    return { can };
+    return Promise.resolve({
+      can,
+    });
   }
 
   // For other actions (delete, edit, show)
@@ -29,10 +31,14 @@ export const accessControlProvider = async ({
       `${resource}/${params?.id}`,
       action
     );
-    return { can };
+    return Promise.resolve({
+      can,
+    });
   }
 
   // Default check for other actions (create, etc.)
   const can = await enforcer.enforce(role, resource, action);
-  return { can };
+  return Promise.resolve({
+    can,
+  });
 };
