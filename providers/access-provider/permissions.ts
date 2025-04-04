@@ -91,25 +91,21 @@ p, member, logbook, (list)|(create)
 p, member, logbook/*, (edit)|(show)|(delete)
 
 p, admin, stats, (list)|(show)
-p, member, stats, (list)|(show)
+
 
 p, admin, handbooks, (list)|(create)
 p, admin, handbooks/*, (edit)|(show)|(delete)
-p, member, handbooks, (list)
-p, member, handbooks/*, (show)
+
 
 p, admin, instructions, (list)|(create)
 p, admin, instructions/*, (edit)|(show)|(delete)
-p, member, instructions, (list)
-p, member, instructions/*, (show)
 
-p, admin, members_list, (list)|(create)
-p, admin, members_list/*, (edit)|(show)|(delete)
-p, member, members_list, (list)
-p, member, members_list/*, (show)
+p, admin, profiles_list, (list)|(create)
+p, admin, profiles_list/*, (edit)|(show)|(delete)
+p, member, profiles_list, (list)
+p, member, profiles_list/*, (show)
 
 p, admin, flightschool_members, (list)
-p, member, flightschool_members, (list)
 
 p, admin, instructors, (list)|(create)
 p, admin, instructors/*, (edit)|(show)|(delete)
