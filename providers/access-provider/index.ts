@@ -12,7 +12,7 @@ export const accessControlProvider = async ({
   params 
 }: CanParams): Promise<CanReturnType> => {
   const role = await authProviderServer.getPermissions?.() || "anonymous";
-  //console.log("Checking permissions for:", { role, resource, action, params });
+  console.log("Checking permissions for:", { role, resource, action, params });
   
   const enforcer = await newEnforcer(model, adapter);
 
