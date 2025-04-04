@@ -23,7 +23,7 @@ p, anonymous, home, (list)|(show)
 p, anonymous, blogs, (list)|(show)
 p, anonymous, flightschool, (list)|(show)
 p, anonymous, club, (list)|(show)
-p, anonymous, catalog, (list)|(show)
+p, anonymous, fleet, (list)|(show)
 
 // Also include policies for logged-in roles.
 p, admin, home, (list)|(show)
@@ -38,15 +38,15 @@ p, member, flightschool, (list)|(show)
 p, admin, club, (list)|(show)
 p, member, club, (list)|(show)
 
-p, admin, catalog, (list)|(show)
-p, member, catalog, (list)|(show)
+p, admin, fleet, (list)|(show)
+p, member, fleet, (list)|(show)
 
 
 
 
 // Additional policies for application resources
-p, admin, members_dropdown, (list)
-p, member, members_dropdown, (list)
+p, admin, members_dropdown, (list)|(show)
+p, member, members_dropdown, (list)|(show)
 
 p, admin, dashboard, (list)|(create)
 p, admin, blogs/*, (edit)|(show)|(delete)
