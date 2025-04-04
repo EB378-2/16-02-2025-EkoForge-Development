@@ -19,18 +19,25 @@ import {
   Chip,
   useTheme,
   Divider,
-  Skeleton
+  Skeleton,
+  Modal,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  IconButton
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
-import { ShowButton } from "@refinedev/mui";
+import CloseIcon from "@mui/icons-material/Close";
 
 const BlogPage: React.FC = () => {
   const t = useTranslations("Blog");
   const theme = useTheme();
-  const { show } = useNavigation();
   const [expanded, setExpanded] = useState(false);
+  const [selectedPost, setSelectedPost] = useState<any>(null);
+  const [openModal, setOpenModal] = useState(false);
 
   // Get latest posts (sorted by createdAt desc)
   const { data: latestPosts, isLoading: isLoadingLatest } = useList({
@@ -48,19 +55,18 @@ const BlogPage: React.FC = () => {
     },
   });
 
-
-// Component to display a profile's full name based on profileId.
-function ProfileName({ profileId }: { profileId: string }) {
-  const { queryResult } = useShow({
-    resource: "profiles",
-    id: profileId,
-    meta: { select: "first_name,last_name" },
-    queryOptions: { enabled: !!profileId },
-  });
-  const profileData = queryResult?.data?.data as { first_name: string; last_name: string } | undefined;
-  if (!profileData) return <span>Loading...</span>;
-  return <span>{profileData.first_name} {profileData.last_name}</span>;
-}
+  // Component to display a profile's full name based on profileId
+  function ProfileName({ profileId }: { profileId: string }) {
+    const { queryResult } = useShow({
+      resource: "profiles",
+      id: profileId,
+      meta: { select: "first_name,last_name" },
+      queryOptions: { enabled: !!profileId },
+    });
+    const profileData = queryResult?.data?.data as { first_name: string; last_name: string } | undefined;
+    if (!profileData) return <span>Loading...</span>;
+    return <span>{profileData.first_name} {profileData.last_name}</span>;
+  }
 
   // Get older posts (excluding the latest 3)
   const { data: olderPosts, isLoading: isLoadingOlder } = useList({
@@ -97,6 +103,16 @@ function ProfileName({ profileId }: { profileId: string }) {
 
   const toggleOlderPosts = () => {
     setExpanded(!expanded);
+  };
+
+  const handleOpenModal = (post: any) => {
+    setSelectedPost(post);
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setSelectedPost(null);
   };
 
   return (
@@ -220,10 +236,13 @@ function ProfileName({ profileId }: { profileId: string }) {
                       </Box>
                     </CardContent>
                     <Box sx={{ p: 2 }}>
-                      <ShowButton 
-                        resource="blogs"
-                        recordItemId={post.id}
-                      >{t("readMore")}</ShowButton>
+                      <Button 
+                        variant="outlined" 
+                        size="small"
+                        onClick={() => handleOpenModal(post)}
+                      >
+                        {t("readMore")}
+                      </Button>
                     </Box>
                   </Card>
                 </motion.div>
@@ -314,7 +333,7 @@ function ProfileName({ profileId }: { profileId: string }) {
                                 color: theme.palette.primary.main,
                               },
                             }}
-                            onClick={() => show("posts", post.id)}
+                            onClick={() => handleOpenModal(post)}
                           >
                             {post.title}
                           </Typography>
@@ -323,7 +342,7 @@ function ProfileName({ profileId }: { profileId: string }) {
                             color="text.secondary"
                             sx={{ display: "flex", gap: 2, mt: 0.5 }}
                           >
-                            <span>{post.author}</span>
+                            <span><ProfileName profileId={post.profile_id}/></span>
                             <span>•</span>
                             <span>{post.created_at}</span>
                           </Typography>
@@ -361,6 +380,52 @@ function ProfileName({ profileId }: { profileId: string }) {
           </Typography>
         </Box>
       )}
+
+      {/* Post Detail Modal */}
+      <Dialog
+        open={openModal}
+        onClose={handleCloseModal}
+        maxWidth="md"
+        fullWidth
+      >
+        <DialogTitle>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            {selectedPost?.title}
+            <IconButton onClick={handleCloseModal}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
+        </DialogTitle>
+        <DialogContent dividers>
+          {selectedPost && (
+            <>
+              <Box sx={{ mb: 3 }}>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  image={selectedPost.image_link || "/ihq.jpeg"}
+                  alt={selectedPost.title}
+                  sx={{ borderRadius: 1, mb: 2 }}
+                />
+                <Typography variant="body1" sx={{ whiteSpace: "pre-line" }}>
+                  {selectedPost.content}
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
+                <Typography variant="caption">
+                  <ProfileName profileId={selectedPost.profile_id}/>
+                </Typography>
+                <Typography variant="caption">
+                  Published: {selectedPost.created_at}
+                </Typography>
+              </Box>
+            </>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };

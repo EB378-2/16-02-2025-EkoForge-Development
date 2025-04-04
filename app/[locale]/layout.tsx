@@ -181,7 +181,7 @@ export default async function RootLayout({
                           name: "blogs",
                           identifier: "dashboard",
                           list: `/${locale}/members`,
-                          show: `/${locale}/blog/show/:id`,
+                          show: `/${locale}/members/blogs/show/:id`,
                           edit: `/${locale}/members/blogs/edit/:id`,
                           create: `/${locale}/members/blogs/create`,
                           meta: {

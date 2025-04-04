@@ -21,7 +21,6 @@ export const adapter = new StringAdapter(`
 // Public resources accessible to everyone (anonymous), regardless of login status.
 p, anonymous, home, (list)|(show)
 p, anonymous, blogsHome, (list)|(show)
-p, anonymous, blogs/*, (show)
 p, anonymous, flightschool, (list)|(show)
 p, anonymous, club, (list)|(show)
 p, anonymous, catalog, (list)|(show)

@@ -141,7 +141,7 @@ export const darkTheme = createTheme(RefineThemes.BlueDark, {
   palette: {
     primary: {
       main: "#2676ff",
-      light: "#2F3558",
+      light: "#adc9ff",
       dark: "#1B1F3B",
       contrastText: "#ffffff",
     },
@@ -149,25 +149,25 @@ export const darkTheme = createTheme(RefineThemes.BlueDark, {
       main: "#FF914D", // Orange main
       light: "#FFB585",
       dark: "#D9743E",
-      contrastText: "#000000",
+      contrastText: "#ffffff",
     },
     third: {
       main: "#005F6B", // Teal main
       light: "#008592",
       dark: "#004953",
-      contrastText: "#000000",
+      contrastText: "#ffffff",
     },
     fourth: {
       main: "#E5E5E5", // Grey main
       light: "#F5F5F5",
       dark: "#CFCFCF",
-      contrastText: "#000000",
+      contrastText: "#ffffff",
     },
     fifth: {
       main: "#3FAF7D", // Emerald main
       light: "#60C89C",
       dark: "#2E8F63",
-      contrastText: "#000000",
+      contrastText: "#ffffff",
     },
     error: {
       main: "#f44336",

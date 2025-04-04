@@ -52,7 +52,7 @@ const AircraftPage: React.FC = () => {
     {
       id: 1,
       registration: "OH-STL",
-      name: "Sierra Tango Lima",
+      name: "STL",
       type: "Diamond DA40 NG",
       image: "/stl.jpeg", // Replace with actual image path
       description: t("da40Description"),
@@ -68,7 +68,7 @@ const AircraftPage: React.FC = () => {
     {
       id: 2,
       registration: "OH-IHQ",
-      name: "Ihku",
+      name: "IHQ",
       type: "Diamond DV20",
       image: "/ihq.jpeg", // Replace with actual image path
       description: t("dv20Description"),

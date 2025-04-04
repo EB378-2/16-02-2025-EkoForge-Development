@@ -44,7 +44,7 @@ const AviationHomePage: React.FC = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "white",
+          color: theme.palette.primary.light,
           textAlign: "center",
           overflow: "hidden",
         }}
@@ -57,7 +57,7 @@ const AviationHomePage: React.FC = () => {
           style={{
             objectFit: "cover",
             filter: "brightness(0.65)",
-            opacity: 0.5,
+            opacity: 0.75,
           }}
           priority
         />
@@ -79,7 +79,7 @@ const AviationHomePage: React.FC = () => {
                   fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem" },
                   mb: 3,
                   
-                  textShadow: "2px 2px 8px rgba(0,0,0,0.5)",
+                  textShadow: `2px 2px 8px ${theme.palette.strong.default}`,
                 }}
               >
                 {t("heroTitle")}
@@ -96,7 +96,6 @@ const AviationHomePage: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          color: "white",
           textAlign: "center",
           overflow: "hidden",
         }}
@@ -415,14 +414,14 @@ const AviationHomePage: React.FC = () => {
       </Box>
 
       {/* CTA Section */}
-      <Box sx={{ py: 10, position: "relative", overflow: "hidden" }}>
+      <Box sx={{ py: 10, position: "relative", overflow: "hidden", color: theme.palette.secondary.contrastText, }}>
         <Image
           src="/feel-efhf2.jpg"
           alt="Aviation background"
           fill
           style={{
             objectFit: "cover",
-            zIndex: -1,
+            zIndex: 0,
             filter: "brightness(0.4)",
           }}
         />
