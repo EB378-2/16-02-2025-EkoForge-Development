@@ -1,5 +1,27 @@
 {
- 
+ "Layout": {
+    "home": "Home",
+    "Blog": "Blog",
+    "flightschool": "Flight School",
+    "About us": "About Us",
+    "fleet": "Fleet",
+    "members": "Members",
+    "Dashboard": "Dashboard",
+    "Saftey Notice": "Safety Notices",
+    "Flight Planning": "Flight Planning",
+    "International": "International",
+    "Equipment Hours and Info": "Equipment Hours and Info",
+    "Profile": "Profile",
+    "Bookings": "Booking Calendar",
+    "Logbook": "Logbook",
+    "Flight Statistics": "Flight Statistics",
+    "Handbooks": "Handbooks",
+    "Instructions": "Instructions",
+    "Members": "Members",
+    "Flight School": "Flight School",
+    "Instructors": "Instructors",
+    "Student Checklist": "Student Checklist"
+  },
   "AboutBusiness": {
     "title": "Why Your Business Needs More Than Just a Website—It Needs a Sales-Generating Machine",
     "introParagraph1": "In today’s digital world, your website isn’t just an online brochure—it’s your business’s most powerful sales tool. Yet, too many business owners settle for generic, do-it-yourself website builders that leave them frustrated and stuck with a site that looks nice but doesn’t actually bring in customers.",

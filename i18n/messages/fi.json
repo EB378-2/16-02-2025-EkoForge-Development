@@ -1,4 +1,27 @@
 {
+  "Layout": {
+    "home": "Koti",
+    "Blog": "Blogi",
+    "flightschool": "Lentokoulu",
+    "About us": "Meistä",
+    "fleet": "Kalusto",
+    "members": "Jäsenet",
+    "Dashboard": "Kojelauta",
+    "Saftey Notice": "Turvallisuusilmoitukset",
+    "Flight Planning": "Lennonsuunnittelu",
+    "International": "Kansainvälinen",
+    "Equipment Hours and Info": "Laitetiedot ja käyttötunnit",
+    "Profile": "Profiili",
+    "Bookings": "Varauskalenteri",
+    "Logbook": "Lokikirja",
+    "Flight Statistics": "Lentotilastot",
+    "Handbooks": "Käsikirjat",
+    "Instructions": "Ohjeet",
+    "Members": "Jäsenet",
+    "Flight School": "Lentokoulu",
+    "Instructors": "Ohjaajat",
+    "Student Checklist": "Oppilaan tarkistuslista"
+  },
   "AboutBusiness": {
     "title": "Miksi yrityksesi tarvitsee enemmän kuin vain verkkosivuston – se tarvitsee myyntikoneen",
     "introParagraph1": "Nykyisessä digitaalisessa maailmassa verkkosivustosi ei ole vain online-esite – se on yrityksesi tehokkain myyntityökalu. Silti monet yritysten omistajat tyytyvät geneerisiin, itse tehtyihin verkkosivustorakentajiin, jotka jättävät heidät turhautuneiksi ja jumiin sivuston kanssa, joka näyttää hyvältä mutta ei tuo asiakkaita.",

@@ -10,6 +10,13 @@ import {
   Alert,
   Link as MuiLink,
   Grid,
+  Chip,
+  Stack,
+  Button,
+  IconButton,
+  Card,
+  CardContent,
+  Tooltip
 } from "@mui/material";
 import { List, EditButton, ShowButton, DeleteButton } from "@refinedev/mui";
 import { useTable } from "@refinedev/core";
@@ -18,43 +25,104 @@ import { useTranslations } from "next-intl";
 import { useColorMode } from "@contexts/color-mode";
 import { getTheme } from "@theme/theme";
 import Image from "next/image";
+import {
+  Flight as FlightIcon,
+  Public as PublicIcon,
+  Description as DescriptionIcon,
+  Link as LinkIcon,
+  OpenInNew as OpenInNewIcon,
+  Edit as EditIcon,
+  Visibility as VisibilityIcon,
+  Delete as DeleteIcon
+} from "@mui/icons-material";
 
 interface SectionProps {
   title: string;
   content: string;
   linkText?: string;
   linkUrl?: string;
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
-const Section: React.FC<SectionProps> = ({ title, content, linkText, linkUrl }) => {
+const Section: React.FC<SectionProps> = ({ 
+  title, 
+  content, 
+  linkText, 
+  linkUrl,
+  imageSrc,
+  imageAlt
+}) => {
   return (
-    <Paper
+    <Card
       sx={{
-        p: { xs: 2, md: 3 },
         mb: 3,
-        borderRadius: 2,
-        boxShadow: 1,
+        borderRadius: 3,
+        boxShadow: 3,
+        transition: 'transform 0.2s',
+        '&:hover': {
+          transform: 'translateY(-2px)'
+        }
       }}
     >
-      <Typography variant="h6" gutterBottom>
-        {title}
-      </Typography>
-      <Typography variant="body1" sx={{ whiteSpace: "pre-line" }}>
-        {content}
-      </Typography>
-      {linkText && linkUrl && (
-        <Box sx={{ mt: 2, textAlign: "right" }}>
-          <MuiLink
-            href={linkUrl}
-            target="_blank"
-            underline="hover"
-            sx={{ fontWeight: 500 }}
-          >
-            {linkText}
-          </MuiLink>
-        </Box>
-      )}
-    </Paper>
+      <CardContent>
+        <Grid container spacing={3} alignItems="center">
+          <Grid item xs={12} md={imageSrc ? 8 : 12}>
+            <Stack direction="row" alignItems="center" spacing={1} mb={2}>
+              <FlightIcon color="primary" />
+              <Typography variant="h6" fontWeight={600}>
+                {title}
+              </Typography>
+            </Stack>
+            <Typography 
+              variant="body1" 
+              sx={{ 
+                whiteSpace: "pre-line",
+                color: 'text.secondary'
+              }}
+            >
+              {content}
+            </Typography>
+            {linkText && linkUrl && (
+              <Box sx={{ mt: 2 }}>
+                <Button
+                  href={linkUrl}
+                  target="_blank"
+                  variant="outlined"
+                  endIcon={<OpenInNewIcon />}
+                  sx={{
+                    textTransform: 'none',
+                    borderRadius: 2
+                  }}
+                >
+                  {linkText}
+                </Button>
+              </Box>
+            )}
+          </Grid>
+          {imageSrc && (
+            <Grid item xs={12} md={4}>
+              <Box
+                sx={{
+                  position: 'relative',
+                  height: 200,
+                  borderRadius: 2,
+                  overflow: 'hidden',
+                  boxShadow: 3
+                }}
+              >
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt || title}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </Box>
+            </Grid>
+          )}
+        </Grid>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -63,7 +131,6 @@ export default function InternationalFlightPlanningPage() {
   const { mode } = useColorMode();
   const theme = getTheme(mode);
 
-  // Table hook for international flight plans (filtering where international equals true)
   const {
     tableQueryResult: tableQueryResultIntl,
     pageCount: pageCountIntl,
@@ -95,33 +162,66 @@ export default function InternationalFlightPlanningPage() {
   const rowsIntl = tableQueryResultIntl?.data?.data ?? [];
 
   const columns: GridColDef[] = [
-    { field: "route", headerName: t("dataGrid.route"), width: 250 },
-    { field: "notes", headerName: t("dataGrid.notes"), width: 200 },
+    { 
+      field: "route", 
+      headerName: t("dataGrid.route"), 
+      width: 250,
+      renderCell: (params) => (
+        <Chip
+          label={params.value}
+          color="primary"
+          variant="outlined"
+          size="small"
+        />
+      )
+    },
+    { 
+      field: "notes", 
+      headerName: t("dataGrid.notes"), 
+      width: 200,
+      renderCell: (params) => (
+        <Typography variant="body2" noWrap>
+          {params.value || '-'}
+        </Typography>
+      )
+    },
     {
       field: "actions",
       headerName: t("dataGrid.actions"),
       width: 200,
       renderCell: ({ row }) => (
-        <Box sx={{ display: "flex", gap: 1 }}>
-          <EditButton
-            hideText
-            size="small"
-            variant="outlined"
-            recordItemId={row.id}
-          />
-          <ShowButton
-            hideText
-            size="small"
-            variant="outlined"
-            recordItemId={row.id}
-          />
-          <DeleteButton
-            hideText
-            size="small"
-            variant="outlined"
-            recordItemId={row.id}
-          />
-        </Box>
+        <Stack direction="row" spacing={1}>
+          <Tooltip title={t("edit")}>
+            <IconButton size="small" color="primary">
+              <EditButton
+                hideText
+                size="small"
+                variant="outlined"
+                recordItemId={row.id}
+              />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title={t("view")}>
+            <IconButton size="small" color="info">
+              <ShowButton
+                hideText
+                size="small"
+                variant="outlined"
+                recordItemId={row.id}
+              />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title={t("delete")}>
+            <IconButton size="small" color="error">
+              <DeleteButton
+                hideText
+                size="small"
+                variant="outlined"
+                recordItemId={row.id}
+              />
+            </IconButton>
+          </Tooltip>
+        </Stack>
       ),
       sortable: false,
       filterable: false,
@@ -129,86 +229,93 @@ export default function InternationalFlightPlanningPage() {
   ];
 
   return (
-    <Box sx={{ p: { xs: 2, md: 3 }, maxWidth: { xs: "100%", md: "100%" }, mx: "auto" }}>
-      <Typography variant="h4" gutterBottom>
+    <Box sx={{ 
+      p: { xs: 2, md: 3 }, 
+      maxWidth: { md: 1200 }, 
+      mx: "auto" 
+    }}>
+      <Typography 
+        variant="h3" 
+        gutterBottom 
+        sx={{ 
+          fontWeight: 700,
+          color: 'primary.main',
+          mb: 4
+        }}
+      >
         {t("title")}
       </Typography>
 
-      {/* Section 1: No link */}
-      <Paper
-        sx={{
-          p: { xs: 2, md: 3 },
-          mb: 3,
-          borderRadius: 2,
-          boxShadow: 1,
-        }}
-      >
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
-            <Typography variant="h6" gutterBottom>
-            {t("section1.title")}
-            </Typography>
-            <Typography variant="body1" sx={{ whiteSpace: "pre-line" }}>
-            {t("section1.content")}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Image
-              src="/europe-ranget.jpg"
-              alt={t("section1.title")}
-              width={200}
-              height={300}
-            />
-          </Grid>
-        </Grid>
-      </Paper>
+      {/* Section 1 with image */}
+      <Section
+        title={t("section1.title")}
+        content={t("section1.content")}
+        imageSrc="/europe-ranget.jpg"
+        imageAlt={t("section1.title")}
+      />
 
       {/* International Flight Plans Table */}
-      <Paper
+      <Card
         sx={{
-          p: { xs: 2, md: 3 },
-          my: 3,
-          borderRadius: 2,
-          boxShadow: 1,
+          my: 4,
+          borderRadius: 3,
+          boxShadow: 3
         }}
       >
-        <Typography variant="h5" gutterBottom>
-          {t("internationalFlightPlans")}
-        </Typography>
-        {tableQueryResultIntl.isLoading ? (
-          <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-            <CircularProgress />
-          </Box>
-        ) : tableQueryResultIntl.isError ? (
-          <Alert severity="error">
-            {t("error.fetchInternationalFlightPlans")}
-          </Alert>
-        ) : (
-          <List title={t("internationalFlightPlans")}>
-            <DataGrid
-              autoHeight
-              rows={rowsIntl}
-              columns={columns}
-              rowCount={totalIntl}
-              pageSizeOptions={[5, 10, 20, 30, 50, 100]}
-              pagination
-              paginationModel={{ page: currentIntl - 1, pageSize: pageSizeIntl }}
-              onPaginationModelChange={(model) => {
-                setCurrentIntl(model.page + 1);
-                setPageSizeIntl(model.pageSize);
-              }}
-              sx={{
-                border: "none",
-                "& .MuiDataGrid-cell": {
-                  borderBottom: "none",
-                },
-              }}
-            />
-          </List>
-        )}
-      </Paper>
+        <CardContent>
+          <Stack direction="row" alignItems="center" spacing={1} mb={3}>
+            <DescriptionIcon color="primary" />
+            <Typography variant="h5" fontWeight={600}>
+              {t("internationalFlightPlans")}
+            </Typography>
+          </Stack>
+          
+          {tableQueryResultIntl.isLoading ? (
+            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+              <CircularProgress />
+            </Box>
+          ) : tableQueryResultIntl.isError ? (
+            <Alert severity="error" sx={{ borderRadius: 2 }}>
+              {t("error.fetchInternationalFlightPlans")}
+            </Alert>
+          ) : (
+            <Box sx={{ height: 500 }}>
+              <DataGrid
+                rows={rowsIntl}
+                columns={columns}
+                rowCount={totalIntl}
+                pageSizeOptions={[5, 10, 20, 30, 50, 100]}
+                pagination
+                paginationModel={{ 
+                  page: currentIntl - 1, 
+                  pageSize: pageSizeIntl 
+                }}
+                onPaginationModelChange={(model) => {
+                  setCurrentIntl(model.page + 1);
+                  setPageSizeIntl(model.pageSize);
+                }}
+                sx={{
+                  border: 'none',
+                  '& .MuiDataGrid-columnHeaders': {
+                    backgroundColor: theme.palette.mode === 'dark' ? 
+                      theme.palette.grey[800] : 
+                      theme.palette.grey[100],
+                    borderRadius: 1
+                  },
+                  '& .MuiDataGrid-cell': {
+                    borderBottom: `1px solid ${theme.palette.divider}`,
+                  },
+                  '& .MuiDataGrid-row:hover': {
+                    backgroundColor: theme.palette.action.hover
+                  }
+                }}
+              />
+            </Box>
+          )}
+        </CardContent>
+      </Card>
 
-      {/* Section 2 */}
+      {/* Remaining sections */}
       <Section
         title={t("section2.title")}
         content={t("section2.content")}
@@ -216,7 +323,6 @@ export default function InternationalFlightPlanningPage() {
         linkUrl={t("section2.linkUrl")}
       />
 
-      {/* Section 3 */}
       <Section
         title={t("section3.title")}
         content={t("section3.content")}
@@ -224,7 +330,6 @@ export default function InternationalFlightPlanningPage() {
         linkUrl={t("section3.linkUrl")}
       />
 
-      {/* Section 4 */}
       <Section
         title={t("section4.title")}
         content={t("section4.content")}
@@ -232,7 +337,6 @@ export default function InternationalFlightPlanningPage() {
         linkUrl={t("section4.linkUrl")}
       />
 
-      {/* Section 5 */}
       <Section
         title={t("section5.title")}
         content={t("section5.content")}
@@ -240,7 +344,6 @@ export default function InternationalFlightPlanningPage() {
         linkUrl={t("section5.linkUrl")}
       />
 
-      {/* Section 6 */}
       <Section
         title={t("section6.title")}
         content={t("section6.content")}
@@ -248,7 +351,6 @@ export default function InternationalFlightPlanningPage() {
         linkUrl={t("section6.linkUrl")}
       />
 
-      {/* Section 7 */}
       <Section
         title={t("section7.title")}
         content={t("section7.content")}
@@ -256,7 +358,6 @@ export default function InternationalFlightPlanningPage() {
         linkUrl={t("section7.linkUrl")}
       />
 
-      {/* Section 8 */}
       <Section
         title={t("section8.title")}
         content={t("section8.content")}

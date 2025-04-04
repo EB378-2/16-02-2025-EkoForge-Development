@@ -1,5 +1,5 @@
 import { DevtoolsProvider } from "../../providers/devtools";
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider, useTranslations } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     template: APP_TITLE_TEMPLATE,
   }, // default title
   icons: {
-    icon: "/icon.ico",
+    icon: "/favicon.ico",
   },
   description: APP_DESCRIPTION,
   manifest: "/manifest.json",
@@ -107,6 +107,7 @@ export default async function RootLayout({
 }>) {
   // Providing all messages to the client
   // side is the easiest way to get started
+  const t = useTranslations("Layout");
   const messages = await getMessages();
   const cookieStore = await cookies();
   const theme = cookieStore.get("theme");
@@ -135,14 +136,17 @@ export default async function RootLayout({
                           list: `/${locale}/home`,
                           meta: {
                             icon: <HomeIcon />,
-                            label: "Home",
+                            label: `${t("Home")}`,
                           },
                         },
                         {
-                          name: "blogsHome",                          
+                          name: "blogs",                          
                           list: `/${locale}/blog`,
+                          show: `/${locale}/members/blogs/show/:id`,
+                          edit: `/${locale}/members/blogs/edit/:id`,
+                          create: `/${locale}/members/blogs/create`,
                           meta: {
-                            label: "Blog",
+                            label: `${t("Blog")}`,
                             icon: <DynamicFeedIcon />,
                           },
                         },
@@ -150,7 +154,7 @@ export default async function RootLayout({
                           name: "flightschool",                          
                           list: `/${locale}/flight_school`,
                           meta: {
-                            label: "Flight School",
+                            label: `${t("flightschool")}`,
                             icon: <SchoolIcon />,
                           },
                         },
@@ -158,15 +162,15 @@ export default async function RootLayout({
                           name: "club",
                           list: `/${locale}/club`,
                           meta: {
-                            label: "Aviation Club",
+                            label: `${t("About us")}`,
                             icon: <Groups3Icon />,
                           },
                         },
                         {
-                          name: "catalog",
+                          name: "fleet",
                           list: `/${locale}/aircraft`,
                           meta: {
-                            label: "Aircraft and simulators",
+                            label: `${t("Our fleet")}`,
                             icon: <ConnectingAirportsIcon />,
                           },
                         },
@@ -174,19 +178,16 @@ export default async function RootLayout({
                           name: "members_dropdown",
                           meta: {
                             
-                            label: "Members",
+                            label: `${t("members")}`,
                           },
                         },
                         {
-                          name: "blogs",
+                          name: "dashboard",
                           identifier: "dashboard",
                           list: `/${locale}/members`,
-                          show: `/${locale}/members/blogs/show/:id`,
-                          edit: `/${locale}/members/blogs/edit/:id`,
-                          create: `/${locale}/members/blogs/create`,
                           meta: {
                             icon: <BroadcastOnHomeIcon />,
-                            label: "Dashboard",
+                            label: `${t("Dashboard")}`,
                             parent: "members_dropdown",
                             canDelete: true,
                           },
@@ -202,7 +203,7 @@ export default async function RootLayout({
                             canDelete: true,
                             icon: <GppMaybeIcon />,
                             parent: "members_dropdown",
-                            label: "Saftey Notice",
+                            label: `${t("Saftey Notice")}`,
                           },
                         },
                         {
@@ -210,7 +211,7 @@ export default async function RootLayout({
                           identifier: "flight_planning_members",
                           meta: {
                             icon: <AirplaneTicketIcon />,
-                            label: "Flight Planning",
+                            label: `${t("Flight Planning")}`,
                             parent: "members_dropdown",
                           },
                         },
@@ -225,7 +226,7 @@ export default async function RootLayout({
                             canDelete: true,
                             icon: <FlightTakeoffIcon />,
                             parent: "flight_planning_members",
-                            label: "Dashboard",
+                            label: `${t("Dashboard")}`,
                           },
                         },
                         {
@@ -239,7 +240,7 @@ export default async function RootLayout({
                             canDelete: true,
                             icon: <PublicIcon />,
                             parent: "flight_planning_members",
-                            label: "International",
+                            label: `${t("International")}`,
                           },
                         },
                         {
@@ -251,7 +252,7 @@ export default async function RootLayout({
                           meta: {
                             icon: <ConstructionIcon />,
                             parent: "flight_planning_members",
-                            label: "Equipment Hours and Information",
+                            label: `${t("Equipment Hours and Info")}`,
                           },
                         },
                         {
@@ -261,21 +262,18 @@ export default async function RootLayout({
                           edit: `/${locale}/members/profile/edit/:id`,
                           meta: {
                             icon: <AccountBoxIcon />,
-                            label: "Profile",
+                            label: `${t("Profile")}`,
                             parent: "members_dropdown",
                           },
                         },
                         {
                           name: "bookings",
                           list: `/${locale}/members/bookings`,
-                          create: `/${locale}/members/bookings/create`,
-                          edit: `/${locale}/members/bookings/edit/:id`,
-                          show: `/${locale}/members/bookings/show/:id`,
                           meta: {
                             canDelete: true,
                             icon: <CalendarMonthIcon />,
                             parent: "members_dropdown",
-                            label: "Booking Calendar",
+                            label: `${t("Bookings")}`,
                           },
                         },
                         {
@@ -288,7 +286,7 @@ export default async function RootLayout({
                             canDelete: true,
                             icon: <BookIcon />,
                             parent: "members_dropdown",
-                            label: "Logbook",
+                            label: `${t("Logbook")}`,
                           },
                         },
                         {
@@ -298,7 +296,7 @@ export default async function RootLayout({
                           meta: {
                             icon: <AnalyticsIcon />,
                             parent: "members_dropdown",
-                            label: "Flight Statistics",
+                            label: `${t("Flight Statistics")}`,
                           },
                         },
                         {
@@ -307,7 +305,7 @@ export default async function RootLayout({
                           edit: `/${locale}/members/handbooks/show/:id`,
                           meta: {
                             icon: <LibraryBooksIcon />,
-                            label: "Handbooks",
+                            label: `${t("Handbooks")}`,
                             parent: "members_dropdown",
                           },
                         },
@@ -317,7 +315,7 @@ export default async function RootLayout({
                           edit: `/${locale}/members/instructions/show/:id`,
                           meta: {
                             icon: <RuleIcon />,
-                            label: "Instructions",
+                            label: `${t("Instructions")}`,
                             parent: "members_dropdown",
                           },
                         },
@@ -328,7 +326,7 @@ export default async function RootLayout({
                           edit: `/${locale}/members/members/show/:id`,
                           meta: {
                             icon: <Groups3Icon />,
-                            label: "Members",
+                            label: `${t("Members")}`,
                             parent: "members_dropdown",
                           },
                         },
@@ -337,7 +335,7 @@ export default async function RootLayout({
                           identifier: "flight_school_members",
                           meta: {
                             icon: <SchoolIcon />,
-                            label: "Flight School",
+                            label: `${t("Flight School")}`,
                             parent: "members_dropdown",
                           },
                         },
@@ -347,7 +345,7 @@ export default async function RootLayout({
                           edit: `/${locale}/members/instructors/show/:id`,
                           meta: {
                             icon: <PersonIcon />,
-                            label: "Instructors",
+                            label: `${t("Instructors")}`,
                             parent: "flight_school_members",
                           },
                         },
@@ -357,7 +355,7 @@ export default async function RootLayout({
                           edit: `/${locale}/members/student_checklist/show/:id`,
                           meta: {
                             icon: <ChecklistIcon />,
-                            label: "Student Checklist",
+                            label: `${t("Student Checklist")}`,
                             parent: "flight_school_members",
                           },
                         },

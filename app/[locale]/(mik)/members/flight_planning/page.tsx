@@ -19,11 +19,28 @@ import {
     Stack,
     CircularProgress,
     Alert,
+    Card,
+    CardContent,
+    Divider,
+    Chip,
+    IconButton,
+    Tooltip
 } from "@mui/material";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useColorMode } from "@contexts/color-mode";
 import { getTheme } from "@theme/theme";
+import {
+    Flight as FlightIcon,
+    Description as DescriptionIcon,
+    Book as BookIcon,
+    Build as BuildIcon,
+    Public as PublicIcon,
+    Launch as LaunchIcon,
+    Info as InfoIcon,
+    School as SchoolIcon,
+    Forum as ForumIcon
+} from "@mui/icons-material";
 
 interface FlightPlan {
     id: string;
@@ -52,37 +69,61 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
     external = false,
     theme,
 }) => {
+    const iconMap: Record<string, JSX.Element> = {
+        "aircraftReservation": <FlightIcon color="primary" />,
+        "aviationWeather": <PublicIcon color="primary" />,
+        "flightLogbook": <BookIcon color="primary" />,
+        "maintenance": <BuildIcon color="primary" />,
+        "flightPlan": <DescriptionIcon color="primary" />
+    };
+
+    const icon = iconMap[title.split('.')[0]] || <InfoIcon color="primary" />;
+
     return (
-        <Paper
+        <Card
             sx={{
-                p: 1.5,
-                backgroundColor: theme.palette.background.paper,
-                borderRadius: 2,
-                boxShadow: 1,
-                margin: "0 auto",
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: theme.shadows[6]
+                }
             }}
+            elevation={3}
         >
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
-                {title}
-            </Typography>
-            <Typography variant="body2" gutterBottom sx={{ color: theme.palette.text.secondary }}>
-                {description}
-            </Typography>
+            <CardContent sx={{ flexGrow: 1 }}>
+                <Stack direction="row" alignItems="center" spacing={1} mb={1.5}>
+                    {icon}
+                    <Typography variant="h6" fontWeight={600}>
+                        {title}
+                    </Typography>
+                </Stack>
+                <Typography variant="body2" color="text.secondary" mb={2}>
+                    {description}
+                </Typography>
                 <Button
                     variant="contained"
                     component={Link}
                     href={link}
                     size="small"
+                    endIcon={external ? <LaunchIcon fontSize="small" /> : null}
                     sx={{
-                        mt: 1,
-                        textTransform: "none",
-                        fontSize: "0.875rem",
+                        borderRadius: 2,
+                        textTransform: 'none',
+                        boxShadow: 'none',
+                        '&:hover': {
+                            boxShadow: 'none',
+                            backgroundColor: theme.palette.primary.dark
+                        }
                     }}
+                    fullWidth
                 >
                     {buttonText}
                 </Button>
-        </Paper>
-
+            </CardContent>
+        </Card>
     );
 };
 
@@ -99,14 +140,13 @@ export default function FlightPlanList() {
         pageSize,
         setPageSize,
     } = useTable<FlightPlan>({
-        resource: "flightplans", // Ensure this matches your resource configuration
+        resource: "flightplans",
         initialSorter: [
             {
                 field: "updated_at",
                 order: "asc",
             },
         ],
-        // Exclude rows where international is true.
         initialFilter: [
             {
                 field: "international",
@@ -117,7 +157,6 @@ export default function FlightPlanList() {
         initialPageSize: 10,
     });
 
-    // Handle loading and error states
     if (tableQueryResult.isLoading) {
         return (
             <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
@@ -129,7 +168,7 @@ export default function FlightPlanList() {
     if (tableQueryResult.isError) {
         return (
             <Box sx={{ mt: 4 }}>
-                <Alert severity="error">
+                <Alert severity="error" sx={{ borderRadius: 2 }}>
                     {t("error.fetchFlightPlans")}
                 </Alert>
             </Box>
@@ -142,32 +181,65 @@ export default function FlightPlanList() {
     const rows = tableQueryResult?.data?.data ?? [];
 
     const columns: GridColDef[] = [
-        { field: "route", headerName: t("dataGrid.route"), width: 250 },
-        { field: "notes", headerName: t("dataGrid.notes"), width: 200 },
+        { 
+            field: "route", 
+            headerName: t("dataGrid.route"), 
+            width: 250,
+            renderCell: (params) => (
+                <Chip
+                    label={params.value}
+                    color="primary"
+                    variant="outlined"
+                    size="small"
+                />
+            )
+        },
+        { 
+            field: "notes", 
+            headerName: t("dataGrid.notes"), 
+            width: 200,
+            renderCell: (params) => (
+                <Typography variant="body2" noWrap>
+                    {params.value || '-'}
+                </Typography>
+            )
+        },
         {
             field: "actions",
             headerName: t("dataGrid.actions"),
             width: 200,
             renderCell: ({ row }) => (
                 <Stack direction="row" spacing={1}>
-                    <EditButton
-                        hideText
-                        size="small"
-                        variant="outlined"
-                        recordItemId={row.id}
-                    />
-                    <ShowButton
-                        hideText
-                        size="small"
-                        variant="outlined"
-                        recordItemId={row.id}
-                    />
-                    <DeleteButton
-                        hideText
-                        size="small"
-                        variant="outlined"
-                        recordItemId={row.id}
-                    />
+                    <Tooltip title={t("edit")}>
+                        <IconButton size="small" color="primary">
+                            <EditButton
+                                hideText
+                                size="small"
+                                variant="outlined"
+                                recordItemId={row.id}
+                            />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title={t("view")}>
+                        <IconButton size="small" color="info">
+                            <ShowButton
+                                hideText
+                                size="small"
+                                variant="outlined"
+                                recordItemId={row.id}
+                            />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title={t("delete")}>
+                        <IconButton size="small" color="error">
+                            <DeleteButton
+                                hideText
+                                size="small"
+                                variant="outlined"
+                                recordItemId={row.id}
+                            />
+                        </IconButton>
+                    </Tooltip>
                 </Stack>
             ),
             sortable: false,
@@ -177,11 +249,16 @@ export default function FlightPlanList() {
 
     return (
         <Box sx={{ p: 3 }}>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom sx={{ 
+                fontWeight: 700,
+                color: theme.palette.primary.main,
+                mb: 3
+            }}>
                 {t("flightPlanning")}
             </Typography>
+            
             <Grid container spacing={3} sx={{ mb: 3 }}>
-                <Grid item xs={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <DashboardCard
                         title={t("aircraftReservation.title")}
                         description={t("aircraftReservation.description")}
@@ -190,7 +267,7 @@ export default function FlightPlanList() {
                         theme={theme}
                     />
                 </Grid>
-                <Grid item xs={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <DashboardCard
                         title={t("aviationWeather.title")}
                         description={t("aviationWeather.description")}
@@ -200,7 +277,7 @@ export default function FlightPlanList() {
                         theme={theme}
                     />
                 </Grid>
-                <Grid item xs={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <DashboardCard
                         title={t("flightLogbook.title")}
                         description={t("flightLogbook.description")}
@@ -209,7 +286,7 @@ export default function FlightPlanList() {
                         theme={theme}
                     />
                 </Grid>
-                <Grid item xs={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <DashboardCard
                         title={t("maintenance.title")}
                         description={t("maintenance.description")}
@@ -229,7 +306,23 @@ export default function FlightPlanList() {
                     />
                 </Grid>
             </Grid>
-            <List title={t("flightPlans")}>
+
+            <Paper sx={{ 
+                p: 3, 
+                mb: 3,
+                borderRadius: 3,
+                boxShadow: theme.shadows[2]
+            }}>
+                <Typography variant="h5" gutterBottom sx={{
+                    fontWeight: 600,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1
+                }}>
+                    <DescriptionIcon color="primary" />
+                    {t("flightPlans")}
+                </Typography>
+                <Divider sx={{ my: 2 }} />
                 <DataGrid
                     autoHeight
                     rows={rows}
@@ -243,91 +336,136 @@ export default function FlightPlanList() {
                         setPageSize(model.pageSize);
                     }}
                     sx={{
-                        border: "none",
-                        "& .MuiDataGrid-cell": {
-                            borderBottom: "none",
+                        border: 'none',
+                        '& .MuiDataGrid-columnHeaders': {
+                            backgroundColor: theme.palette.mode === 'dark' ? 
+                                theme.palette.grey[800] : 
+                                theme.palette.grey[100],
+                            borderRadius: 1
                         },
+                        '& .MuiDataGrid-cell': {
+                            borderBottom: `1px solid ${theme.palette.divider}`,
+                        },
+                        '& .MuiDataGrid-row:hover': {
+                            backgroundColor: theme.palette.action.hover
+                        }
                     }}
                 />
-            </List>
-            <Box sx={{ mt: 3 }}>
-                <Paper sx={{ p: 2 }}>
-                    <Typography variant="h5">
-                        {t("GeneralResources")}
-                    </Typography>
-                    <hr/>
-                    <Typography variant="subtitle1">
-                        {t("GeneralResourcesDescription")}
-                    </Typography>
-                    <ul>
-                        <li>
-                            <MuiLink href="https://www.ais.fi" target="_blank">
-                                {t("ais")}
-                            </MuiLink>
-                        </li>
-                        <li>
-                            <MuiLink href="https://ilmailusaa.fi" target="_blank">
-                                {t("ilmailusaa")}
-                            </MuiLink>
-                        </li>
-                        <li>
-                            <MuiLink href="https://flyk.com" target="_blank">
-                                {t("FLYK")}
-                            </MuiLink>
-                        </li>
-                        <li>
-                            <MuiLink href="https://lentopaikat.fi" target="_blank">
-                                {t("lentopaikat")}
-                            </MuiLink>
-                        </li>
-                    </ul>
+            </Paper>
 
-                    <Typography variant="subtitle1">
-                        {t("GeneralResourcesDescriptionTwo")}
+            <Paper sx={{ 
+                p: 3,
+                borderRadius: 3,
+                boxShadow: theme.shadows[2]
+            }}>
+                <Typography variant="h5" gutterBottom sx={{
+                    fontWeight: 600,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1
+                }}>
+                    <SchoolIcon color="primary" />
+                    {t("GeneralResources")}
+                </Typography>
+                <Divider sx={{ my: 2 }} />
+                
+                <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 500 }}>
+                    {t("GeneralResourcesDescription")}
+                </Typography>
+                <Stack spacing={1} mb={3}>
+                    <MuiLink href="https://www.ais.fi" target="_blank" sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        gap: 1
+                    }}>
+                        <LaunchIcon fontSize="small" />
+                        {t("ais")}
+                    </MuiLink>
+                    <MuiLink href="https://ilmailusaa.fi" target="_blank" sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        gap: 1
+                    }}>
+                        <LaunchIcon fontSize="small" />
+                        {t("ilmailusaa")}
+                    </MuiLink>
+                    <MuiLink href="https://flyk.com" target="_blank" sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        gap: 1
+                    }}>
+                        <LaunchIcon fontSize="small" />
+                        {t("FLYK")}
+                    </MuiLink>
+                    <MuiLink href="https://lentopaikat.fi" target="_blank" sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        gap: 1
+                    }}>
+                        <LaunchIcon fontSize="small" />
+                        {t("lentopaikat")}
+                    </MuiLink>
+                </Stack>
+
+                <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 500 }}>
+                    {t("GeneralResourcesDescriptionTwo")}
+                </Typography>
+                <Box mb={3}>
+                    <Typography variant="body2" gutterBottom>
+                        {t("GeneralResourcesDescriptionTwoText")}
                     </Typography>
-                    <ul>
-                        <li>
-                            <Typography variant="body2">
-                                {t("GeneralResourcesDescriptionTwoText")}
-                            </Typography>
-                            <MuiLink href="/members/instructions">
-                                {t("instructions")}
-                            </MuiLink>
-                        </li>
-                    </ul>
-                    <Typography variant="subtitle1">
-                        {t("GeneralResourcesDescriptionThree")}
-                    </Typography>
-                    <Typography variant="body2">
-                        {t("GeneralResourcesDescriptionThreeText")}
-                    </Typography>
-                    <ul>
-                        <li>
-                            <MuiLink href="https://groups.google.com/a/mik.fi/forum/#!forum/ihq-info" target="_blank">
-                                {t("ihqInfo")}
-                            </MuiLink>
-                        </li>
-                        <li>
-                            <MuiLink href="https://groups.google.com/a/mik.fi/forum/#!forum/stl-info" target="_blank">
-                                {t("stlInfo")}
-                            </MuiLink>
-                        </li>
-                    </ul>
-                    <Typography variant="subtitle1">
-                        {t("GeneralResourcesDescriptionFour")}
-                    </Typography>
-                    <Typography variant="body2">
-                        {t("GeneralResourcesDescriptionFourText")}
-                    </Typography>
-                    <ul>
-                        <li>
-                            <MuiLink href="/members/international_flight_planning">
-                                {t("internationalFlightPlanning")}
-                            </MuiLink>
-                        </li>
-                    </ul>
-                </Paper>
-            </Box>
+                    <Button 
+                        component={Link} 
+                        href="/members/instructions" 
+                        variant="text" 
+                        startIcon={<InfoIcon />}
+                        sx={{ textTransform: 'none' }}
+                    >
+                        {t("instructions")}
+                    </Button>
+                </Box>
+
+                <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 500 }}>
+                    {t("GeneralResourcesDescriptionThree")}
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                    {t("GeneralResourcesDescriptionThreeText")}
+                </Typography>
+                <Stack spacing={1} mb={3}>
+                    <MuiLink href="https://groups.google.com/a/mik.fi/forum/#!forum/ihq-info" target="_blank" sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        gap: 1
+                    }}>
+                        <ForumIcon fontSize="small" />
+                        {t("ihqInfo")}
+                    </MuiLink>
+                    <MuiLink href="https://groups.google.com/a/mik.fi/forum/#!forum/stl-info" target="_blank" sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        gap: 1
+                    }}>
+                        <ForumIcon fontSize="small" />
+                        {t("stlInfo")}
+                    </MuiLink>
+                </Stack>
+
+                <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 500 }}>
+                    {t("GeneralResourcesDescriptionFour")}
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                    {t("GeneralResourcesDescriptionFourText")}
+                </Typography>
+                <Button 
+                    component={Link} 
+                    href="/members/international_flight_planning" 
+                    variant="text" 
+                    startIcon={<FlightIcon />}
+                    sx={{ textTransform: 'none' }}
+                >
+                    {t("internationalFlightPlanning")}
+                </Button>
+            </Paper>
         </Box>
     );
 }

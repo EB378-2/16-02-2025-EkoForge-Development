@@ -10,7 +10,7 @@ export default async function Layout({ children }: React.PropsWithChildren) {
     return redirect(data?.redirectTo || "/login");
   }
 
-  return <CanAccess  fallback={<div>You cannot access this section</div>}>{children}</CanAccess>;
+  return <CanAccess fallback={<div>You cannot access this section</div>}>{children}</CanAccess>;
 }
 
 async function getData() {
