@@ -37,32 +37,9 @@ import {
   Euro as EuroIcon,
   CalendarToday as CalendarIcon,
 } from "@mui/icons-material";
+import { ProfileName, ProfilePhone } from "@components/functions/FetchFunctions";
 
 
-// Component to display a profile's full name based on profileId.
-function ProfileName({ profileId }: { profileId: string }) {
-  const { queryResult } = useShow({
-    resource: "profiles",
-    id: profileId,
-    meta: { select: "first_name,last_name" },
-    queryOptions: { enabled: !!profileId },
-  });
-  const profileData = queryResult?.data?.data as { first_name: string; last_name: string } | undefined;
-  if (!profileData) return <span>Loading...</span>;
-  return <span>{profileData.first_name} {profileData.last_name}</span>;
-}
-
-function ProfilePhone({ profileId }: { profileId: string }) {
-  const { queryResult } = useShow({
-    resource: "profiles",
-    id: profileId,
-    meta: { select: "phone_number" },
-    queryOptions: { enabled: !!profileId },
-  });
-  const profileData = queryResult?.data?.data as { phone_number: string; } | undefined;
-  if (!profileData) return <span>Loading...</span>;
-  return <span>{profileData.phone_number}</span>;
-}
 
 const FlightSchoolPage: React.FC = () => {
   const t = useTranslations("FlightSchool");

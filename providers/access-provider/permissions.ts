@@ -93,12 +93,12 @@ p, member, logbook/*, (edit)|(show)|(delete)
 p, admin, stats, (list)|(show)
 
 
-p, admin, handbooks, (list)|(create)
-p, admin, handbooks/*, (edit)|(show)|(delete)
+p, admin, handbooks, (list)
+p, member, handbooks, (list)
 
 
-p, admin, instructions, (list)|(create)
-p, admin, instructions/*, (edit)|(show)|(delete)
+p, admin, instructions, (list)
+p, member, instructions, (list)
 
 p, admin, profiles_list, (list)|(create)
 p, admin, profiles_list/*, (edit)|(show)|(delete)
@@ -106,16 +106,14 @@ p, member, profiles_list, (list)
 p, member, profiles_list/*, (show)
 
 p, admin, flightschool_members, (list)
+p, member, flightschool_members, (list)
 
 p, admin, instructors, (list)|(create)
 p, admin, instructors/*, (edit)|(show)|(delete)
 p, member, instructors, (list)
-p, member, instructors/*, (show)
 
-p, admin, students, (list)|(create)
-p, admin, students/*, (edit)|(show)|(delete)
+p, admin, students, (list)
 p, member, students, (list)
-p, member, students/*, (show)
 `);
 
 

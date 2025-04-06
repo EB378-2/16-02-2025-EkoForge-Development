@@ -95,7 +95,7 @@ CREATE TABLE public.instructors (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     profile_id uuid NOT NULL,
     rating_level VARCHAR(50),
-    availability TEXT,
+    availability JSON,
     created_at TIMESTAMP with time zone NOT NULL DEFAULT now(),
     updated_at TIMESTAMP with time zone NOT NULL DEFAULT now(),
     CONSTRAINT fk_instructor_profile FOREIGN KEY (profile_id)

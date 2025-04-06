@@ -22,45 +22,9 @@ import {
   Report as ReportIcon,
   Add as AddIcon
 } from "@mui/icons-material";
+import { ProfileName } from "@/components/functions/FetchFunctions";
+import { getExtraParameterKeys, Notice } from "@/components/functions/FormatFunctions";
 
-interface Notice {
-  id: string;
-  title: string;
-  message: string;
-  time_off_incident?: string;
-  submitted_by: string;
-  extra_parameters?: Record<string, any>;
-  created_at: string;
-  updated_at: string;
-}
-
-function ProfileName({ profileId }: { profileId: string }) {
-  const { queryResult } = useShow({
-    resource: "profiles",
-    id: profileId,
-    meta: { select: "first_name,last_name" },
-    queryOptions: { enabled: !!profileId },
-  });
-  const profileData = queryResult?.data?.data as { first_name: string; last_name: string } | undefined;
-  
-  if (!profileData) return <Typography variant="body2" color="text.secondary">Loading...</Typography>;
-  
-  return (
-    <Typography variant="body2">
-      {profileData.first_name} {profileData.last_name}
-    </Typography>
-  );
-}
-
-function getExtraParameterKeys(rows: Notice[]): string[] {
-  const keys = new Set<string>();
-  rows.forEach((row) => {
-    if (row.extra_parameters && typeof row.extra_parameters === "object") {
-      Object.keys(row.extra_parameters).forEach((key) => keys.add(key));
-    }
-  });
-  return Array.from(keys);
-}
 
 export default function NoticesList() {
   const {

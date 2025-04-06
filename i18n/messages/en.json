@@ -351,6 +351,146 @@
     "joinUsTitle": "Interested? Join Us!",
     "joinUsText": "Interested? Get in touch with us and become a member! We will help you get started in this fantastic hobby.",
     "joinNow": "Join Now"
+  },
+  "Manuals": {
+    "title": "Aircraft Manuals and Documents",
+    "description1": "Here are the club aircraft documents to assist with flight planning. Naturally, the official copies are in the respective aircraft, and we strive to keep these up to date. However, the possibility of human error always exists, so please verify the currency of documents before flight!",
+    "description2": "Please report any errors or deficiencies you notice to kalusto@mik.fi. Aircraft profiles are also available on the club's GitHub, so you can suggest changes if you wish.",
+    "reportErrors": "Report Errors",
+    "githubProfiles": "Aircraft Profiles on GitHub",
+    "notice": "Important Notice",
+    "noticeText": "Use of the aircraft requires understanding and compliance with the club's equipment instructions.",
+    "aircraftCommunication": "Aircraft-specific Communication",
+    "mailingList": "Mailing List",
+    "flightPlanEquipment": "Flight Plan Item 10 (EQUIPMENT)",
+    "download": "Download",
+    "otherResources": "Other Resources",
+    "view": "View"
+  },
+  "Instructions": {
+    "title": "Operational Instructions",
+    "description": "Flight operation guidelines and important documents for Malmi Aviation Club members.",
+    "operationalGuides": "Operational Guides",
+    "efprCharts": "EFPR Approach Charts",
+    "expenseReimbursement": "Expense Reimbursement",
+    "expenseInstructions": "Submit completed expense reimbursement form by email to laskutus@mik.fi",
+    "malmiGuide": "Malmi Airport Guidelines",
+    "download": "Download",
+    "downloadGuide": "Download Guide",
+    "submissionInfo": "Submit completed expense forms to the club treasurer.",
+    "submitExpenses": "Submit Expenses to laskutus@mik.fi"
+  },
+  "instructors": {
+    "title": "Flight Instructors",
+    "columns": {
+        "name": "Instructor",
+        "phone": "Phone",
+        "rating": "Rating Level",
+        "pplLapl": "PPL/LAPL",
+        "nightFlight": "NF",
+        "instrumentRating": "IR",
+        "recurrentTraining": "Recurrent",
+        "pricing": "Pricing",
+        "maxPricing": "Max Pricing"
+    },
+    "pricingInfo": {
+        "flightInstruction": "Flight instruction (per block)",
+        "licensedStudent": "Licensed student",
+        "unlicensedStudent": "Unlicensed student",
+        "theoryInstruction": "Theory instruction (per hour, divided among participants)"
+    }
+  },
+  "StudentChecklist": {
+    "welcome": {
+      "title": "Welcome to Malmi Flying Club",
+      "subtitle": "PPL Student Checklist"
+    },
+    "introduction": {
+      "paragraph1": "This checklist is primarily aimed at PPL students but applies to other training under our license. You'll have the same flight instructor until solo phase unless exceptional circumstances require a change.",
+      "paragraph2": "If you feel you cannot continue with your current instructor, contact the chief flight instructor. You can submit feedback or reports anonymously via the club's mailbox (marked \"TRAINING FEEDBACK/REPORT\") or through the website form (currently unavailable).",
+      "importantNote": "Please contact the chief flight instructor immediately if you believe safety was or could have been compromised, or if you have any observations about training or equipment."
+    },
+    "checklistTitle": "Training Checklist",
+    "sections": {
+      "beforeTraining": {
+        "title": "Before Training Begins",
+        "items": [
+          "Aviation medical certificate (valid)",
+          "Training contract with Malmi Flying Club",
+          "Student license application (signed by chief flight instructor)",
+          "Ground school can be studied alongside flight training"
+        ],
+        "note": "Note: Theory can be studied alongside flight training, but certain exams must be passed before first solo. Starting flight training late in autumn may not be advisable due to weather conditions."
+      },
+      "beforeFirstFlight": {
+        "title": "Before First Flight Lesson",
+        "items": [
+          "Medical certificate copy in training folder",
+          "Student license copy in training folder",
+          "Training syllabus in folder",
+          "Ensure logbook and aircraft journey log are onboard for every flight"
+        ]
+      },
+      "beforeSoloFlight": {
+        "title": "Requirements Before First Solo",
+        "items": [
+          "Passed exams: Aviation Regulations, Flight Theory, Radiotelephony",
+          "Proficient in radiotelephony with ATC",
+          "Completed aircraft systems oral exam",
+          "Progress check flight with another instructor",
+          "Approved by chief flight instructor"
+        ]
+      },
+      "beforeFlightTest": {
+        "title": "Before Flight Test",
+        "items": [
+          "Valid student license and medical",
+          "Completed ground and flight training certificates",
+          "Club recommendation for flight test",
+          "Passed official theoretical exam",
+          "If applicable: Failed flight test report"
+        ]
+      }
+    },
+    "licenseApplication": {
+      "title": "License Application Documents",
+      "description": "The following documents must be included with your license application:",
+      "items": [
+        "Ground school certificate",
+        "Flight training certificate",
+        "Check pilot statement",
+        "Copy from logbook",
+        "Official theory exam results (copy)",
+        "Language proficiency certificate",
+        "Passport copy (non-Finnish citizens)"
+      ],
+      "note": "Note: The official theory exam results should already be available to the authority, but include a copy for reference. Night rating cannot be included as part of LAPL(A)/PPL(A) training."
+    },
+    "instructors": {
+      "title": "Training Contacts",
+      "columns": {
+        "name": "Instructor",
+        "phone": "Phone",
+        "rating": "Rating Level",
+        "pplLapl": "PPL/LAPL",
+        "nightFlight": "NF",
+        "instrumentRating": "IR",
+        "recurrentTraining": "Recurrent",
+        "pricing": "Pricing",
+        "maxPricing": "Max Pricing"
+      },
+      "pricingInfo": {
+        "flightInstruction": "Flight instruction (per block)",
+        "licensedStudent": "Licensed student",
+        "unlicensedStudent": "Unlicensed student",
+        "theoryInstruction": "Theory instruction (per hour, divided among participants)"
+      },
+      "chiefInstructor": "Chief Flight Instructor: Rami Sadik",
+      "aircraftEquipment": {
+        "title": "Aircraft Equipment",
+        "list": "Training aircraft: OH-SRH, OH-IHQ (no NF), OH-STL"
+      },
+      "lastUpdated": "Last updated: 28.10.2020 | Training license valid indefinitely"
+    }
   }
-  
 }

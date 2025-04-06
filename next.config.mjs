@@ -5,7 +5,6 @@ const withPWA = withPWAInit({
   dest: "public",
   register: true,
   skipWaiting: true,
-  disable: process.env.NODE_ENV === "development",
   runtimeCaching: [
     {
       urlPattern: /^https?.*/,
@@ -35,11 +34,6 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
-  // Add these experimental flags if using App Router
-  experimental: {
-    appDir: true,
-    esmExternals: "loose",
-  },
   // Ensure static files are properly handled
   images: {
     unoptimized: true, // Disable if you need image optimization

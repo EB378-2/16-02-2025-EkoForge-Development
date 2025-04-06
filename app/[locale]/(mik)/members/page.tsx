@@ -40,6 +40,7 @@ import {
   FlightLand,
 } from "@mui/icons-material";
 import { format, parseISO, isAfter } from "date-fns";
+import { ResourceName } from "@/components/functions/FetchFunctions";
 
 // --------------------
 // Interfaces
@@ -128,26 +129,6 @@ function BlogCard({ blog }: { blog: Blog }) {
   );
 }
 
-// --------------------
-// Resource Name Component
-// --------------------
-function ResourceName({ id }: { id: string }) {
-  const { data, isLoading } = useOne({
-    resource: "resources",
-    id: id,
-    meta: { select: "name" },
-    queryOptions: { enabled: !!id },
-  });
-
-  if (isLoading) return <Skeleton variant="text" width={60} />;
-  
-  return (
-    <Stack direction="row" alignItems="center" spacing={1}>
-      <Flight fontSize="small" color="action" />
-      <Typography variant="body2">{data?.data?.name || "Unknown"}</Typography>
-    </Stack>
-  );
-}
 
 // --------------------
 // Booking Time Component

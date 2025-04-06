@@ -4,6 +4,8 @@ import React from "react";
 import { Show } from "@refinedev/mui";
 import { useShow } from "@refinedev/core";
 import { Box, Grid, Typography } from "@mui/material";
+import { formatHHmm } from "@/components/functions/FormatFunctions";
+import { ResourceName, ProfileName } from "@/components/functions/FetchFunctions";
 
 interface Logbook {
   profile_id: string;
@@ -30,43 +32,6 @@ interface Logbook {
   updated_at: string;
 }
 
-// Helper to format time strings as four-digit HHmm.
-function formatHHmm(value: string | number | null | undefined): string {
-  if (!value) return "0000";
-  if (typeof value === "number") return value.toString().padStart(4, "0");
-  if (typeof value === "string") return value.padStart(4, "0");
-  return "0000";
-}
-
-// Helper component to display a profile's full name based on profileId.
-function ProfileName({ profileId }: { profileId: string }) {
-  const { queryResult } = useShow({
-    resource: "profiles",
-    id: profileId,
-    meta: { select: "first_name,last_name" },
-    queryOptions: { enabled: !!profileId },
-  });
-  const profileData = queryResult?.data?.data as { first_name: string; last_name: string } | undefined;
-  if (!profileData) return <Typography>Loading...</Typography>;
-  return (
-    <Typography>
-      {profileData.first_name} {profileData.last_name}
-    </Typography>
-  );
-}
-
-// Helper component to display a resource's name based on id.
-function ResourceName({ id }: { id: string }) {
-  const { queryResult } = useShow({
-    resource: "resources",
-    id: id,
-    meta: { select: "name" },
-    queryOptions: { enabled: !!id },
-  });
-  const resourceData = queryResult?.data?.data as { name: string } | undefined;
-  if (!resourceData) return <Typography>Loading...</Typography>;
-  return <Typography>{resourceData.name}</Typography>;
-}
 
 export default function LogbookShowPage() {
   const { queryResult } = useShow<Logbook>({ resource: "logbook", meta: { select: "*" } });

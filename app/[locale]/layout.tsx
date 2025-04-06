@@ -303,7 +303,7 @@ export default async function RootLayout({
                         edit: `/${locale}/members/handbooks/show/:id`,
                         meta: {
                           icon: <LibraryBooksIcon />,
-                          label: `Handbooks`,
+                          label: `Manuals`,
                           parent: "members_dropdown",
                         },
                       },

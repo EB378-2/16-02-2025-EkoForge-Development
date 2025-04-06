@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useList, useNavigation, useOne, useShow } from "@refinedev/core";
+import { useList} from "@refinedev/core";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { 
@@ -31,6 +31,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
+import { ProfileName } from "@components/functions/FetchFunctions";
 
 const BlogPage: React.FC = () => {
   const t = useTranslations("Blog");
@@ -54,19 +55,6 @@ const BlogPage: React.FC = () => {
       }),
     },
   });
-
-  // Component to display a profile's full name based on profileId
-  function ProfileName({ profileId }: { profileId: string }) {
-    const { queryResult } = useShow({
-      resource: "profiles",
-      id: profileId,
-      meta: { select: "first_name,last_name" },
-      queryOptions: { enabled: !!profileId },
-    });
-    const profileData = queryResult?.data?.data as { first_name: string; last_name: string } | undefined;
-    if (!profileData) return <span>Loading...</span>;
-    return <span>{profileData.first_name} {profileData.last_name}</span>;
-  }
 
   // Get older posts (excluding the latest 3)
   const { data: olderPosts, isLoading: isLoadingOlder } = useList({
