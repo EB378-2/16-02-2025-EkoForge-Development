@@ -47,5 +47,5 @@ export const authProviderServer: Pick<AuthProvider, "check" | "getPermissions"> 
         console.error(error);
         return;
     }
-},
+  },
 };

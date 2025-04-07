@@ -37,12 +37,13 @@ import { authProviderClient } from "@/providers/auth-provider/auth-provider.clie
 import { dataProvider } from "@/providers/data-provider";
 import type { Viewport } from "next";
 
-import { accessControlProvider } from "@/providers/access-provider"
+import { accessControlProvider } from "@providers/access-provider/access-control.client"
 
 
 import { Header } from "@/components/header";
 import { ThemedLayoutV2 } from "@refinedev/mui";
 import { CustomSider } from "@/components/CustomSider";
+import { SessionSync } from "@components/SessionSync";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -125,9 +126,7 @@ export default async function RootLayout({
                     authProvider={authProviderClient}
                     dataProvider={dataProvider}
                     notificationProvider={useNotificationProvider}
-                    accessControlProvider={{
-                      can: accessControlProvider,
-                    }}
+                    accessControlProvider={accessControlProvider}
                     resources={[
                       {
                         name: "home",
@@ -372,6 +371,7 @@ export default async function RootLayout({
                       Header={Header}
                       Sider={CustomSider}
                     >
+                    <SessionSync />
                       {children}
                     </ThemedLayoutV2>
                     <RefineKbar />
