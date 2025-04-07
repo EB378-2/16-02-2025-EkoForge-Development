@@ -38,12 +38,14 @@ import {
   CalendarToday as CalendarIcon,
 } from "@mui/icons-material";
 import { ProfileName, ProfilePhone } from "@components/functions/FetchFunctions";
-
+import { useColorMode } from "@contexts/color-mode";
+import { getTheme } from "@theme/theme";
 
 
 const FlightSchoolPage: React.FC = () => {
   const t = useTranslations("FlightSchool");
-  const theme = useTheme();
+  const { mode } = useColorMode();
+  const theme = getTheme(mode);
 
   // Fetch instructors data
   const { data: instructorsData } = useList({

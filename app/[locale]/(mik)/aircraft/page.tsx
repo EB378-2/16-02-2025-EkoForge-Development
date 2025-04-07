@@ -29,10 +29,13 @@ import {
   Settings as EquipmentIcon,
   Groups as GroupIcon,
 } from "@mui/icons-material";
+import { useColorMode } from "@contexts/color-mode";
+import { getTheme } from "@theme/theme";
 
 const AircraftPage: React.FC = () => {
   const t = useTranslations("Aircraft");
-  const theme = useTheme();
+  const { mode } = useColorMode();
+  const theme = getTheme(mode);
 
   // Animation variants
   const fadeInUp = {

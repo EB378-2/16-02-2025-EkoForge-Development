@@ -14,6 +14,7 @@ interface Blog {
   published_at: string | null;
   created_at: string;
   updated_at: string;
+  image_link: string;
 }
 
 export default function BlogCreatePage() {
@@ -49,6 +50,12 @@ export default function BlogCreatePage() {
             rows={6}
             {...register("content", { required: "Content is required" })}
             helperText={typeof errors.content?.message === "string" ? errors.content.message : ""}
+          />
+           <TextField
+            label="Image Link"
+            rows={6}
+            {...register("image_link")}
+            helperText={typeof errors.image_link?.message === "string" ? errors.image_link.message : ""}
           />
         </Box>
       </Paper>

@@ -15,6 +15,7 @@ interface Blog {
   published_at: string | null;
   created_at: string;
   updated_at: string;
+  image_link: string;
 }
 
 export default function BlogEditPage() {
@@ -23,7 +24,6 @@ export default function BlogEditPage() {
     register,
     formState: { errors },
     saveButtonProps,
-    watch,
   } = useForm<Blog>();
 
   
@@ -47,6 +47,13 @@ export default function BlogEditPage() {
             {...register("content", { required: "Content is required" })}
             error={!!errors.content}
             helperText={typeof errors.content?.message === "string" ? errors.content.message : ""}
+          />
+          <TextField
+            label="Image Link"
+            rows={6}
+            {...register("image_link")}
+            error={!!errors.image_link}
+            helperText={typeof errors.image_link?.message === "string" ? errors.image_link.message : ""}
           />
         </Box>
       </Paper>

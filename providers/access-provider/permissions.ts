@@ -18,28 +18,25 @@ m = g(r.sub, p.sub) && keyMatch(r.obj, p.obj) && regexMatch(r.act, p.act)
 `);
 
 export const adapter = new StringAdapter(`
+//Roles
+g, anonymous, anonymous
+g, nonflyer, anonymous
+g, member, anonymous
+g, student, member
+g, instructor, member
+g, admin, instructor
+g, admin, student
+g, admin, nonflyer
+
+
+
+
 // Public resources accessible to everyone (anonymous), regardless of login status.
 p, anonymous, home, (list)|(show)
 p, anonymous, blogs, (list)|(show)
 p, anonymous, flightschool, (list)|(show)
 p, anonymous, club, (list)|(show)
 p, anonymous, fleet, (list)|(show)
-
-// Also include policies for logged-in roles.
-p, admin, home, (list)|(show)
-p, member, home, (list)|(show)
-
-p, admin, blogs, (list)|(show)
-p, member, blogs, (list)|(show)
-
-p, admin, flightschool, (list)|(show)
-p, member, flightschool, (list)|(show)
-
-p, admin, club, (list)|(show)
-p, member, club, (list)|(show)
-
-p, admin, fleet, (list)|(show)
-p, member, fleet, (list)|(show)
 
 
 

@@ -40,10 +40,13 @@ import {
   ExpandMore as ExpandMoreIcon,
   History as HistoryIcon,
 } from "@mui/icons-material";
+import { useColorMode } from "@contexts/color-mode";
+import { getTheme } from "@theme/theme";
 
 const ClubPage: React.FC = () => {
   const t = useTranslations("Club");
-  const theme = useTheme();
+  const { mode } = useColorMode();
+  const theme = getTheme(mode);
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {

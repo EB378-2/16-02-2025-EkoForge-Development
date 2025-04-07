@@ -32,10 +32,13 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 import { ProfileName } from "@components/functions/FetchFunctions";
+import { useColorMode } from "@contexts/color-mode";
+import { getTheme } from "@theme/theme";
 
 const BlogPage: React.FC = () => {
   const t = useTranslations("Blog");
-  const theme = useTheme();
+  const { mode } = useColorMode();
+  const theme = getTheme(mode);
   const [expanded, setExpanded] = useState(false);
   const [selectedPost, setSelectedPost] = useState<any>(null);
   const [openModal, setOpenModal] = useState(false);

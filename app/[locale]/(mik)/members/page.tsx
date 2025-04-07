@@ -279,7 +279,7 @@ export default function FrontPage() {
           {/* Welcome Section */}
           <Paper sx={{ p: 3, mb: 3, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
             <Typography variant="h5" gutterBottom>
-              Welcome Back, Pilot!
+              Welcome Back!
             </Typography>
             <Typography variant="body1" sx={{ mb: 2 }}>
               Stay updated with the latest club news and manage your flights.
@@ -326,10 +326,10 @@ export default function FrontPage() {
                 variant="text" 
                 size="small" 
                 component={Link}
-                href="/members/blogs"
+                href="/blogs"
                 endIcon={<Add fontSize="small" />}
               >
-                View All
+                See More
               </Button>
             </Stack>
             

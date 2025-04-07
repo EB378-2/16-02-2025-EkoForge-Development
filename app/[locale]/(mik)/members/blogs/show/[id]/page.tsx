@@ -3,7 +3,7 @@
 import React from "react";
 import { Show } from "@refinedev/mui";
 import { useShow } from "@refinedev/core";
-import { Box, Typography, Paper } from "@mui/material";
+import { Box, Typography, Paper, CardMedia } from "@mui/material";
 
 // Blog interface matching your table structure.
 interface Blog {
@@ -14,6 +14,7 @@ interface Blog {
   published_at: string | null;
   created_at: string;
   updated_at: string;
+  image_link: string;
 }
 
 // Helper component to fetch and display the author's full name.
@@ -42,6 +43,13 @@ export default function BlogShowPage() {
   return (
     <Show title="Blog Details">
       <Paper sx={{ p: 3, m: 2 }}>
+        <CardMedia
+          component="img"
+          height="300"
+          image={blog.image_link || "/ihq.jpeg"}
+          alt={blog.title}
+          sx={{ borderRadius: 1, mb: 2 }}
+        />
         <Typography variant="h4" gutterBottom>
           {blog.title}
         </Typography>

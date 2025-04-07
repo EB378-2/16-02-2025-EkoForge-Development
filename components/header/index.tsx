@@ -1,6 +1,6 @@
 "use client";
 
-import { ColorModeContext } from "@contexts/color-mode";
+import { ColorModeContext, useColorMode } from "@contexts/color-mode";
 import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
 import AppBar from "@mui/material/AppBar";
@@ -14,6 +14,7 @@ import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import React, { useContext } from "react";
 import Lang from "@components/ui/Lang";
 import { Button, Link } from "@mui/material";
+import { getTheme } from "@theme/theme";
 
 type IUser = {
   id: number;
@@ -37,6 +38,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   sticky = true,
 }) => {
   const { mode, setMode } = useContext(ColorModeContext);
+  const theme = getTheme(mode);
 
   const { data: user } = useGetIdentity<IUser>();
 
@@ -50,6 +52,20 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
           alignItems="center"
         >
           <HamburgerMenu />
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{
+              flexGrow: 1,
+              display: {
+                xs: "none",
+                sm: "block",
+                color: theme.palette.error.main,
+              },
+            }}
+          >
+            BETA TESTING
+          </Typography>
           <Stack
             direction="row"
             width="100%"

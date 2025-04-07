@@ -145,6 +145,7 @@ export default async function RootLayout({
                         meta: {
                           label: `Blog`,
                           icon: <DynamicFeedIcon />,
+                          canDelete: true,
                         },
                       },
                       {
