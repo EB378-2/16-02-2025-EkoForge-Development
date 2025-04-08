@@ -16,18 +16,9 @@ import {
 import { Create } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import { Controller } from "react-hook-form";
-import { useGetIdentity } from "@refinedev/core";
 import { useTranslations } from "next-intl";
+import { NoticeData } from "@/components/types";
 
-interface NoticeData {
-  title: string;
-  message: string;
-  time_off_incident?: string;
-  extra_parameters?: {
-    conditions: string[];
-    severity: string;
-  };
-}
 
 export default function NoticeCreatePage() {
   const t = useTranslations("Notices");

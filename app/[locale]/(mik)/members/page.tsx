@@ -39,53 +39,18 @@ import {
   AirplaneTicket,
   FlightLand,
 } from "@mui/icons-material";
-import { format, parseISO, isAfter } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { ResourceName } from "@/components/functions/FetchFunctions";
+import { Booking, Blog, LogBookEntry } from "@/components/types";
+import { useTheme } from "@components/functions/useTheme";
 
-// --------------------
-// Interfaces
-// --------------------
-
-interface Blog {
-  id: string;
-  profile_id: string;
-  title: string;
-  content: string;
-  published_at: string | null;
-  created_at: string;
-  updated_at: string;
-}
-
-interface Booking {
-  id?: string;
-  profile_id: string;
-  resource_id: string;
-  start_time: string;
-  end_time: string;
-  title?: string;
-  notes?: string;
-  instructor_id?: string;
-  flight_type?: string;
-  created_at?: string;
-  updated_at?: string;
-}
-
-interface Resource {
-  id: string;
-  name: string;
-}
-
-interface LogBookEntry {
-  id: string;
-  flight_date: string;
-  flightHours: number;
-}
 
 // --------------------
 // Blog Card Component
 // --------------------
 
 function BlogCard({ blog }: { blog: Blog }) {
+  const theme = useTheme();
   const { data: profileData, isLoading: profileLoading } = useOne<any>({
     resource: "profiles",
     id: blog.profile_id,
@@ -134,6 +99,7 @@ function BlogCard({ blog }: { blog: Blog }) {
 // Booking Time Component
 // --------------------
 function BookingTime({ start, end }: { start: string; end: string }) {
+  const theme = useTheme();
   const startDate = parseISO(start);
   const endDate = parseISO(end);
   const duration = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60);
@@ -163,6 +129,7 @@ function BookingTime({ start, end }: { start: string; end: string }) {
 // Front Page Component
 // --------------------
 export default function FrontPage() {
+  const theme = useTheme();
   // Get current user identity
   const { data: identityData } = useGetIdentity<{ id: string }>();
   const currentUserId = identityData?.id;
@@ -326,7 +293,7 @@ export default function FrontPage() {
                 variant="text" 
                 size="small" 
                 component={Link}
-                href="/blogs"
+                href="/blog"
                 endIcon={<Add fontSize="small" />}
               >
                 See More
@@ -447,7 +414,7 @@ export default function FrontPage() {
                 <CalendarToday sx={{ verticalAlign: 'middle', mr: 1 }} />
                 Your Upcoming Bookings
               </Typography>
-              <Tooltip title="Create new booking">
+              <Tooltip title="New booking">
                 <IconButton 
                   color="primary" 
                   component={Link}
@@ -507,7 +474,7 @@ export default function FrontPage() {
                 <Button 
                   variant="contained"
                   component={Link}
-                  href="/members/bookings/create"
+                  href="/members/bookings"
                   startIcon={<Add />}
                 >
                   Book a Flight

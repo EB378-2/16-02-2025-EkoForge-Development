@@ -3,21 +3,12 @@
 import React from "react";
 import { Create } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
-import { useGetIdentity, useOne } from "@refinedev/core";
-import { Box, TextField, Typography, Paper } from "@mui/material";
-
-interface Blog {
-  id: string;
-  profile_id: string;
-  title: string;
-  content: string;
-  published_at: string | null;
-  created_at: string;
-  updated_at: string;
-  image_link: string;
-}
+import { Box, TextField, Paper } from "@mui/material";
+import { Blog } from "@/components/types";
+import { useTheme } from "@components/functions/useTheme";
 
 export default function BlogCreatePage() {
+  const theme = useTheme();
 
   const {
     register,

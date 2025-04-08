@@ -2,21 +2,20 @@
 
 import React from "react";
 import { RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
-import { useColorMode } from "@contexts/color-mode";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import { getTheme } from "@theme/theme";
 import { usePathname, useRouter } from "next/navigation";
+import { useTheme } from "@components/functions/useTheme";
 
+//Interface stays here.
 interface NavbarProps extends RefineThemedLayoutV2HeaderProps {
   children?: React.ReactNode;
   locale?: string;
 }
 
 const Lang: React.FC<NavbarProps> = ({ locale }) => {
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
-
+  
+  const theme = useTheme();
   const pathname = usePathname();
   const router = useRouter();
   const currentLocale = pathname.split("/")[1] || locale || "en";

@@ -7,25 +7,8 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Stack, Chip, Tooltip, Typography, Box, Paper, Divider } from "@mui/material";
 import { ProfileName, ProfilePhone } from "@/components/functions/FetchFunctions";
 import { useTranslations } from "next-intl";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
-
-interface Instructor {
-    id: number;
-    profile_id: string;
-    rating_level?: string;
-    availability?: {
-        PPL?: boolean;
-        LAPL?: boolean;
-        NF?: boolean;
-        IR?: boolean;
-        Kertauskoulutus?: boolean;
-        Veloitus?: string;
-        [key: string]: string | boolean | undefined;
-    };
-    created_at: string;
-    updated_at: string;
-}
+import { useTheme } from "@components/functions/useTheme";
+import { Instructor } from "@/components/types";
 
 const maxPricing = {
     flightUnlicensed: "100 €/block (unlicensed student)",
@@ -42,8 +25,7 @@ const trainingManagerInfo = {
 
 export default function InstructorsList() {
     const t = useTranslations("instructors");
-    const { mode } = useColorMode();
-      const theme = getTheme(mode);
+    const theme = useTheme();
     
     const {
         tableQueryResult,

@@ -9,16 +9,7 @@ import {
 import { useTable } from "@refinedev/core";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Stack, Typography } from "@mui/material";
-
-interface Resource {
-  id: number;
-  resource_type: "aircraft" | "simulator" | "classroom";
-  name: string;
-  status: "available" | "maintenance" | "booked";
-  created_at: string;
-  updated_at: string;
-  // Optionally, aggregated fields might be stored in the record.
-}
+import { Resource } from "@/components/types";
 
 // This component simulates fetching aggregated data (total flight hours, total landings, and hours until next service)
 // for a given resource. In production, replace this with a real API call or useCustom hook.

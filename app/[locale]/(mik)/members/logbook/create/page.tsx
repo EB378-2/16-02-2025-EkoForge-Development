@@ -7,29 +7,7 @@ import { FormProvider, useFormContext } from "react-hook-form";
 import { Box, Grid, TextField, MenuItem, FormControlLabel, Checkbox } from "@mui/material";
 import { format } from "date-fns";
 import { useList } from "@refinedev/core";
-
-interface Logbook {
-  profile_id: string;
-  resource_id: number;
-  flight_date: string; // ISO date string
-  flight_time: string; // "HHmm" format, e.g., "0103"
-  notes?: string;
-  block_off_time?: string; // expected "HH:mm" from input
-  takeoff_time?: string;   // expected "HH:mm"
-  landing_time?: string;   // expected "HH:mm"
-  block_on_time?: string;  // expected "HH:mm"
-  block_time: string;      // "HHmm" format
-  landings?: number;
-  flight_details: Record<string, string>; // e.g., { nf: "detail", tgl: "airport info" }
-  fuel_left?: number;
-  billing_info?: string;
-  pax?: number;
-  departure_place?: string;
-  arrival_place?: string;
-  flight_type?: string;
-  pic_id?: string;
-  student_id?: string;
-}
+import { Logbook } from "@/components/types";
 
 function FlightDetailsSection() {
   const { setValue } = useFormContext<Logbook>();
@@ -317,6 +295,10 @@ export default function LogbookCreatePage() {
                 label="Student"
                 {...register("student_id")}
               >
+                {/* Default "N/a" option */}
+                <MenuItem>
+                  <em>N/a</em>
+                </MenuItem>
                 {profilesData?.data?.map((profile) => (
                   <MenuItem key={profile.id} value={profile.id}>
                     {profile.first_name} {profile.last_name}

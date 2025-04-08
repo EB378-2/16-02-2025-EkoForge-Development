@@ -5,18 +5,7 @@ import { Show } from "@refinedev/mui";
 import { Box, Card, CardContent, CardHeader, Divider, Stack, Typography } from "@mui/material";
 import { useShow } from "@refinedev/core";
 import { useTranslations } from "next-intl";
-
-interface NoticeData {
-  title: string;
-  message: string;
-  time_off_incident?: string;
-  extra_parameters?: {
-    conditions: string[];
-    severity: string;
-  };
-  created_at: string;
-  updated_at: string;
-}
+import { NoticeData } from "@/components/types";
 
 export default function NoticeShowPage() {
   const t = useTranslations("Notices");

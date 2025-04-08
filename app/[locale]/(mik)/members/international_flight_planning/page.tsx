@@ -3,12 +3,9 @@
 import React from "react";
 import {
   Box,
-  Paper,
   Typography,
-  Divider,
   CircularProgress,
-  Alert,
-  Link as MuiLink,
+  Alert, 
   Grid,
   Chip,
   Stack,
@@ -18,32 +15,19 @@ import {
   CardContent,
   Tooltip
 } from "@mui/material";
-import { List, EditButton, ShowButton, DeleteButton } from "@refinedev/mui";
+import { EditButton, ShowButton, DeleteButton } from "@refinedev/mui";
 import { useTable } from "@refinedev/core";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useTranslations } from "next-intl";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 import Image from "next/image";
 import {
   Flight as FlightIcon,
-  Public as PublicIcon,
   Description as DescriptionIcon,
-  Link as LinkIcon,
   OpenInNew as OpenInNewIcon,
-  Edit as EditIcon,
-  Visibility as VisibilityIcon,
-  Delete as DeleteIcon
 } from "@mui/icons-material";
+import { SectionProps } from "@/components/types";
 
-interface SectionProps {
-  title: string;
-  content: string;
-  linkText?: string;
-  linkUrl?: string;
-  imageSrc?: string;
-  imageAlt?: string;
-}
 
 const Section: React.FC<SectionProps> = ({ 
   title, 
@@ -128,8 +112,7 @@ const Section: React.FC<SectionProps> = ({
 
 export default function InternationalFlightPlanningPage() {
   const t = useTranslations("InternationalFlightPlanning");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
+  const theme = useTheme();
 
   const {
     tableQueryResult: tableQueryResultIntl,

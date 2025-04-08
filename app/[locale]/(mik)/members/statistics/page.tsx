@@ -5,13 +5,11 @@ import { useTranslations } from "next-intl";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { Box, Container, Typography, Button } from "@mui/material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 
 const AboutBusinessPage: React.FC = () => {
   const t = useTranslations("AboutBusiness");
-  const { mode } = useColorMode();
-    const theme = getTheme(mode);
+  
 
   // Animation variants for Framer Motion.
   const fadeInUp = {

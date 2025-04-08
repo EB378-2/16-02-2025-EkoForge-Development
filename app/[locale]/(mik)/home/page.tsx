@@ -4,16 +4,14 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
-import { Box, Container, Typography, Button, Grid, useTheme, Divider } from "@mui/material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { Box, Container, Typography, Button, Grid, IconButton } from "@mui/material";
+import { useTheme } from "@components/functions/useTheme";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Image from "next/image";
 
 const AviationHomePage: React.FC = () => {
   const t = useTranslations("AviationHome");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
-  const muiTheme = useTheme();
+  const theme = useTheme();
 
   // Animation variants
   const fadeInUp = {
@@ -40,113 +38,93 @@ const AviationHomePage: React.FC = () => {
       <Box
         sx={{
           position: "relative",
-          minHeight: 220,
+          minHeight: { xs: "60vh", sm: "50vh" }, // Smaller height
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: theme.palette.primary.light,
           textAlign: "center",
           overflow: "hidden",
+          backgroundColor: theme.palette.primary.dark, // Fallback background
+          borderRadius: "16px",
+          py: 4, // Padding for breathing room
         }}
       >
-        {/* Background Image */}
+        {/* Simple Background Image */}
         <Image
           src="/feel-efhf2.jpg"
           alt="Aviation hero"
           fill
           style={{
             objectFit: "cover",
-            filter: "brightness(0.65)",
-            opacity: 0.75,
+            opacity: 0.7,
+            borderRadius: "16px",
           }}
           priority
         />
 
-        {/* Hero Content */}
-        <Container maxWidth="lg">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp}>
-              <Typography
-                variant="h2"
-                component="h2"
+        {/* Content Container */}
+        <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+            {/* Main Title - Simple and Clear */}
+            <Typography
+              variant="h3"
+              component="h1"
+              sx={{
+                fontWeight: 700,
+                fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+                mb: 2,
+                color: "#fff", // High contrast for readability
+                lineHeight: 1.3,
+              }}
+            >
+              {t("heroTitle")}
+            </Typography>
+
+            {/* Subtitle - Short and Scannable */}
+            <Typography
+              variant="h6"
+              component="p"
+              sx={{
+                mb: 3,
+                color: theme.palette.grey[200],
+                fontSize: { xs: "1rem", sm: "1.1rem" },
+                maxWidth: "600px",
+                mx: "auto",
+              }}
+            >
+              {t("heroSubtitle")}
+            </Typography>
+
+            {/* Single Clear CTA */}
+            <NextLink href="/signup" passHref>
+              <Button
+                variant="contained"
+                size="medium"
                 sx={{
-                  zIndex: 1000,
-                  fontWeight: 900,
-                  fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem" },
-                  mb: 3,
-                  
-                  textShadow: `2px 2px 8px ${theme.palette.strong.default}`,
+                  px: 4,
+                  py: 1,
+                  fontSize: "1rem",
+                  backgroundColor: theme.palette.secondary.main,
+                  color: "#fff",
+                  fontWeight: 600,
+                  borderRadius: "4px",
+                  "&:hover": {
+                    backgroundColor: theme.palette.secondary.dark,
+                    transform: "translateY(-2px)",
+                  },
+                  transition: "all 0.2s ease",
                 }}
               >
-                {t("heroTitle")}
-              </Typography>
-            </motion.div>
+                {t("bookFlight")}
+              </Button>
+            </NextLink>
           </motion.div>
         </Container>
       </Box>
-      <Box
-        sx={{
-          position: "relative",
-          mt: 5,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          overflow: "hidden",
-        }}
-      >
-        <motion.div variants={fadeInUp}>
-          <Typography
-            variant="h5"
-            component="p"
-            sx={{
-              maxWidth: 800,
-              mx: "auto",
-              mb: 4,
-              zIndex: 1000,
-              textShadow: "1px 1px 4px rgba(0,0,0,0.5)",
-            }}
-          >
-            {t("heroSubtitle")}
-          </Typography>
-        </motion.div>
-
-        <motion.div variants={fadeInUp}>
-          <NextLink href="/signup" passHref>
-            <Button
-              variant="contained"
-              size="large"
-              sx={{
-                px: 6,
-                py: 2,
-                fontSize: "1.1rem",
-                background: `linear-gradient(45deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
-                color: "white",
-                fontWeight: "bold",
-                borderRadius: 50,
-                boxShadow: 6,
-                zindex: 1000,
-                "&:hover": {
-                  transform: "translateY(-3px)",
-                  boxShadow: 8,
-                },
-                transition: "all 0.3s ease",
-              }}
-            >
-              {t("bookFlight")}
-            </Button>
-          </NextLink>
-        </motion.div>
-      </Box>  
 
 
       {/* About Section */}
-      <Box sx={{ py: 10, bgcolor: muiTheme.palette.background.default }}>
+      <Box sx={{ py: 10, bgcolor: theme.palette.background.default }}>
         <Container maxWidth="lg">
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} md={6}>
@@ -163,6 +141,7 @@ const AviationHomePage: React.FC = () => {
                     borderRadius: 4,
                     overflow: "hidden",
                     boxShadow: 6,
+                    display: { xs: "none", md: "block" }
                   }}
                 >
                   <Image
@@ -186,7 +165,7 @@ const AviationHomePage: React.FC = () => {
                   sx={{
                     fontWeight: "bold",
                     mb: 3,
-                    color: muiTheme.palette.text.primary,
+                    color: theme.palette.text.primary,
                   }}
                 >
                   {t("aboutTitle")}
@@ -228,7 +207,7 @@ const AviationHomePage: React.FC = () => {
       </Box>
 
       {/* Services Section */}
-      <Box sx={{ py: 10, bgcolor: muiTheme.palette.background.paper }}>
+      <Box sx={{ py: 10, bgcolor: theme.palette.background.paper }}>
         <Container maxWidth="lg">
           <motion.div
             initial="hidden"
@@ -242,7 +221,7 @@ const AviationHomePage: React.FC = () => {
                 fontWeight: "bold",
                 mb: 2,
                 textAlign: "center",
-                color: muiTheme.palette.text.primary,
+                color: theme.palette.text.primary,
               }}
             >
               {t("servicesTitle")}
@@ -254,7 +233,7 @@ const AviationHomePage: React.FC = () => {
                 textAlign: "center",
                 maxWidth: 700,
                 mx: "auto",
-                color: muiTheme.palette.text.secondary,
+                color: theme.palette.text.secondary,
               }}
             >
               {t("servicesSubtitle")}
@@ -274,7 +253,7 @@ const AviationHomePage: React.FC = () => {
                     sx={{
                       p: 4,
                       height: "100%",
-                      bgcolor: muiTheme.palette.background.default,
+                      bgcolor: theme.palette.background.default,
                       borderRadius: 4,
                       boxShadow: 2,
                       transition: "all 0.3s ease",
@@ -308,7 +287,7 @@ const AviationHomePage: React.FC = () => {
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ color: muiTheme.palette.text.secondary }}
+                      sx={{ color: theme.palette.text.secondary }}
                     >
                       {t(`serviceText${item}`)}
                     </Typography>
@@ -321,7 +300,7 @@ const AviationHomePage: React.FC = () => {
       </Box>
 
       {/* Testimonials */}
-      <Box sx={{ py: 10, bgcolor: muiTheme.palette.background.default }}>
+      <Box sx={{ py: 10, bgcolor: theme.palette.background.default }}>
         <Container maxWidth="md">
           <motion.div
             initial="hidden"
@@ -354,7 +333,7 @@ const AviationHomePage: React.FC = () => {
                     sx={{
                       p: 4,
                       height: "100%",
-                      bgcolor: muiTheme.palette.background.paper,
+                      bgcolor: theme.palette.background.paper,
                       borderRadius: 4,
                       boxShadow: 1,
                       position: "relative",

@@ -23,25 +23,13 @@ import {
   HttpError,
 } from "@refinedev/core";
 import { useTranslations } from "next-intl";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 import { EditButton } from "@refinedev/mui";
-
-interface ProfileData {
-  id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  phone_number: string;
-  avatar_url?: string;
-  ratings: string[]; 
-  flight_hours?: Record<string, number>;
-}
+import { ProfileData } from "@/components/types";
 
 export default function ProfilePage() {
   const t = useTranslations("Profile");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
+  const theme = useTheme();
 
   // Get the current user's identity.
   const { data: identity } = useGetIdentity<{ id: string }>();

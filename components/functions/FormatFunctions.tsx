@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { format, parseISO } from "date-fns";
+import { NoticeData } from "@/components/types";
 
 export const formatDateForInput = (dateStr: string) => {
   try {
@@ -19,20 +19,8 @@ export function formatHHmm(value: string | number | null | undefined): string {
   if (typeof value === "string") return value.padStart(4, "0");
   return "0000";
 }
-
-
-export interface Notice {
-    id: string;
-    title: string;
-    message: string;
-    time_off_incident?: string;
-    submitted_by: string;
-    extra_parameters?: Record<string, any>;
-    created_at: string;
-    updated_at: string;
-  }
   
-export function getExtraParameterKeys(rows: Notice[]): string[] {
+export function getExtraParameterKeys(rows: NoticeData[]): string[] {
     const keys = new Set<string>();
     rows.forEach((row) => {
       if (row.extra_parameters && typeof row.extra_parameters === "object") {

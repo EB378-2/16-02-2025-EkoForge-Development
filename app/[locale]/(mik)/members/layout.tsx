@@ -1,4 +1,4 @@
-import { authProviderServer } from "@/providers/auth-provider/auth-provider.server";
+import { getData } from "@/components/getData";
 import { redirect } from "next/navigation";
 import React from "react";
 import { CanAccess } from "@refinedev/core";
@@ -11,13 +11,4 @@ export default async function Layout({ children }: React.PropsWithChildren) {
   }
 
   return <CanAccess fallback={<div>You cannot access this section</div>}>{children}</CanAccess>;
-}
-
-async function getData() {
-  const { authenticated, redirectTo } = await authProviderServer.check();
-
-  return {
-    authenticated,
-    redirectTo,
-  };
 }

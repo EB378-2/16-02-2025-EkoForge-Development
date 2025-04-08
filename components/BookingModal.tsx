@@ -13,45 +13,8 @@ import {
   Typography,
 } from "@mui/material";
 import { formatDateForInput } from "@/components/functions/FormatFunctions";
-import { InstructorName } from "@/components/functions/FetchFunctions";
-
-const flightTypeOptions = Array.from(
-    new Set(["Private", "Commercial", "Cargo", "Training"])
-  );
-
-export interface Booking {
-    id?: string; // Optional for new records.
-    profile_id: string;
-    resource_id: string;
-    start_time: string;
-    end_time: string;
-    title?: string;
-    notes?: string;
-    instructor_id?: string;
-    flight_type?: string;
-    created_at?: string;
-    updated_at?: string;
-}
-  
-export interface Resource {
-    id: string;
-    name: string;
-}
-
-export interface Instructor {
-    id: string;
-    name: string;
-}
-
-interface BookingModalProps {
-  open: boolean;
-  booking: Booking | null;
-  isEditable: boolean;
-  instructors: Instructor[];
-  onClose: () => void;
-  onSave: (booking: Booking) => void;
-  onDelete: (bookingId: string) => void;
-}
+import { InstructorName, ProfileName, ProfilePhone } from "@/components/functions/FetchFunctions";
+import { flightTypeOptions, Booking, BookingModalProps } from "@/components/types";
 
 const BookingModal: React.FC<BookingModalProps> = ({
   open,
@@ -105,6 +68,10 @@ const BookingModal: React.FC<BookingModalProps> = ({
               ? "Edit Booking"
               : "View Booking"
             : "New Booking"}
+        </Typography>
+        <Typography variant="subtitle1" sx={{ mb: 1 }}>
+          <ProfileName profileId={localBooking.profile_id} /><br/>
+          <ProfilePhone profileId={localBooking.profile_id} />
         </Typography>
         <TextField
           fullWidth
@@ -161,6 +128,10 @@ const BookingModal: React.FC<BookingModalProps> = ({
               handleChange("instructor_id", e.target.value as string)
             }
           >
+            {/* Default "N/a" option */}
+            <MenuItem>
+              <em>N/a</em>
+            </MenuItem>
             {instructors.length > 0 ? (
               instructors.map((instr) => (
                 <MenuItem key={instr.id} value={instr.id}>

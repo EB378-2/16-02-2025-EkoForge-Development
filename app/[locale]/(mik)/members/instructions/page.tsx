@@ -13,11 +13,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Divider,
   Button,
-  Link,
   Paper,
-  useTheme
 } from "@mui/material";
 import {
   Description as DocumentIcon,
@@ -25,14 +22,11 @@ import {
   Email as EmailIcon,
   Download as DownloadIcon
 } from "@mui/icons-material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 
 const InstructionsPage: React.FC = () => {
   const t = useTranslations("Instructions");
-  const { mode } = useColorMode();
-    const theme = getTheme(mode);
-  
+  const theme = useTheme();
 
   const operationalGuides = [
     {

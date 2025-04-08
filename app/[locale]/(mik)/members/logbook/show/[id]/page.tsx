@@ -6,31 +6,7 @@ import { useShow } from "@refinedev/core";
 import { Box, Grid, Typography } from "@mui/material";
 import { formatHHmm } from "@/components/functions/FormatFunctions";
 import { ResourceName, ProfileName } from "@/components/functions/FetchFunctions";
-
-interface Logbook {
-  profile_id: string;
-  resource_id: number;
-  flight_date: string; // ISO date string
-  flight_time: string; // "HHmm" format
-  notes?: string;
-  block_off_time?: string;
-  takeoff_time?: string;
-  landing_time?: string;
-  block_on_time?: string;
-  block_time: string; // "HHmm" format
-  landings?: number;
-  flight_details: Record<string, string>;
-  fuel_left?: number;
-  billing_info?: string;
-  pax?: number;
-  departure_place?: string;
-  arrival_place?: string;
-  flight_type?: string;
-  pic_id?: string;
-  student_id?: string;
-  created_at: string;
-  updated_at: string;
-}
+import { Logbook } from "@/components/types";
 
 
 export default function LogbookShowPage() {

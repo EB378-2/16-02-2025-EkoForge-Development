@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useList, useShow } from "@refinedev/core";
+import { useList } from "@refinedev/core";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
@@ -17,10 +17,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Chip,
-  Divider,
-  useTheme,
-  Avatar,
   Card,
   CardContent,
   List,
@@ -35,17 +31,14 @@ import {
   Flight as FlightIcon,
   Person as PersonIcon,
   Euro as EuroIcon,
-  CalendarToday as CalendarIcon,
 } from "@mui/icons-material";
 import { ProfileName, ProfilePhone } from "@components/functions/FetchFunctions";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 
 
 const FlightSchoolPage: React.FC = () => {
   const t = useTranslations("FlightSchool");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
+  const theme = useTheme();
 
   // Fetch instructors data
   const { data: instructorsData } = useList({

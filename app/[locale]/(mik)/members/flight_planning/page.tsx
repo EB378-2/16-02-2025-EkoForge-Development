@@ -25,8 +25,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 import {
     Flight as FlightIcon,
     Description as DescriptionIcon,
@@ -36,22 +35,13 @@ import {
     Forum as ForumIcon
 } from "@mui/icons-material";
 import DashboardCard from "@components/flightplanning/DashboardCard";
-
-interface FlightPlan {
-    id: string;
-    profile_id: string;
-    route: string;
-    notes?: string;
-    international?: boolean;
-    created_at: string;
-    updated_at: string;
-}
+import { FlightPlan } from "@components/types";
 
 
 export default function FlightPlanList() {
     const t = useTranslations("FlightPlanList");
-    const { mode } = useColorMode();
-    const theme = getTheme(mode);
+    const theme = useTheme();
+    
 
     const {
         tableQueryResult,

@@ -5,17 +5,8 @@ import { List, EditButton, ShowButton, DeleteButton } from "@refinedev/mui";
 import { useTable } from "@refinedev/core";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Avatar} from "@mui/material";
+import { Profiles } from "@/components/types";
 
-interface Profile {
-    id: string;
-    first_name: string;
-    last_name: string;
-    email: string;
-    phone_number?: string;
-    avatar_url?: string;
-    created_at: string;
-    updated_at: string;
-}
 
 export default function MembersList() {
     const {
@@ -25,7 +16,7 @@ export default function MembersList() {
         setCurrent,
         pageSize,
         setPageSize,
-    } = useTable<Profile>({
+    } = useTable<Profiles>({
         resource: "profiles",
         initialSorter: [
             {

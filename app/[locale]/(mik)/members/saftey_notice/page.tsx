@@ -23,10 +23,12 @@ import {
   Add as AddIcon
 } from "@mui/icons-material";
 import { ProfileName } from "@/components/functions/FetchFunctions";
-import { getExtraParameterKeys, Notice } from "@/components/functions/FormatFunctions";
+import { getExtraParameterKeys } from "@/components/functions/FormatFunctions";
+import { NoticeData } from "@/components/types";
 
 
 export default function NoticesList() {
+  
   const {
     tableQueryResult,
     pageCount,
@@ -34,7 +36,7 @@ export default function NoticesList() {
     setCurrent,
     pageSize,
     setPageSize,
-  } = useTable<Notice>({
+  } = useTable<NoticeData>({
     resource: "notices",
     initialSorter: [{ field: "created_at", order: "desc" }],
     initialPageSize: 10,

@@ -14,10 +14,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Divider,
   Button,
-  Chip,
-  useTheme,
   Paper,
   Table,
   TableBody,
@@ -34,19 +31,14 @@ import {
   Groups as GroupIcon,
   Email as EmailIcon,
   Phone as PhoneIcon,
-  Person as PersonIcon,
-  Euro as EuroIcon,
-  CalendarToday as CalendarIcon,
   ExpandMore as ExpandMoreIcon,
   History as HistoryIcon,
 } from "@mui/icons-material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 
 const ClubPage: React.FC = () => {
   const t = useTranslations("Club");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
+  const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {

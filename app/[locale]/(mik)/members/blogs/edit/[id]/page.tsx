@@ -3,22 +3,13 @@
 import React from "react";
 import { Edit } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
-import { Box, TextField, Typography, Paper } from "@mui/material";
-import { useOne } from "@refinedev/core";
+import { Box, TextField, Paper } from "@mui/material";
+import { Blog } from "@/components/types";
+import { useTheme } from "@components/functions/useTheme";
 
-// Define the Blog interface matching your table structure.
-interface Blog {
-  id: string;
-  profile_id: string;
-  title: string;
-  content: string;
-  published_at: string | null;
-  created_at: string;
-  updated_at: string;
-  image_link: string;
-}
 
 export default function BlogEditPage() {
+  const theme = useTheme();
   // useForm automatically fetches the record and populates defaultValues.
   const {
     register,

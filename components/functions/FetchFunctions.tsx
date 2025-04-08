@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useShow } from "@refinedev/core";
+import { Typography } from "@mui/material";
 
 export function ProfileName({ profileId }: { profileId: string }) {
     const { queryResult } = useShow({
@@ -51,4 +52,21 @@ function ResourceName({ id }: { id: string }) {
   const resourceData = queryResult?.data?.data as { name: string } | undefined;
   if (!resourceData) return <span>Loading...</span>;
   return <span>{resourceData.name}</span>;
+}
+
+// Helper component to fetch and display the author's full name.
+export function AuthorName({ profileId }: { profileId: string }) {
+  const { queryResult } = useShow<{ first_name: string; last_name: string }>({
+    resource: "profiles",
+    id: profileId,
+    meta: { select: "first_name,last_name" },
+    queryOptions: { enabled: !!profileId },
+  });
+  const data = queryResult?.data?.data;
+  if (!data) return <Typography variant="body2">Loading...</Typography>;
+  return (
+    <Typography variant="body2">
+      {data.first_name} {data.last_name}
+    </Typography>
+  );
 }

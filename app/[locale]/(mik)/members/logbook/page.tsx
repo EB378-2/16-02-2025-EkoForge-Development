@@ -2,40 +2,12 @@
 
 import React from "react";
 import { List, EditButton, ShowButton, DeleteButton } from "@refinedev/mui";
-import { useShow, useTable } from "@refinedev/core";
+import { useTable } from "@refinedev/core";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Stack } from "@mui/material";
 import { ProfileName, ResourceName } from "@/components/functions/FetchFunctions";
 import { formatHHmm } from "@/components/functions/FormatFunctions";
-
-
-interface Logbook {
-  id: number;
-  profile_id: string;
-  resource_id: number;
-  flight_date: string; // ISO date string
-  flight_time: number;
-  notes?: string;
-  block_off_time?: string;
-  takeoff_time?: string;
-  landing_time?: string;
-  block_on_time?: string;
-  block_time?: number;
-  landings?: number;
-  flight_details: Record<string, any>;
-  fuel_left?: number;
-  billing_info?: string;
-  pax?: number;
-  departure_place?: string;
-  arrival_place?: string;
-  flight_type?: string;
-  pic_id?: string;
-  student_id?: string;
-  created_at: string;
-  updated_at: string;
-}
-
-
+import { Logbook } from "@/components/types";
 
 export default function LogbookList() {
   const {
@@ -50,6 +22,7 @@ export default function LogbookList() {
     initialSorter: [{ field: "id", order: "asc" }],
     initialPageSize: 10,
   });
+  
 
   const rows = tableQueryResult?.data?.data ?? [];
   const total = pageCount * pageSize;

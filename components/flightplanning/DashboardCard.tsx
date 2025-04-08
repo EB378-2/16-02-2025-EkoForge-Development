@@ -10,16 +10,7 @@ import BuildIcon from '@mui/icons-material/Build';
 import DescriptionIcon from '@mui/icons-material/Description';
 import InfoIcon from '@mui/icons-material/Info';
 import LaunchIcon from '@mui/icons-material/Launch';
-import { getTheme } from "@theme/theme";
-
-interface DashboardCardProps {
-    title: string;
-    description: string;
-    link: string;
-    buttonText: string;
-    external?: boolean;
-    theme: ReturnType<typeof getTheme>;
-}
+import { DashboardCardProps } from "@/components/types";
 
 const DashboardCard: React.FC<DashboardCardProps> = ({
     title,

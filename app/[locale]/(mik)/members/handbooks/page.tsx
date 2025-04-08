@@ -15,20 +15,15 @@ import {
   ListItemText, 
   Divider, 
   Button,
-  Link,
   Paper,
-  useTheme
 } from "@mui/material";
 import { Description as DocumentIcon, Email as EmailIcon, GitHub as GitHubIcon } from "@mui/icons-material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 
 
 const ManualsPage: React.FC = () => {
   const t = useTranslations("Manuals");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
-
+  const theme = useTheme();
   const aircraftManuals = [
     {
       registration: "OH-IHQ",

@@ -24,7 +24,18 @@ import {
   useDelete,
   HttpError,
 } from "@refinedev/core";
-import BookingModal, { Booking, Resource, Instructor } from "@/components/BookingModal";
+import BookingModal from "@/components/BookingModal";
+import { Booking, BookingResource, BookingInstructor } from "@/components/types";
+import { useTheme } from "@components/functions/useTheme";
+
+
+const flightTypeColors = {
+  "X-Country": "green",
+  "X-Country Training": "purple",
+  "General": "darkblue",
+  "Maintenances": "orange",
+  "Training": "red"
+};
 
 
 // --------------------
@@ -33,11 +44,12 @@ import BookingModal, { Booking, Resource, Instructor } from "@/components/Bookin
 
 export default function ResourceBookingCal() {
   const t = useTranslations("HomePage");
+  const theme = useTheme();
 
   const { data: identity } = useGetIdentity<{ id: string }>();
   const currentUserId = identity?.id || "default-user";
 
-  const { data: instructorData } = useList<Instructor>({
+  const { data: instructorData } = useList<BookingInstructor>({
     resource: "instructors",
     meta: { select: "*" },
   });
@@ -54,7 +66,7 @@ export default function ResourceBookingCal() {
   });
   const allBookings = bookingsData?.data || [];
 
-  const { data: resourcesData } = useList<Resource, HttpError>({
+  const { data: resourcesData } = useList<BookingResource, HttpError>({
     resource: "resources",
     meta: { select: "*" },
   });
@@ -174,18 +186,7 @@ export default function ResourceBookingCal() {
     );
   };
 
-  const userEvents = allBookings
-    .filter((booking) => booking.profile_id === currentUserId)
-    .map((booking) => ({
-      id: booking.id,
-      title: "Booking",
-      start: booking.start_time,
-      end: booking.end_time,
-      extendedProps: {
-        profile_id: booking.profile_id,
-        resource_id: booking.resource_id,
-      },
-    }));
+  
 
   return (
     <Box sx={{ p: 2 }}>
@@ -235,9 +236,12 @@ export default function ResourceBookingCal() {
               .filter((booking) => booking.resource_id === resourceId)
               .map((booking) => ({
                 id: booking.id,
-                title: "Booking",
+                title: booking.title,
                 start: booking.start_time,
                 end: booking.end_time,
+                color: booking.profile_id === currentUserId
+                  ? "blue"
+                  : (booking.flight_type && flightTypeColors[booking.flight_type as keyof typeof flightTypeColors]) || "gray",
                 extendedProps: {
                   profile_id: booking.profile_id,
                   resource_id: booking.resource_id,

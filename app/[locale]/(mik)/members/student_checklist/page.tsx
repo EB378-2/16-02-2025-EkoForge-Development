@@ -16,25 +16,21 @@ import {
   AccordionSummary,
   AccordionDetails,
   Chip,
-  useTheme
 } from "@mui/material";
 import {
   Flight as FlightIcon,
-  MedicalServices as MedicalIcon,
   Description as DocumentIcon,
-  School as SchoolIcon,
   Person as PersonIcon,
   ExpandMore as ExpandMoreIcon,
   Checklist as ChecklistIcon
 } from "@mui/icons-material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 import { useTranslations } from "next-intl";
 
 export default function FlightStudentChecklist() {
   const t = useTranslations("StudentChecklist");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
+  const theme = useTheme();
+  
 
   // Checklist items
   const beforeTraining = [

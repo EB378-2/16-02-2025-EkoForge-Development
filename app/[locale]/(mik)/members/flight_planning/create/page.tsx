@@ -2,16 +2,11 @@
 
 import React from "react";
 import { Create } from "@refinedev/mui";
-import { Box, TextField, Button, FormControlLabel, Checkbox } from "@mui/material";
+import { Box, TextField, FormControlLabel, Checkbox } from "@mui/material";
 import { useForm } from "@refinedev/react-hook-form";
 import { Controller } from "react-hook-form";
 import { useTranslations } from "next-intl";
-
-interface FlightPlan {
-  route: string;
-  notes?: string;
-  international?: boolean;
-}
+import { FlightPlan } from "@/components/types";
 
 export default function FlightPlanCreatePage() {
   const t = useTranslations("FlightPlans");

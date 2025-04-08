@@ -17,10 +17,7 @@ import {
   AccordionSummary, 
   AccordionDetails,
   Chip,
-  useTheme,
-  Divider,
   Skeleton,
-  Modal,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -32,13 +29,11 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 import { ProfileName } from "@components/functions/FetchFunctions";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 
 const BlogPage: React.FC = () => {
   const t = useTranslations("Blog");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
+  const theme = useTheme();
   const [expanded, setExpanded] = useState(false);
   const [selectedPost, setSelectedPost] = useState<any>(null);
   const [openModal, setOpenModal] = useState(false);

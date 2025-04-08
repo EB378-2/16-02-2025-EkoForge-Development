@@ -6,16 +6,7 @@ import { Edit } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import { Controller } from "react-hook-form";
 import { useTranslations } from "next-intl";
-
-interface FlightPlan {
-  id: string;
-  profile_id: string;
-  route: string;
-  notes?: string;
-  international?: boolean;
-  created_at: string;
-  updated_at: string;
-}
+import { FlightPlan } from "@/components/types";
 
 export default function FlightPlanEditPage() {
   const t = useTranslations("FlightPlans");

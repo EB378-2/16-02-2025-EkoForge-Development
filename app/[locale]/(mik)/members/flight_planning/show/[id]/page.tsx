@@ -4,7 +4,6 @@ import React from "react";
 import { Show } from "@refinedev/mui";
 import { useShow } from "@refinedev/core";
 import {
-  Box,
   Card,
   CardHeader,
   CardContent,
@@ -15,18 +14,7 @@ import {
   Button,
 } from "@mui/material";
 import { useTranslations } from "next-intl";
-import EditIcon from "@mui/icons-material/Edit";
-import Link from "next/link";
-
-interface FlightPlan {
-  id: string;
-  profile_id: string;
-  route: string;
-  notes?: string;
-  international?: boolean;
-  created_at: string;
-  updated_at: string;
-}
+import { FlightPlan } from "@/components/types";
 
 export default function FlightPlanShowPage() {
   const t = useTranslations("FlightPlans");

@@ -15,10 +15,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Divider,
   Button,
   Chip,
-  useTheme,
   Paper,
 } from "@mui/material";
 import {
@@ -29,14 +27,11 @@ import {
   Settings as EquipmentIcon,
   Groups as GroupIcon,
 } from "@mui/icons-material";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
+import { useTheme } from "@components/functions/useTheme";
 
 const AircraftPage: React.FC = () => {
   const t = useTranslations("Aircraft");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
-
+  const theme = useTheme();
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },

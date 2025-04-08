@@ -12,22 +12,12 @@ import {
   Radio,
   RadioGroup,
   Typography,
-  Stack,
 } from "@mui/material";
 import { Edit } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import { Controller } from "react-hook-form";
 import { useTranslations } from "next-intl";
-
-interface NoticeData {
-  title: string;
-  message: string;
-  time_off_incident?: string;
-  extra_parameters: {
-    conditions: string[];
-    severity: string;
-  };
-}
+import { NoticeData } from "@/components/types";
 
 export default function NoticeEditPage() {
   const t = useTranslations("Notices");

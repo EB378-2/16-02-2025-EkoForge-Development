@@ -20,23 +20,12 @@ import { useForm } from "@refinedev/react-hook-form";
 import { Controller } from "react-hook-form";
 import { useGetIdentity } from "@refinedev/core";
 import { useTranslations } from "next-intl";
-import { useColorMode } from "@contexts/color-mode";
-import { getTheme } from "@theme/theme";
-
-interface ProfileData {
-  id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  phone_number: string;
-  avatar_url?: string;
-  ratings: string[]; 
-}
+import { useTheme } from "@components/functions/useTheme";
+import { ProfileData } from "@/components/types";
 
 export default function ProfileEditPage() {
   const t = useTranslations("Profile");
-  const { mode } = useColorMode();
-  const theme = getTheme(mode);
+  
 
   // Get the current user's identity.
   const { data: identity } = useGetIdentity<{ id: string }>();
