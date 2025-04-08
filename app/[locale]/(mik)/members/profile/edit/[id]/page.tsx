@@ -26,6 +26,7 @@ import { ProfileData } from "@/components/types";
 export default function ProfileEditPage() {
   const t = useTranslations("Profile");
   
+  const theme = useTheme();
 
   // Get the current user's identity.
   const { data: identity } = useGetIdentity<{ id: string }>();
@@ -65,10 +66,6 @@ export default function ProfileEditPage() {
   if (!profile) {
     return <Typography>Error loading profile</Typography>;
   }
-
-  const onSubmit = (data: ProfileData) => {
-    onFinish(data);
-  };
 
   return (
     <Edit isLoading={formLoading} saveButtonProps={saveButtonProps}>
