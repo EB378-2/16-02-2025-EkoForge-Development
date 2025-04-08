@@ -89,7 +89,7 @@ const Section: React.FC<SectionProps> = ({
               <Box
                 sx={{
                   position: 'relative',
-                  height: 200,
+                  height: 400,
                   borderRadius: 2,
                   overflow: 'hidden',
                   boxShadow: 3

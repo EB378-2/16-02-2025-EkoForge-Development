@@ -112,9 +112,9 @@ export interface SectionProps {
 }
 
 export interface Logbook {
-  id: number;
+  id: string;
   profile_id: string;
-  resource_id: number;
+  resource_id: string;
   flight_date: string; // ISO date string
   flight_time: number;
   notes?: string;

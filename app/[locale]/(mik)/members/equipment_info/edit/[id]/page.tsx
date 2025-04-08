@@ -9,6 +9,7 @@ import { useTheme } from "@components/functions/useTheme";
 
 const AboutBusinessPage: React.FC = () => {
   const t = useTranslations("AboutBusiness");
+  const theme = useTheme();
   // Animation variants for Framer Motion.
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
