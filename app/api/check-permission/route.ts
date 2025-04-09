@@ -6,17 +6,18 @@ export async function POST(req: Request) {
   const { role, resource, action, id } = await req.json();
   
   try {
-    const allowed = await checkPermission({
+    const { can } = await checkPermission({ // Destructure the response
       role,
       resource,
       action,
       id
     });
-    return NextResponse.json({ allowed });
+    return NextResponse.json({ allowed: can }); // Ensure consistent property name
   } catch (error) {
+    console.error('Permission check error:', error);
     return NextResponse.json(
-      { error: 'Permission check failed' },
+      { allowed: false, error: 'Permission check failed' }, // Include allowed field
       { status: 500 }
     );
   }
-} 
+}

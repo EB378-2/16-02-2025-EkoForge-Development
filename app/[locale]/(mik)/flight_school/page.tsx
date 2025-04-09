@@ -33,7 +33,7 @@ import {
   Euro as EuroIcon,
 } from "@mui/icons-material";
 import { ProfileName, ProfilePhone } from "@components/functions/FetchFunctions";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 
 const FlightSchoolPage: React.FC = () => {

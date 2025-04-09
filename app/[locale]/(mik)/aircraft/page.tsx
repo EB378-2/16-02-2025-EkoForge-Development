@@ -27,7 +27,7 @@ import {
   Settings as EquipmentIcon,
   Groups as GroupIcon,
 } from "@mui/icons-material";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 const AircraftPage: React.FC = () => {
   const t = useTranslations("Aircraft");

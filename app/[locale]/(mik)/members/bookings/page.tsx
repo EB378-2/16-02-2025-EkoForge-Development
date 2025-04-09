@@ -26,7 +26,7 @@ import {
 } from "@refinedev/core";
 import BookingModal from "@/components/BookingModal";
 import { Booking, BookingResource, BookingInstructor } from "@/components/types";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 
 const flightTypeColors = {

@@ -42,7 +42,7 @@ import {
 import { format, parseISO } from "date-fns";
 import { ResourceName } from "@/components/functions/FetchFunctions";
 import { Booking, Blog, LogBookEntry } from "@/components/types";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 
 // --------------------

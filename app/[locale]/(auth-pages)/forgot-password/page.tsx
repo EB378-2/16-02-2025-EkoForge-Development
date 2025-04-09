@@ -1,5 +1,5 @@
 import { AuthPage } from "@/components/auth-page";
-import { getData } from "@/components/getData";
+import { getData } from "@/customHooks/getData";
 import { redirect } from "next/navigation";
 
 export default async function ForgotPassword() {

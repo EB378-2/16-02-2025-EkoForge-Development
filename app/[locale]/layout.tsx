@@ -22,7 +22,6 @@ import ConstructionIcon from '@mui/icons-material/Construction';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import HomeIcon from '@mui/icons-material/Home';
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
-
 import {
   RefineSnackbarProvider,
   useNotificationProvider,
@@ -174,6 +173,7 @@ export default async function RootLayout({
                       },
                       {
                         name: "members_dropdown",
+                        list: `/${locale}/members_dropdown`,
                         meta: {
                           
                           label: `members`,

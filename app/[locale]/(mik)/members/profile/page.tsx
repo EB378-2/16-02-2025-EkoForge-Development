@@ -23,7 +23,7 @@ import {
   HttpError,
 } from "@refinedev/core";
 import { useTranslations } from "next-intl";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 import { EditButton } from "@refinedev/mui";
 import { ProfileData } from "@/components/types";
 

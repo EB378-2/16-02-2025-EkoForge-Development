@@ -24,7 +24,7 @@ import {
   ExpandMore as ExpandMoreIcon,
   Checklist as ChecklistIcon
 } from "@mui/icons-material";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 import { useTranslations } from "next-intl";
 
 export default function FlightStudentChecklist() {

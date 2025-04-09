@@ -29,7 +29,7 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 import { ProfileName } from "@components/functions/FetchFunctions";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 const BlogPage: React.FC = () => {
   const t = useTranslations("Blog");

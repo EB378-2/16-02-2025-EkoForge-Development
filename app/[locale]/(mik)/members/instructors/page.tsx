@@ -7,7 +7,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Stack, Chip, Tooltip, Typography, Box, Paper, Divider } from "@mui/material";
 import { ProfileName, ProfilePhone } from "@/components/functions/FetchFunctions";
 import { useTranslations } from "next-intl";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 import { Instructor } from "@/components/types";
 
 const maxPricing = {

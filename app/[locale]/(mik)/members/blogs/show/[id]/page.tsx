@@ -6,7 +6,7 @@ import { useShow } from "@refinedev/core";
 import { Box, Typography, Paper, CardMedia } from "@mui/material";
 import { Blog } from "@/components/types";
 import { AuthorName } from "@/components/functions/FetchFunctions";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 
 export default function BlogShowPage() {

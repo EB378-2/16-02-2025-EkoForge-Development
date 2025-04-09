@@ -25,7 +25,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 import {
     Flight as FlightIcon,
     Description as DescriptionIcon,

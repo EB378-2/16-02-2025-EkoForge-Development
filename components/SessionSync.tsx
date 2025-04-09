@@ -14,7 +14,7 @@ export function SessionSync() {
         const res = await fetch('/api/get-role');
         const { role } = await res.json();
         
-        const finalRole = role || identity?.role || 'anonymous';
+        const finalRole = role || 'anonymous';
         
         localStorage.setItem('user-role', finalRole);
         document.cookie = `user-role=${finalRole}; path=/; sameSite=lax; ${

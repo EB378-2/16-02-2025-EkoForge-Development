@@ -5,7 +5,7 @@ import { RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { usePathname, useRouter } from "next/navigation";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 //Interface stays here.
 interface NavbarProps extends RefineThemedLayoutV2HeaderProps {

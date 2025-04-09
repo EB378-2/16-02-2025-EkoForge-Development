@@ -22,7 +22,7 @@ import {
   Email as EmailIcon,
   Download as DownloadIcon
 } from "@mui/icons-material";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 const InstructionsPage: React.FC = () => {
   const t = useTranslations("Instructions");

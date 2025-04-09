@@ -34,7 +34,7 @@ import {
   ExpandMore as ExpandMoreIcon,
   History as HistoryIcon,
 } from "@mui/icons-material";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 const ClubPage: React.FC = () => {
   const t = useTranslations("Club");

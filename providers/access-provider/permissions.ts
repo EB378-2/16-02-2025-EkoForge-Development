@@ -14,12 +14,14 @@ g = _, _
 e = some(where (p.eft == allow))
 
 [matchers]
-m = g(r.sub, p.sub) && keyMatch(r.obj, p.obj) && regexMatch(r.act, p.act)
+m = g(r.sub, p.sub) && \
+    (keyMatch(r.obj, p.obj) || keyMatch2(r.obj, p.obj)) && \
+    regexMatch(r.act, p.act)
 `);
 
 export const adapter = new StringAdapter(`
 //Roles
-g, anonymous, anonymous
+g, authenticated, anonymous
 g, nonflyer, anonymous
 g, member, anonymous
 g, student, member
@@ -27,6 +29,7 @@ g, instructor, member
 g, admin, instructor
 g, admin, student
 g, admin, nonflyer
+
 
 
 
@@ -39,6 +42,8 @@ p, anonymous, club, (list)|(show)
 p, anonymous, fleet, (list)|(show)
 
 
+p, authenticated, members_dropdown, (list)|(show)
+p, authenticated, dashboard, (list)
 
 
 // Additional policies for application resources

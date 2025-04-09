@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { Box, Container, Typography, Button, Grid, IconButton } from "@mui/material";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Image from "next/image";
 

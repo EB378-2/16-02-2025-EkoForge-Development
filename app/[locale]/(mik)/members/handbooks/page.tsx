@@ -18,7 +18,7 @@ import {
   Paper,
 } from "@mui/material";
 import { Description as DocumentIcon, Email as EmailIcon, GitHub as GitHubIcon } from "@mui/icons-material";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 
 const ManualsPage: React.FC = () => {

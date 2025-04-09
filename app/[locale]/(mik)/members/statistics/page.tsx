@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { Box, Container, Typography, Button } from "@mui/material";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 const AboutBusinessPage: React.FC = () => {
   const t = useTranslations("AboutBusiness");

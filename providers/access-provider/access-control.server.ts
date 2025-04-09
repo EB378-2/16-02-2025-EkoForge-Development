@@ -17,6 +17,7 @@ export async function checkPermission({
 }: PermissionCheckParams): Promise<{ can: boolean }> {
   const enforcer = await newEnforcer(model, adapter);
   
+  
   try {
     // 1. First check general resource permission
     const generalPermission = await enforcer.enforce(role, resource, action);
@@ -32,6 +33,7 @@ export async function checkPermission({
       
       return { can: generalPermission && specificPermission };
     }
+    console.log(role)
     
     // 3. For list/create actions
     return { can: generalPermission };
@@ -39,5 +41,7 @@ export async function checkPermission({
   } catch (error) {
     console.error('Permission check error:', error);
     return { can: false };
+    
   }
+  
 }

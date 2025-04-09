@@ -20,7 +20,7 @@ import { useForm } from "@refinedev/react-hook-form";
 import { Controller } from "react-hook-form";
 import { useGetIdentity } from "@refinedev/core";
 import { useTranslations } from "next-intl";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 import { ProfileData } from "@/components/types";
 
 export default function ProfileEditPage() {

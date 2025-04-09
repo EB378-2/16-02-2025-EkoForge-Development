@@ -19,7 +19,7 @@ import { EditButton, ShowButton, DeleteButton } from "@refinedev/mui";
 import { useTable } from "@refinedev/core";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useTranslations } from "next-intl";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 import Image from "next/image";
 import {
   Flight as FlightIcon,

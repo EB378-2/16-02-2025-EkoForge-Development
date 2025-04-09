@@ -1,4 +1,4 @@
-import { getData } from "@/components/getData";
+import { getData } from "@/customHooks/getData";
 import { redirect } from "next/navigation";
 import React from "react";
 import { CanAccess } from "@refinedev/core";

@@ -5,7 +5,7 @@ import { Edit } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import { Box, TextField, Paper } from "@mui/material";
 import { Blog } from "@/components/types";
-import { useTheme } from "@components/functions/useTheme";
+import { useTheme } from "@customHooks/useTheme";
 
 
 export default function BlogEditPage() {
