@@ -25,7 +25,7 @@ g, authenticated, anonymous
 g, nonflyer, anonymous
 g, member, anonymous
 g, student, member
-g, instructor, member
+g, instructor, student
 g, admin, instructor
 g, admin, student
 g, admin, nonflyer
@@ -114,8 +114,7 @@ p, admin, instructors, (list)|(create)
 p, admin, instructors/*, (edit)|(show)|(delete)
 p, member, instructors, (list)
 
-p, admin, students, (list)
-p, member, students, (list)
+p, student, students, (list)
 `);
 
 

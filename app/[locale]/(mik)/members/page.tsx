@@ -251,7 +251,7 @@ export default function FrontPage() {
             <Typography variant="body1" sx={{ mb: 2 }}>
               Stay updated with the latest club news and manage your flights.
             </Typography>
-            <Stack direction="row" spacing={2}>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2 }}>
               <Button 
                 variant="contained" 
                 color="secondary" 
