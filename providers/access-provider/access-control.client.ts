@@ -1,36 +1,41 @@
 // providers/access-provider/access-control.client.ts
 'use client';
 import { CanParams, CanReturnType } from "@refinedev/core";
+import { useGetIdentity } from "@refinedev/core";
+
+interface AuthIdentity {
+  id: string;
+  role?: string;
+}
 
 export const accessControlProvider = {
   can: async ({ resource, action, params }: CanParams): Promise<CanReturnType> => {
     try {
-      // Get role from localStorage only (hooks can't be used here)
+      // Get role from multiple sources
       const role = typeof window !== 'undefined' 
         ? localStorage.getItem('user-role') || 'anonymous'
         : 'anonymous';
 
-      // Prepare the request body
-      const requestBody: Record<string, any> = {
+      // Prepare the request body with additional context
+      const requestBody = {
         role,
         resource,
-        action
+        action,
+        id: params?.id,
+        // Add timestamp to prevent caching issues
+        timestamp: Date.now()
       };
 
-      // Add ID if it exists
-      if (params?.id && typeof params.id === 'string') {
-        requestBody.id = params.id;
-      }
-
-      // Call API route
       const res = await fetch('/api/check-permission', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody)
       });
-      console.log(role)
 
-      if (!res.ok) throw new Error(`Permission check failed: ${res.status}`);
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || `Permission check failed: ${res.status}`);
+      }
 
       const { allowed } = await res.json();
       
@@ -42,7 +47,7 @@ export const accessControlProvider = {
       console.error('Access control error:', error);
       return { 
         can: false, 
-        reason: "Error checking permissions" 
+        reason: error instanceof Error ? error.message : "Error checking permissions" 
       };
     }
   }

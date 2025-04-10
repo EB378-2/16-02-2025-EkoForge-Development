@@ -28,8 +28,6 @@
     "bookNow": "Book Now"
   },
 
-
-
   "AviationHome": {
     "label": "Home",
     "heroTitle": "MIK Aviation",
@@ -69,7 +67,15 @@
     "hide": "Hide",
     "readMore": "Read More →",
     "noPosts": "No blog posts yet",
-    "checkBackLater": "Check back later for updates"
+    "checkBackLater": "Check back later for updates",
+    "close" : "Close",
+    "published": "Published",
+    "create" : {
+      "title" : "Title",
+      "content" : "Content",
+      "ImgLink" : "Image Link"
+    }
+
   },
   "FlightSchool": {
     "label": "Flight School",
@@ -195,7 +201,11 @@
     "YourUpcomingBookings" : "Your Upcoming Bookings",
     "ViewAllBookings": "View All Bookings",
     "NoUpcomingBookings" : "No Upcoming Bookings",
-    "BookFlight" : "Book A Flight"
+    "BookFlight" : "Book A Flight",
+    "resource" : "Resource",
+    "datetime" : "Date & Time",
+    "type" : "Type",
+    "actions": "Actions"
   },
   "SafteyNotice": {
     "label": "Safety Notice"

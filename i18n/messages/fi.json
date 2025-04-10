@@ -66,7 +66,9 @@
     "hide": "Piilota",
     "readMore": "Lue lisää →",
     "noPosts": "Ei blogikirjoituksia vielä",
-    "checkBackLater": "Tarkista myöhemmin päivitykset"
+    "checkBackLater": "Tarkista myöhemmin päivitykset",
+    "close" : "Sulje",
+    "published": "Julkaistu"
   },
   "FlightSchool": {
     "label": "Lentokoulu",
@@ -174,7 +176,7 @@
     "label": "Jäsenten alue"
   },
   "Dashboard": {
-    "label": "Hallintapaneeli",
+    "label": "Jäsenpaneeli",
     "WelcomeBack": "Tervetuloa takaisin",
     "Subtitle": "Pysy ajan tasalla kerhon viimeisimmistä uutisista ja hallinnoi lentoja.",
     "NewBooking": "Uusi varaus",
@@ -192,7 +194,11 @@
     "YourUpcomingBookings": "Tulevat varauksesi",
     "ViewAllBookings": "Näytä kaikki varaukset",
     "NoUpcomingBookings": "Ei tulevia varauksia",
-    "BookFlight": "Varaa lento"
+    "BookFlight": "Varaa lento",
+    "resource" : "Kalusto",
+    "datetime" : "Pv & Aika",
+    "type" : "Tyypi",
+    "actions": "Toiminnot"
   },
   "SafteyNotice": {
     "label": "Turvallisuusilmoitus"

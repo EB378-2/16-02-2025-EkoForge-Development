@@ -50,13 +50,13 @@ export default function UpComingBookings() {
       const bookingColumns: GridColDef[] = [
         {
           field: "resource",
-          headerName: "Aircraft",
+          headerName: t("resource"),
           width: 120,
           renderCell: (params) => <ResourceName id={params.row.resource_id} />,
         },
         {
           field: "time",
-          headerName: "Date & Time",
+          headerName: t("datetime"),
           width: 200,
           renderCell: (params) => (
             <BookingTime start={params.row.start_time} end={params.row.end_time} />
@@ -64,7 +64,7 @@ export default function UpComingBookings() {
         },
         {
           field: "type",
-          headerName: "Type",
+          headerName: t("type"),
           width: 120,
           renderCell: (params) => (
             <Chip 
@@ -76,14 +76,14 @@ export default function UpComingBookings() {
         },
         {
           field: "actions",
-          headerName: "Actions",
+          headerName: t("actions"),
           width: 100,
           renderCell: (params) => (
             <Button 
               variant="outlined" 
               size="small" 
               component={Link}
-              href={`/members/bookings/edit/${params.row.id}`}
+              href={`/members/bookings`}
             >
               {t("view")} 
             </Button>

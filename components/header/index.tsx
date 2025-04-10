@@ -59,13 +59,14 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
             sx={{
               flexGrow: 1,
               display: {
-                xs: "none",
+                xs: "block",
                 sm: "block",
                 color: theme.palette.error.main,
               },
+              textDecoration: "bold",
             }}
           >
-            BETA TESTING
+            BETA
           </Typography>
           <Stack
             direction="row"

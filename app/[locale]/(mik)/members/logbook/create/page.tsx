@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { Create } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import { FormProvider, useFormContext } from "react-hook-form";
-import { Box, Grid, TextField, MenuItem, FormControlLabel, Checkbox } from "@mui/material";
+import { Box, Grid, TextField, MenuItem, FormControlLabel, Checkbox, Typography } from "@mui/material";
 import { format } from "date-fns";
 import { useList } from "@refinedev/core";
 import { Logbook } from "@/components/types";
@@ -209,13 +209,9 @@ export default function LogbookCreatePage() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Block Time (HHmm)"
-                type="text"
-                {...register("block_time")}
-                InputProps={{ readOnly: true }}
-              />
+              <Typography variant="body1" sx={{ width: '100%' }}>
+                Block Time (HHmm): {watch("block_time")}
+              </Typography>
             </Grid>
             {/* Row 3: Takeoff Time & Flight Time */}
             <Grid item xs={12} sm={6}>
@@ -229,13 +225,9 @@ export default function LogbookCreatePage() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Flight Time (HHmm)"
-                type="text"
-                {...register("flight_time")}
-                InputProps={{ readOnly: true }}
-              />
+              <Typography variant="body1" sx={{ width: '100%' }}>
+                Flight Time (HHmm): {watch("flight_time")}
+              </Typography>
             </Grid>
             {/* Row 4: Landing Time & DEP */}
             <Grid item xs={12} sm={6}>

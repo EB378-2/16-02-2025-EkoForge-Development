@@ -6,9 +6,11 @@ import { useForm } from "@refinedev/react-hook-form";
 import { Box, TextField, Paper } from "@mui/material";
 import { Blog } from "@/components/types";
 import { useTheme } from "@customHooks/useTheme";
+import { useTranslations } from "next-intl";
 
 export default function BlogCreatePage() {
   const theme = useTheme();
+  const t = useTranslations("Dashboard"); 
 
   const {
     register,
@@ -30,20 +32,20 @@ export default function BlogCreatePage() {
           sx={{ display: "flex", flexDirection: "column", gap: 2 }}
         >
           <TextField
-            label="Title"
+            label={t("create.title")}
             {...register("title", { required: "Title is required" })}
             error={!!errors.title}
             helperText={typeof errors.title?.message === "string" ? errors.title.message : ""}
             />
           <TextField
-            label="Content"
+            label={t("create.content")}
             multiline
             rows={6}
             {...register("content", { required: "Content is required" })}
             helperText={typeof errors.content?.message === "string" ? errors.content.message : ""}
           />
            <TextField
-            label="Image Link"
+            label={t("create.ImgLink")}
             rows={6}
             {...register("image_link")}
             helperText={typeof errors.image_link?.message === "string" ? errors.image_link.message : ""}

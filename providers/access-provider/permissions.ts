@@ -54,6 +54,7 @@ p, admin, dashboard, (list)|(create)
 p, admin, blogs/*, (edit)|(show)|(delete)
 p, member, dashboard, (list)|(create)
 p, member, blogs/*, (edit)|(show)|(delete)
+p, member, blogs, (create)
 
 p, admin, notices, (list)|(create)
 p, admin, notices/*, (edit)|(show)|(delete)
