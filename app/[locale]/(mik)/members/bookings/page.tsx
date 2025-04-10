@@ -239,9 +239,7 @@ export default function ResourceBookingCal() {
                 title: booking.title,
                 start: booking.start_time,
                 end: booking.end_time,
-                color: booking.profile_id === currentUserId
-                  ? "blue"
-                  : (booking.flight_type && flightTypeColors[booking.flight_type as keyof typeof flightTypeColors]) || "gray",
+                color: booking.flight_type && flightTypeColors[booking.flight_type as keyof typeof flightTypeColors] || "gray",
                 extendedProps: {
                   profile_id: booking.profile_id,
                   resource_id: booking.resource_id,
