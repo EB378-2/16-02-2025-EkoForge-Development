@@ -15,6 +15,7 @@ import React, { useContext } from "react";
 import Lang from "@components/ui/Lang";
 import { Button, Link } from "@mui/material";
 import { getTheme } from "@theme/theme";
+import { ProfileName } from "@components/functions/FetchFunctions";
 
 type IUser = {
   id: number;
@@ -89,7 +90,6 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                 alignItems="center"
                 justifyContent="center"
               >
-                {user?.name && (
                   <Typography
                     sx={{
                       display: {
@@ -99,9 +99,8 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                     }}
                     variant="subtitle2"
                   >
-                    {user?.name}
+                    <ProfileName profileId={user.id.toString()}/>
                   </Typography>
-                )}
                 <ProfileAvatar profileId={user.id.toString()} />
               </Stack>
             )}

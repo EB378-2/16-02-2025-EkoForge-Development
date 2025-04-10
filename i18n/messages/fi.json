@@ -1,331 +1,305 @@
 {
-  "Layout": {
-    "home": "Koti",
-    "Blog": "Blogi",
-    "flightschool": "Lentokoulu",
-    "About us": "Meistä",
-    "fleet": "Kalusto",
-    "members": "Jäsenet",
-    "Dashboard": "Kojelauta",
-    "Saftey Notice": "Turvallisuusilmoitukset",
-    "Flight Planning": "Lennonsuunnittelu",
-    "International": "Kansainvälinen",
-    "Equipment Hours and Info": "Laitetiedot ja käyttötunnit",
-    "Profile": "Profiili",
-    "Bookings": "Varauskalenteri",
-    "Logbook": "Lokikirja",
-    "Flight Statistics": "Lentotilastot",
-    "Handbooks": "Käsikirjat",
-    "Instructions": "Ohjeet",
-    "Members": "Jäsenet",
-    "Flight School": "Lentokoulu",
-    "Instructors": "Ohjaajat",
-    "Student Checklist": "Oppilaan tarkistuslista"
-  },
   "AboutBusiness": {
     "title": "Miksi yrityksesi tarvitsee enemmän kuin vain verkkosivuston – se tarvitsee myyntikoneen",
-    "introParagraph1": "Nykyisessä digitaalisessa maailmassa verkkosivustosi ei ole vain online-esite – se on yrityksesi tehokkain myyntityökalu. Silti monet yritysten omistajat tyytyvät geneerisiin, itse tehtyihin verkkosivustorakentajiin, jotka jättävät heidät turhautuneiksi ja jumiin sivuston kanssa, joka näyttää hyvältä mutta ei tuo asiakkaita.",
-    "introParagraph2": "Jos verkkosivustosi ei houkuttele vierailijoita, luo luottamusta ja muunna myyntiä, se ei ole vain huono verkkosivusto – se maksaa sinulle rahaa joka päivä.",
-    "harshRealityTitle": "Kova totuus: Huono verkkosivusto on pahempi kuin ei verkkosivustoa",
-    "harshRealityText": "Muistele viimeistä kertaa kun etsit yritystä verkosta. Löysitkö verkkosivuston, joka näytti vanhentuneelta, kesti ikuisuuden latautua tai teki tarpeidesi löytämisen vaikeaksi? Lähdit pois. Juuri näin käy, kun potentiaaliset asiakkaat kohtaavat huonosti suunnitellun verkkosivuston.",
-    "harshRealityListItem1": "❌ Näyttää epäammattimaiselta – Ensivaikutelmat ovat tärkeitä.",
-    "harshRealityListItem2": "❌ Menettää asiakkaita kilpailijoille – Hidas tai sekava sivusto ajaa asiakkaat pois.",
-    "harshRealityListItem3": "❌ Tuhlaa aikaasi ja rahasi – DIY-rakentajat jättävät usein sinut toimimattoman sivuston kanssa.",
+    "introParagraph1": "Nykyisessä digitaalisessa maailmassa verkkosivustosi ei ole vain online-esite – se on yrityksesi tehokkain myyntityökalu. Kuitenkin liian monet yrityksen omistajat tyytyvät geneerisiin, itse tehtyihin verkkosivustoratkaisuihin, jotka jättävät heidät turhautuneiksi ja jumissa sivuston kanssa, joka näyttää kivalta mutta ei todellakaan tuo asiakkaita.",
+    "introParagraph2": "Jos verkkosivustosi ei houkuta kävijöitä, luo luottamusta ja muuta kävijöitä asiakkaksi, se ei ole vain huono verkkosivusto – se maksaa sinulle rahaa joka päivä.",
+    "harshRealityTitle": "Karu todellisuus: Huono verkkosivusto on pahempi kuin ei verkkosivustoa",
+    "harshRealityText": "Muistatko viimeksi kun etsit yritystä verkosta. Löysitkö verkkosivuston, joka näytti vanhentuneelta, kesti ikuisuuden latautua tai teki tarpeidesi löytämisen vaikeaksi? Lähdit pois. Juuri näin käy, kun potentiaaliset asiakkaat kohtaavat huonosti suunnitellun verkkosivuston.",
+    "harshRealityListItem1": "❌ Näytät epäammattimaiselta – Ensivaikutelmat merkitsevät.",
+    "harshRealityListItem2": "❌ Menetät asiakkaita kilpailijoille – Hidas tai sekava sivusto karkottaa asiakkaita.",
+    "harshRealityListItem3": "❌ Tuhlaat aikaasi ja rahasi – DIY-työkalut jättävät usein sinut toimimattoman sivuston kanssa.",
     "harshRealityListItem4": "❌ Ei näy Googlessa – Huono SEO tarkoittaa, että potentiaaliset asiakkaat eivät löydä sinua.",
-    "harshRealityListItem5": "❌ Epäonnistuu muuttamaan vierailijat maksaviksi asiakkaiksi – Sivustosi pitäisi tuoda liidejä ja myyntiä.",
-    "benefitsTitle": "Mitä korkeasuoritteinen verkkosivusto voi tehdä yrityksellesi",
-    "benefitsIntro": "Korkeasuoritteisen verkkosivuston pitäisi olla kovimpia työntekijöitäsi, työskennellen 24/7 asiakkaiden houkuttelemiseksi, muuntamiseksi ja pitämiseksi.",
+    "harshRealityListItem5": "❌ Ei muuta kävijöitä maksaviksi asiakkaille – Sivustosi pitäisi tuoda liidejä ja myyntiä.",
+    "benefitsTitle": "Mitä suorituskykyinen verkkosivusto voi tehdä yrityksellesi",
+    "benefitsIntro": "Suorituskykyisen verkkosivuston pitäisi olla ahkerin työntekijäsi, joka toimii 24/7 houkutellakseen, muuttaakseen ja pitääkseen asiakkaita.",
     "benefitListItem1": "✅ Luo luottamusta ja uskottavuutta – Tyylikäs, moderni sivusto parantaa ammattikuvaasi.",
-    "benefitListItem2": "✅ Houkuttele enemmän asiakkaita – Asiantunteva SEO tuo jatkuvaa liikennettä.",
-    "benefitListItem3": "✅ Muunna vierailijat asiakkaiksi – Selkeä, vakuuttava suunnittelu ohjaa toimintaan.",
+    "benefitListItem2": "✅ Houkuttele enemmän asiakkaita – Ammattimainen SEO tuo jatkuvaa liikennettä.",
+    "benefitListItem3": "✅ Muuta kävijät asiakkaiksi – Selkeä, vakuuttava suunnittelu ohjaa toimintaan.",
     "benefitListItem4": "✅ Toimii kaikilla laitteilla – Mobiiliystävällinen sivusto saavuttaa laajemman yleisön.",
     "benefitListItem5": "✅ Skaalautuu yrityksesi mukana – Mukautetut ratkaisut kasvavat tarpeidesi mukana.",
     "packageTitle": "Mitä mukautettu verkkosivustopakettisi sisältää?",
-    "packageListItem1": "🔹 Upea, Mobiiliystävällinen Suunnittelu",
-    "packageListItem2": "🔹 SEO-Optimointi",
-    "packageListItem3": "🔹 Korkean konversion kopiointi",
+    "packageListItem1": "🔹 Upea, mobiiliystävällinen design",
+    "packageListItem2": "🔹 SEO-optimointi",
+    "packageListItem3": "🔹 Korkean konversioon johtava kopiointi",
     "packageListItem4": "🔹 Salamannopea nopeus",
-    "packageListItem5": "🔹 Helppokäyttöiset Yhteydenotto- ja Varaustilauslomakkeet",
+    "packageListItem5": "🔹 Helppokäyttöiset yhteydenotto- ja varauslomakkeet",
     "finalCallTitle": "Valmiina viemään yrityksesi seuraavalle tasolle?",
-    "finalCallText": "Huono verkkosivusto maksaa sinulle menetettyjä myyntejä joka päivä. Älä anna yhdenkään asiakkaan lipsahtaa käsistäsi. Investoi korkean konversion verkkosivustoon tänään ja katso yrityksesi nousun.",
+    "finalCallText": "Huono verkkosivusto maksaa sinulle myyntiä joka päivä. Älä anna toisen asiakkaan lipsahtaa käsistäsi. Investoi korkean konversion verkkosivustoon tänään ja katso yrityksesi nousun.",
     "bookNow": "Varaa nyt"
   },
-  "FlightSchool": {
-    "title": "MIK Lentokoulu",
-    "subtitle": "Ammattitaitoista lentäjäkoulutusta kilpailukykyiseen hintaan",
-    "trainingTitle": "Lentokoulutus",
-    "trainingDescription": "Hanki lentolupasi edullisesti Malmin Ilmailukerhossa. LAPL(A)-koulutus alkaen noin 8 500 € ja PPL(A) alkaen 11 800 €. (Hintaan sisältyy teoriaopetus, vuoden jäsenmaksu, lentokonevuokra ja ohjaajamaksut minimitunneilla)",
-    "from": "Alkaen",
-    "flightHours": "lentotuntia",
-    "upTo3Passengers": "Jopa 3 matkustajaa",
-    "internationalFlights": "Kansainväliset lennot mahdollisia",
-    "paymentInfo": "Koulutamme uusia lentäjiä ympäri vuoden - voit aloittaa koulutuksen milloin tahansa ja opiskella teoriaa etänä. Maksat koulutuksesta lentäessäsi ilman sitoutumista koko kurssin etukäteismaksuun.",
-    "additionalFees": "Näiden lisäksi maksettavaksi tulevat Traficomin maksut (lupa, lääkärintodistus, teoriakokeet) noin 450 €, lentolääkärin ja tarkastuslentäjän palkkiot. Jos et ollut jo jäsen, kerhon liittymis- ja jäsenmaksut lisätään myös.",
-    "priceUpdate": "Sivulla olevat hinnat päivitetty",
-    "contactEmail": "Ota yhteyttä sähköpostitse",
-    "clubTitle": "Malmin Ilmailukerho kouluttajana",
-    "clubDescription1": "Kerhomme kouluttaa aktiivisesti jäseniään lentäjiksi. Koulutamme LAPL(A)- ja PPL(A)-lupia. Hyödynnämme koulutuksessa myös simulaattoria, joka on jäsenillemme vapaasti käytettävissä ilman lisäkustannuksia.",
-    "clubDescription2": "Simulaattorissa voit oppia monia asioita etukäteen, jotta voit todellisessa lentokoneessa keskittyä itse lentämiseen.",
-    "laplDescription": "LAPL(A)-lupa on kevyt, edullinen ja monikäyttöinen aloittelijalentäjän lupa. Sen turvin saat lentää alle 2 000 kg painavilla koneilla jopa 3 matkustajan kanssa. Käytännössä lupa riittää lähes kaikkeen yksityislentämiseen ja sillä voit lentää kaikkia kerhon lentokoneita. Siihen voi hankkia myös yölentosuorituksen, jota koulutamme myös vuosittain talvikaudella. Koulutukseen kuuluu noin 100 tuntia teoriaa (pääosin etänä) ja 30 tuntia lentoa.",
-    "pplDescription": "PPL(A) on yksityislentäjän lupakirja (PPL), joka oikeuttaa lentämään yksimoottorisilla lentokoneilla ja toimimaan lentokoneen päälentäjänä enintään 5700 kg painavalla koneella. Voit siis ottaa mukaan koko joukon ystäviä tarvittaessa, ja lupasi oikeuttaa myös lentämään ulkomaille. PPL(A) on myös ensimmäinen askel kohti ammattilentäjän lupia ja koulutusta.",
-    "ageRequirement": "PPL(A)- ja LAPL(A)-lupia voidaan myöntää hakijoille, jotka ovat täyttäneet 17 vuotta ja suorittaneet lupakurssin onnistuneesti. Koulutukseen voi aloittaa ennen 17 vuoden ikää, käytännössä noin 16-vuotiaana, teoriaa vielä nuorempana.",
-    "instructorsTitle": "Ohjaajamme",
-    "name": "Nimi",
-    "phone": "Puhelin",
-    "instructorsInfo": "Kokeneet ohjaajamme ovat valmiita opastamaan sinua lentokoulutusmatkallasi.",
-    "contactChiefInstructor": "Ota yhteyttä päällikköohjaajaan"
-  },
   "AviationHome": {
+    "label": "Koti",
     "heroTitle": "MIK Aviation",
     "heroSubtitle": "Suomen aktiivisin moottorilentokerho",
     "bookFlight": "Varaa lento",
-    "aboutTitle": "Tietoa MIK Aviationsta",
-    "aboutText1": "MIK Aviation tarjoaa vuosikymmenten kokemuksen yksityislentämisestä ja räätälöityjä lentokokemuksia tarpeidesi mukaan.",
-    "aboutText2": "Lentokalustomme koostuu monipuolisista ja luotettavista lentokoneista.",
+    "aboutTitle": "Tietoa MIK Aviationista",
+    "aboutText1": "MIK Aviationilla on vuosikymmenten kokemus yksityisilmailussa, ja se tarjoaa räätälöityjä lentoelämyksiä tarpeidesi mukaan.",
+    "aboutText2": "Lentokalustomme koostuu monipuolisista ja luotettavista koneista.",
     "learnMore": "Lue lisää",
-    "servicesTitle": "Kalustomme",
-    "servicesSubtitle": "Monipuolisia ja luotettavia lentokoneita",
+    "servicesTitle": "Tarjontamme",
+    "servicesSubtitle": "Monipuoliset ja luotettavat lentokoneet",
     "serviceTitle1": "OH-IHQ",
-    "serviceText1": "Yksinkertainen ja erittäin luotettava koulutus- ja harrastuskäyttöön sopiva lentokone Rotax-moottorilla.",
+    "serviceText1": "Yksinkertainen ja erittäin luotettava kone koulutus- ja vapaa-ajan lentoihin, varustettu Rotax-moottorilla.",
     "serviceTitle2": "OH-STL",
-    "serviceText2": "DA40 on moderni ja tilava lentokone glass cockpitilla, joka sopii sekä koulutukseen että harrastuslentoihin.",
+    "serviceText2": "DA40 on moderni ja tilava kone, jossa on lasikruunu, ja se sopii täydellisesti sekä koulutukseen että vapaa-ajan lentoihin.",
     "serviceTitle3": "OH-PJH",
-    "serviceText3": "Piper PA-28 on klassinen lentokone, joka on osoittanut kestävyytensä sekä koulutus- että harrastuskäytössä.",
-    "testimonialsTitle": "Asiakkaidemme mielipiteitä",
-    "testimonialText1": "Lentäminen MIK:n kanssa oli erinomainen kokemus. Lentokone oli hyvässä kunnossa ja henkilökunta erittäin ammattitaitoista ja ystävällistä.",
+    "serviceText3": "Piper PA-28 on klassinen kone, jolla on todistettu suorituskyky, ja se on ihanteellinen niin koulutukseen kuin vapaa-ajan lentoihin.",
+    "testimonialsTitle": "Mitä asiakkaamme sanovat",
+    "testimonialText1": "Lentäminen MIKin kanssa oli erinomainen kokemus. Kone on hyvässä kunnossa ja henkilökunta oli uskomattoman ammattitaitoista ja mukavaa.",
     "testimonialAuthor1": "Eric Benni",
-    "testimonialRole1": "Lentäjäopiskelija",
-    "testimonialText2": "Minulla oli mahtava aika lentäessäni MIK:n kanssa. Ohjaajat olivat asiantuntevia ja tekivät kokemuksesta nautittavan.",
+    "testimonialRole1": "Oppilaslentäjä",
+    "testimonialText2": "Minulla oli upea kokemus lentäessäni MIKin kanssa. Kouluttajat olivat asiantuntevia ja tekivät kokemuksesta nautittavan.",
     "testimonialAuthor2": "Ignaty",
-    "testimonialRole2": "Siisti tyyppi",
-    "ctaTitle": "Valmis nousemaan ilmaan?",
-    "ctaSubtitle": "Liity MIK Aviationiin tänään",
-    "ctaText": "Olit sitten kokenut lentäjä tai vasta aloittelemassa, MIK Aviationilla on jotain tarjottavaa kaikille. Liity joukkoomme tänään ja koe lentämisen jännitys.",
+    "testimonialRole2": "Siisti kaveri",
+    "ctaTitle": "Valmiina nousuun?",
+    "ctaSubtitle": "Liity MIK Aviationiin jo tänään",
+    "ctaText": "Oletpa sitten kokenut lentäjä tai vasta-alkaja, MIK Aviationilla on jokaiselle jotakin. Liity joukkoomme jo tänään ja koe lentämisen jännitys.",
     "bookNow": "Liity nyt"
   },
-  "Aircraft": {
-    "title": "Lentokalustomme & simulaattori",
-    "subtitle": "Modernit Diamond-lentokoneet ja kehittynyt lennonsimulaattori jäsenillemme",
-    "ourAircraft": "Lentokalustomme",
-    "da40Description": "Kalustomme lippulaivana on huipputekninen Diamond DA40 NG, joka on varustettu Garmin G1000 glass cockpitilla. Nelipaikkainen lentokone on varustettu erittäin taloudellisella ja tehokkaalla Austro Engine AE300 -dieselmoottorilla.",
-    "dv20Description": "Kalustomme sisältää myös kaksipaikkaisen Diamond DV20:n, joka on erinomainen koulutuskäyttöön.",
-    "year": "Vuosimalli",
-    "power": "Moottorin teho",
-    "fuelConsumption": "Polttoaineenkulutus",
-    "technicalSpecs": "Tekniset tiedot",
-    "flightPlanEquipment": "Lennonsuunnittelulaitteet",
-    "simulatorTitle": "Lennonsimulaattori",
-    "simulator": "Lennonsimulaattori",
-    "simulatorDescription1": "Jäsenillä on käytössään uusi ja erinomainen DA40-lennonsimulaattori. Simulaattori on varustettu täydellisellä G1000-avioniikalla, joka sopii sekä koulutukseen että viihteeseen. Simulaattori on jäsenille käytettävissä ilman rajoituksia tai lisäkustannuksia.",
-    "simulatorDescription2": "Simulaattori on nuorisotyömme selkäranka ja myös erinomainen tapa esitellä mielenkiintoista harrastustamme ystäville ja perheelle.",
-    "simulatorMembershipTitle": "Kiinnostuitko simulaattorilennoista?",
-    "simulatorMembershipText": "Simulaattorilennoista kiinnostuneet voivat liittyä Malmin Ilmailukerhoon nuorisojäseninä tai kannatusjäseninä. Nuorisojäsenistä tulee täysiä jäseniä vuonna, jona he täyttävät 18 vuotta. Täysjäsenyyteen siirryttäessä uutta liittymismaksua ei peritä.",
-    "simulatorContactText": "Voimme järjestää myös simulaattorilentoja. Ota yhteyttä sähköpostitse saadaksesi lisätietoja!",
-    "joinNow": "Liity jäseneksi",
-    "contactAboutSimulator": "Ota yhteyttä simulaattorista"
+  "Blog": {
+    "label": "Blogi",
+    "title": "Kerhon blogi",
+    "subtitle": "Viimeisimmät uutiset, tarinat ja päivitykset MIK Aviationilta",
+    "latestPosts": "Viimeisimmät artikkelit",
+    "olderPosts": "Vanhemmat artikkelit",
+    "show": "Näytä",
+    "hide": "Piilota",
+    "readMore": "Lue lisää →",
+    "noPosts": "Ei blogikirjoituksia vielä",
+    "checkBackLater": "Tarkista myöhemmin päivitykset"
+  },
+  "FlightSchool": {
+    "label": "Lentokoulu",
+    "title": "MIK Lentokoulu",
+    "subtitle": "Ammattilaista lentäjäkoulutusta kilpailukykyiseen hintaan",
+    "trainingTitle": "Lentokoulutus",
+    "trainingDescription": "Hanki lentolupasi edullisesti Malmin Ilmailukerholla. LAPL(A) -koulutus alkaa noin 8 500 eurolla ja PPL(A) noin 11 800 eurolla. (Hintaarvio sisältää teoriakurssin, yhden vuoden jäsenmaksun, konevuokrauksen ja kouluttajamaksut vähimmäistunneilla)",
+    "from": "Alkaen",
+    "flightHours": "lentotunnit",
+    "upTo3Passengers": "Jopa 3 matkustajalle",
+    "internationalFlights": "Kansainväliset lennot mahdollisia",
+    "paymentInfo": "Koulutamme uusia lentäjiä ympäri vuoden – voit aloittaa koulutuksen milloin tahansa ja opiskella teoriaa etänä. Maksa koulutuksesta lennettäessä, ilman että sinun tarvitsee sitoutua ennakkomaksuihin koko kurssista.",
+    "additionalFees": "Näiden lisäksi maksetaan Traficomin maksut (lupa, lääkärintodistus, teoriakokeet) noin 450 euroa, ilmailulääkärin ja tarkastelentäjän maksut. Jos et ollut jo jäsen, kerhon jäsen- ja liittymismaksut lisätään myös.",
+    "priceUpdate": "Tämän sivun hinnat viimeksi päivitetty",
+    "contactEmail": "Ota yhteyttä sähköpostitse",
+    "clubTitle": "Malmin Ilmailukerho kouluttajana",
+    "clubDescription1": "Kerhomme kouluttaa aktiivisesti jäseniään lentäjiksi. Koulutamme LAPL(A) ja PPL(A) -lupiin. Käytämme koulutuksessa myös simulaattoria, joka on jäsenillemme käytettävissä ilman lisäkustannuksia.",
+    "clubDescription2": "Voit oppia monia asioita etukäteen simulaattorilla, jotta varsinaisessa koneessa voit keskittyä pelkkään lentämiseen.",
+    "laplDescription": "LAPL(A) -lupa on kevytrakenteinen, edullinen ja monipuolinen lupa aloittaa lentäminen. Se oikeuttaa lentämään alle 2 000 kg:n koneita jopa 3 matkustajalle. Käytännössä lupa riittää lähes kaikelle yksityislennolle ja sillä voit lentää kaikkia kerhomme koneita. Lupaan voidaan lisäksi liittää yölentokorotus, jota koulutamme myös vuosittain talvikaudella. Koulutukseen sisältyy noin 100 tuntia teoriaa (pääasiassa etäopetusta) ja 30 tuntia lentämistä.",
+    "pplDescription": "PPL(A) on yksityisen lentäjän lupa, joka oikeuttaa lentämään yksimoottorisia koneita ja toimimaan koneen päällikkönä enintään 5700 kg:n koneella. Näin voit tarvittaessa ottaa mukaasi isomman ystäväporukan, ja lupa oikeuttaa myös ulkomaanlentoihin. Lupana PPL(A) on myös ensimmäinen askel kohti ammattimaisia lentäjän lupia ja koulutusta.",
+    "ageRequirement": "PPL(A) ja LAPL(A) -luvat voidaan myöntää hakijoille, jotka ovat täyttäneet 17 vuotta ja ovat suorittaneet lupakurssin onnistuneesti. Koulutus voidaan aloittaa ennen 17-vuotiaaksi tulemista, käytännössä noin 16-vuotiaana, teoriaopetus jopa nuoremmalla.",
+    "instructorsTitle": "Kouluttajamme",
+    "name": "Nimi",
+    "phone": "Puhelin",
+    "instructorsInfo": "Kokenut kouluttajamme ovat valmiita ohjaamaan sinua lentokoulutuksesi aikana.",
+    "contactChiefInstructor": "Ota yhteyttä pääkouluttajaan"
   },
   "Club": {
-    "title": "Malmin Ilmailukerho",
-    "subtitle": "Ihanat hetket hyvässä seurassa, jalat lujasti irti maasta!",
+    "label": "Tietoa meistä",
+    "title": "Malmin Lentokerho",
+    "subtitle": "Ihmeellisiä hetkiä hyvässä seurassa, jalat tukevasti maassa!",
     "aboutTitle": "Tietoa kerhosta",
-    "aboutText1": "Ilmailu ei ole pelkästään lentämistä ja lentokoneiden suorituskykymittareita - se on myös hauskaa yhdessäoloa ja kokemusten jakamista lentäjätovereiden kanssa sekä maassa että ilmassa. Jos et kotona saa puhua lentämisestä tarpeeksi, löydät kerhosta ystäviä, joiden kanssa jakaa kokemuksia ja tyydyttää tiedonjanoasi.",
-    "aboutText2": "Tervetuloa nauttimaan lentämisen ilosta kerhomme lentokoneilla tai simulaattorilla!",
-    "activeActivities": "Aktiivista toimintaa",
-    "activity1": "Koulutamme jäseniään yksityislentäjiksi (LAPL- tai PPL-lupa)",
-    "activity2": "Aktiivista nuorisotoimintaa lennonsimulaattorin ympärillä",
+    "aboutText1": "Ilmailu ei ole pelkästään lentämisestä ja koneiden suorituskykymittareista – se on myös hauskaa yhdessäoloa ja kokemusten jakamista muiden lentäjien kanssa niin maassa kuin ilmassa. Jos kotona et saa tarpeeksi juttua lentämisestä, löydät kerhosta ystäviä, joiden kanssa voit jakaa kokemuksia ja tyydyttää tiedonjanoasi.",
+    "aboutText2": "Tervetuloa nauttimaan lentämisen ilosta kerhomme koneilla tai simulaattorilla!",
+    "activeActivities": "Aktiiviset aktiviteetit",
+    "activity1": "Koulutamme jäseniämme yksityislentäjiksi (LAPL- tai PPL-lupa)",
+    "activity2": "Aktiiviset nuorisotoiminnat simulaattorimme ympärillä",
     "activity3": "Järjestämme mielenkiintoisia luentoja ja lentomatkoja",
-    "generalInfo": "Yleistietoa",
-    "generalInfoText": "Yhdistyksemme perustettiin vuonna 1988 ja se kuuluu Suomen Ilmailuliittoon. Jäseniämme on noin 300. Kerho järjestää aktiivisesti erilaisia tapahtumia jäsenilleen ympäri vuoden.",
+    "generalInfo": "Yleiset tiedot",
+    "generalInfoText": "Yhdistyksemme perustettiin vuonna 1988 ja se kuuluu Suomen Ilmailuliittoon. Meillä on noin 300 jäsentä. Kerhomme järjestää aktiivisesti erilaisia tapahtumia jäsenille ympäri vuoden.",
     "joinNow": "Liity jäseneksi!",
     "contactTitle": "Yhteystiedot",
-    "contactText": "Malmin Ilmailukerho toimii Helsinki-Malmin lentoasemalla, ja viihtyisät kerhotilamme sijaitsevat perinteisessä hallirakennuksessa. Kerhon lentotoiminta keskittyy Nummenmäen lentokentälle.",
-    "emailContacts": "Sähköpostiyhteyshenkilöt",
-    "generalInquiries": "Yleiset kyselyt",
-    "equipmentMatters": "Lentokoneasiat",
+    "contactText": "Malmin Lentokerho toimii Helsinki-Malmin lentoasemalla, ja viihtyisät kerhotilat sijaitsevat perinteisessä hangarikaupassa. Kerhon lento-operaatiot ovat Nummenmäen lentokentällä.",
+    "emailContacts": "Sähköpostiyhteystiedot",
+    "generalInquiries": "Yleiset tiedustelut",
+    "equipmentMatters": "Koneasioista",
     "simulator": "Simulaattori",
     "billing": "Laskutus",
     "training": "Koulutus",
     "postalAddress": "Postiosoite",
-    "bankInfo": "Pankkiyhteystiedot",
+    "bankInfo": "Pankkitiedot",
     "boardTitle": "Hallitus",
     "name": "Nimi",
     "role": "Tehtävä",
     "phone": "Puhelin",
     "email": "Sähköposti",
-    "membershipFeesTitle": "Jäsenmaksut ja lentohinnat",
-    "memberType": "Jäsentyyppi",
+    "membershipFeesTitle": "Jäsenmaksut ja koneiden hinnat",
+    "memberType": "Jäsenkategoria",
     "joiningFee": "Liittymismaksu",
     "annualFee": "Vuosimaksu",
     "flightRights": "Lentooikeudet",
-    "equipmentFee": "Välinehuoltomaksu",
-    "youthMemberNote": "Nuorisojäsenyyden minimi-ikä on 15 vuotta. Nuorisojäsenistä tulee täysiä jäseniä täyttäessään 18 vuotta ilman erillistä maksua.",
-    "supportMemberNote": "Nuorisojäsenillä ja kannatusjäsenillä on pääsy kerhon simulaattoriin. Jos kannatusjäsen haluaa täysjäsenyyteen, peritään liittymismaksujen erotus (100 €).",
-    "feeReductionNote": "Vuosimaksu puolitetaan kyseisenä vuonna, jos jäsen liittyy ensimmäistä kertaa 1.10. tai sen jälkeen.",
-    "flightFeesTitle": "Lentohinnat",
-    "aircraft": "Lentokone",
+    "equipmentFee": "Laitemaksu",
+    "youthMemberNote": "Nuorisojäsenyyden vähimmäisikä on 15 vuotta. Nuorisojäsenet siirtyvät automaattisesti täysjäseniksi siinä vuoden lopussa, kun he täyttävät 18 vuotta, ilman lisämaksuja.",
+    "supportMemberNote": "Nuorisojäsenillä ja tukijäsenillä on pääsy kerhon simulaattoriin. Jos tukijäsen haluaa siirtyä täysjäseneksi, liittymismaksujen erotus (100 €) veloitetaan.",
+    "feeReductionNote": "Vuosimaksu puolittuu kyseisenä vuonna, jos jäsenen liittyminen tapahtuu 1. lokakuuta tai sen jälkeen.",
+    "flightFeesTitle": "Lentomaksut",
+    "aircraft": "Kone",
     "rate": "Hinta",
-    "billingDetails1": "Laskutus perustuu lentominuutteihin. Emme erikseen laskuta rullaamisesta tai moottorin käynnissäoloa.",
-    "billingDetails2": "Valinnaiset välinehuoltomaksulaskut lähetetään vuoden alussa kaikille lentooikeuksia omaaville jäsenille.",
-    "billingDetails3": "Jos vuoden ensimmäinen lento tapahtuu 1.9. jälkeen, välinehuoltomaksu puolitetaan.",
+    "billingDetails1": "Laskutus tapahtuu lentoaikojen minuuttiperusteisesti. Emme veloita erikseen taksauksesta tai käynnistyksestä.",
+    "billingDetails2": "Valinnaiset laitemaksulaskut lähetetään vuoden alussa kaikille lentooikeuksilla varustetuille jäsenille.",
+    "billingDetails3": "Jos vuoden ensimmäinen lento tapahtuu 1. syyskuuta myöhemmin, laitemaksu puolittuu.",
     "billingDetails4": "Paikallislentojen vähimmäislaskutus on 20 minuuttia.",
     "note": "Huomio",
-    "logbookNote": "Lennot on kirjattava kerhon sähköiseen lentopäiväkirjaan lennon jälkeen. Puuttuvista tai virheellisistä merkinnöistä peritään 10 € selvitysmaksu per virhe.",
+    "logbookNote": "Lennot tulee kirjata kerhon sähköiseen lentopäiväkirjaan lennon jälkeen. Puutteellisista tai virheellisistä merkinnöistä veloitetaan 10 € selvennysmaksu per virhe.",
     "historyTitle": "Kerhon historia",
     "clubHistory": "Kerhon perustaminen ja toiminta",
-    "historyText1": "Kerho perustettiin vuonna 1988 ja se kuuluu Suomen Ilmailuliittoon. Kerhon ensimmäinen lentokone oli Cessna 172 OH-CTL, joka palveli kerhon jäseniä vuoteen 2013 asti.",
-    "historyText2": "Nykyään kerho käyttää moderneja Diamond-lentokoneita OH-STL (DA40 NG) ja OH-IHQ (DV20), sekä lennonsimulaattoria.",
-    "historyText3": "Kerhon kotikenttänä toimi vuosikymmenet Helsinki-Malmin lentoasema, mutta toiminta keskittyy nykyään Nummenmäen lentokentälle.",
+    "historyText1": "Kerho perustettiin vuonna 1988 ja se kuuluu Suomen Ilmailuliittoon. Kerhon ensimmäinen kone oli Cessna 172 OH-CTL, joka palveli jäseniä vuoteen 2013 asti.",
+    "historyText2": "Nykyään kerho käyttää modernia Diamond-konetta OH-STL (DA40 NG) ja OH-IHQ (DV20) sekä simulaattoria.",
+    "historyText3": "Kerhon kotipaikkana toimi vuosikymmenten ajan Helsinki-Malmin lentoasema, mutta nykytoiminta on siirtynyt Nummenmäen lentokentälle.",
     "pastChairmen": "Kerhon puheenjohtajat vuosien varrella"
   },
-  "Blog": {
-    "title": "Kerhon blogi",
-    "subtitle": "Uusimmat uutiset, tarinat ja päivitykset MIK Aviationsta",
-    "latestPosts": "Uusimmat artikkelit",
-    "olderPosts": "Vanhemmat artikkelit",
-    "show": "Näytä",
-    "hide": "Piilota",
-    "readMore": "Lue lisää →",
-    "noPosts": "Blogiartikkeleita ei vielä ole",
-    "checkBackLater": "Tarkista myöhemmin päivitysten varalta"
+  "Fleet": {
+    "label": "Lentokalustomme",
+    "title": "Lentokoneemme & Simulaattori",
+    "subtitle": "Modernit Diamond-koneet ja edistynyt simulaattori ovat jäsentemme käytettävissä",
+    "ourAircraft": "Lentokonekuntamme",
+    "da40Description": "Konekalustomme lippulaiva on huipputeknologiaa edustava Diamond DA40 NG, joka on varustettu Garmin G1000 -lasikruunulla. Nelipaikkainen kone tarjoaa erittäin taloudellisen ja tehokkaan Austro Engine AE300 -dieselmoottorin.",
+    "dv20Description": "Konekantaamme kuuluu myös kaksipaikkainen Diamond DV20, joka on erinomainen koulutuskäyttöön.",
+    "year": "Vuosi",
+    "power": "Moottoriteho",
+    "fuelConsumption": "Polttoaineenkulutus",
+    "technicalSpecs": "Tekniset tiedot",
+    "flightPlanEquipment": "Lentosuunnitelman varusteet",
+    "simulatorTitle": "Lentosimulaattori",
+    "simulator": "Lentosimulaattori",
+    "simulatorDescription1": "Jäsenillä on pääsy uuteen ja erinomaiselle DA40-lentosimulaattoriin. Simulaattorissa on täydellinen G1000-ilmailuelektroniikkapaketti, joka sopii sekä koulutukseen että viihteeseen. Simulaattori on käytettävissä jäsenille ilman rajoituksia tai lisäkustannuksia.",
+    "simulatorDescription2": "Simulaattori on nuorisotoimintamme selkäranka ja erinomainen tapa esitellä mielenkiintoinen harrastuksemme ystäville ja perheelle.",
+    "simulatorMembershipTitle": "Kiinnostaisiko simulaattorilla lentäminen?",
+    "simulatorMembershipText": "Simulaattorilla lentämisestä kiinnostuneet voivat liittyä Malmin Ilmailukerhoon nuori- tai tukijäseninä. Nuorisojäsenet muuttuvat täysjäseniksi siinä vuodessa, kun he täyttävät 18 vuotta. Uutta liittymismaksua ei veloiteta täysjäseneksi siirryttäessä.",
+    "simulatorContactText": "Voimme järjestää myös simulaattorilentoja. Ota yhteyttä sähköpostitse saadaksesi lisätietoja!",
+    "joinNow": "Liity jäseneksi",
+    "contactAboutSimulator": "Ota yhteyttä simulaattorista"
   },
-  "Profile": {
-    "username": "Käyttäjätunnus",
-    "email": "Sähköposti",
-    "phone": "Puhelin",
-    "address": "Osoite",
-    "role": "Rooli",
-    "section": {
-      "title": "Ilmoitukset ja keskustelu"
-    },
-    "section1": {
-      "title": "WhatsApp-ryhmät",
-      "linkInfo": "MIK info (Ilmoitukset, varusteiden tiedot jne.)",
-      "linkInfoUrl": "https://chat.whatsapp.com/H7ORSRxQMQjInO4hwjN8ER",
-      "linkChat": "MIK pulinajakso (Jäsenten keskustelu)",
-      "linkChatUrl": "https://chat.whatsapp.com/ICDocWfKA6xCbDWwKOZAmU"
-    },
-    "section2": {
-      "title": "Sähköposti-ilmoitukset",
-      "ihq": "IHQ-ilmoitukset",
-      "ihqUrl": "https://groups.google.com/a/mik.fi/forum/#!forum/ihq-info",
-      "stl": "STL-ilmoitukset",
-      "stlUrl": "https://groups.google.com/a/mik.fi/forum/#!forum/stl-info"
-    },
-    "section3": {
-      "title": "Sähköinen lentoloki ja laskutus",
-      "body1": "Kaikki lennot on kirjattava lentokoneen matkalokikirjaan ja sähköiseen lentolokiin osoitteessa",
-      "logbook": "www.mik.fi/kirja",
-      "logbookUrl": "http://www.mik.fi/kirja",
-      "body2": "Kirjaa tiedot välittömästi lennon jälkeen ja tarkista tiedot uudelleen. Laskutus tapahtuu kuukausittain sähköpostitse. Varmista, että sähköpostiosoitteesi on ajan tasalla.",
-      "body3": "Tarkistamme lentokoneen kirjan ja sähköisen lokin vähintään kuukausittain. Varmista lentoaikojen ja kokonaisaikojen oikea laskenta. Oppilaan ja ohjaajan on varmistettava, että lohkoajat vastaavat koulutustietoja."
-    },
-    "section4": {
-      "title": "Henkilökohtaiset tilit",
-      "body": "Kerhon verkkosivusto käyttää nyt samoja kirjautumistietoja kuin varausjärjestelmä. Jos käytät jaettua tietokonetta, älä valitse 'pysy kirjautuneena' kirjautuessasi sisään."
-    },
-    "section5": {
-      "title": "Varaus- ja keskustelufoorumi sekä jäsenuutiset",
-      "body": "Varaus- ja keskustelufoorumit ovat saatavilla Jäsenet-valikosta vasemmalla. Jäsenuutiset näkyvät Koti / Tämänhetkinen -sivulla kirjautumisen jälkeen."
-    }    
+  "MembersArea": {
+    "label": "Jäsenten alue"
+  },
+  "Dashboard": {
+    "label": "Hallintapaneeli",
+    "WelcomeBack": "Tervetuloa takaisin",
+    "Subtitle": "Pysy ajan tasalla kerhon viimeisimmistä uutisista ja hallinnoi lentoja.",
+    "NewBooking": "Uusi varaus",
+    "WritePost": "Kirjoita julkaisu",
+    "LogFlight": "Kirjaa lento",
+    "LatestClubNews": "Kerhon uusimmat uutiset",
+    "SeeMore": "Näytä lisää",
+    "YourFlightStatistics": "Lentotilastosi",
+    "MonthlyFlightHours": "Kuukauden lentotunnit",
+    "FlightSummary": "Lentoyhteenveto",
+    "TotalFlightHours": "Kokonaistunnit",
+    "FlightsThisYear": "Tämän vuoden lennot",
+    "UpcomingBookings": "Tulevat varaukset",
+    "view": "Näytä",
+    "YourUpcomingBookings": "Tulevat varauksesi",
+    "ViewAllBookings": "Näytä kaikki varaukset",
+    "NoUpcomingBookings": "Ei tulevia varauksia",
+    "BookFlight": "Varaa lento"
+  },
+  "SafteyNotice": {
+    "label": "Turvallisuusilmoitus"
+  },
+  "FlightPlanning": {
+    "label": "Lentosuunnittelu"
   },
   "FlightPlanList": {
-    "flightPlanning": "Lennonsuunnittelu",
+    "label": "Hallintapaneeli",
+    "flightPlanning": "Lentosuunnittelu",
     "aircraftReservation": {
-      "title": "Lentokonevaraus",
-      "description": "Näytä ja varaa haluamasi lentokone.",
+      "title": "Konevaraus",
+      "description": "Näytä ja varaa haluamasi kone.",
       "buttonText": "Näytä varaukset"
     },
     "aviationWeather": {
       "title": "Ilmailusää",
-      "description": "Tarkista uusimmat ilmailusäät ja reittitiedotteet.",
+      "description": "Tarkista viimeisimmät ilmailusään tiedot ja reittimuutokset.",
       "buttonText": "Ilmailusää"
     },
     "flightLogbook": {
-      "title": "Lentoloki",
-      "description": "Näytä ja hallinnoi lentolokiasi.",
-      "buttonText": "Näytä loki"
+      "title": "Lentopäiväkirja",
+      "description": "Näytä ja hallinnoi lentopäiväkirjaasi.",
+      "buttonText": "Näytä päiväkirja"
     },
     "maintenance": {
-      "title": "Huoltosuunnitelma ja tunnit",
-      "description": "Näytä huoltosuunnitelmat ja lentokoneen tuntitiedot.",
+      "title": "Huoltoaikataulu ja tunnit",
+      "description": "Näytä huoltoaikataulut ja koneiden tuntitiedot.",
       "buttonText": "Näytä tunnit"
     },
     "flightPlan": {
       "title": "Lentosuunnitelma",
-      "description": "Kirjallinen lentosuunnitelma (FPL) lähetetään verkossa ANS Finlandin verkkosivuston kautta. Muista vahvistaa suunnitelmasi soittamalla Helsinki-Vantaan tiedotukseen. Klikkaa alla olevaa linkkiä täyttääksesi FPL-lomakkeen kerhon lentokoneen perustiedoilla.",
-      "buttonText": "Lähetä lentosuunnitelma tästä"
+      "description": "Kirjallinen lentosuunnitelma (FPL) toimitetaan verkossa ANS Finlandin sivujen kautta. Muista vahvistaa suunnitelma soittamalla Helsinki-Vantaan tiedusteluun. Klikkaa alla olevaa linkkiä, jotta esitäytetään FPL-lomake kerhon koneiden perus tiedoilla.",
+      "buttonText": "Lähetä lentosuunnitelma täältä"
     },
-    "flightPlans": "Omat lentosuunnitelmat",
+    "flightPlans": "Omat lentosuunnitelmani",
     "dataGrid": {
       "route": "Reitti",
       "notes": "Muistiinpanot",
       "actions": "Toiminnot"
     },
     "error": {
-      "fetchFlightPlans": "Virhe haettaessa lentosuunnitelmia."
+      "fetchFlightPlans": "Lentosuunnitelmien hakemisessa tapahtui virhe."
     },
     "GeneralResources": "Yleiset resurssit",
-    "GeneralResourcesDescription": "Pääsy yleisiin resursseihin lennonsuunnitteluun ja ilmailusään.",
+    "GeneralResourcesDescription": "Käytä yleisiä resursseja lentosuunnitteluun ja ilmailusäähän.",
     "ais": "AIS - Online AIP",
-    "ilmailusaa": "Ilmailusää - Sääinformaatio",
+    "ilmailusaa": "Ilmailusää - Säätiedot",
     "FLYK": "FLYK - Lentokartat",
-    "lentopaikat": "Lentopaikat - Kartat jne.",
-    "GeneralResourcesDescriptionTwo": "Varusteiden ohjeasiakirjat jne.",
-    "GeneralResourcesDescriptionTwoText": "Täältä löydät varusteiden ohjeasiakirjat jne.",
-    "instructions": "Varusteiden ohjeet/asiakirjat",
-    "GeneralResourcesDescriptionThree": "Laivastokohtaiset tiedotelistat",
-    "GeneralResourcesDescriptionThreeText": "Täältä löydät laivastokohtaiset tiedotelistat.",
+    "lentopaikat": "Lentopaikat - Kartat ym.",
+    "GeneralResourcesDescriptionTwo": "Laitteiden ohjedokumentit, ym.",
+    "GeneralResourcesDescriptionTwoText": "Täältä löydät laitteiden ohjedokumentit, ym.",
+    "instructions": "Laitteiden ohjeet/dokumentit",
+    "GeneralResourcesDescriptionThree": "Konekantaan liittyvät tietoluettelot",
+    "GeneralResourcesDescriptionThreeText": "Täältä löydät konekantaasi liittyviä tietoluetteloita.",
     "ihqInfo": "OH-IHQ, DV20",
     "stlInfo": "OH-STL, DA40",
-    "GeneralResourcesDescriptionFour": "Kansainväliset lennonsuunnitteluresurssit",
-    "GeneralResourcesDescriptionFourText": "Täältä löydät kansainväliset lennonsuunnitteluresurssit.",
-    "internationalFlightPlanning": "Kansainvälinen lennonsuunnittelu"
+    "GeneralResourcesDescriptionFour": "Kansainväliset lentosuunnitteluresurssit",
+    "GeneralResourcesDescriptionFourText": "Täältä löydät kansainvälisiä lentosuunnitteluresursseja.",
+    "internationalFlightPlanning": "Kansainvälinen lentosuunnittelu"
   },
   "InternationalFlightPlanning": {
-    "title": "Kansainvälinen lennonsuunnittelu",
+    "label": "Kansainvälinen",
+    "title": "Kansainvälinen lentosuunnittelu",
     "section1": {
-      "title": "Kansainvälisen lennonsuunnittelun huomioitavaa",
-      "content": "Kun lennät kansainvälisesti, ota huomioon mahdolliset laskeutumis- ja navigointimaksut, koska Suomen kausikorttijärjestelmä ei kata ulkomailla aiheutuvia kuluja. Nämä kustannukset maksetaan yleensä luottokortilla tai käteisellä määränpään tiedotuksessa. Lentokentän henkilökunta on ystävällistä ja voi auttaa tarvittaessa. Polttoaineen tankkaus ulkomailla veloitetaan kerhon tuntihinnasta – lentokoneen käsikirjoihin piilotetut luottokortit eivät kuitenkaan välttämättä ole ideaaleja. On suositeltavaa kantaa käteistä varotoimena ja säilyttää polttoainekuitti – voit saada polttoainelaskun hyvitettyä palattuaasi kotiin jättämällä vapaamuotoisen hakemuksen lennonvalmistelualueelle pankkitilinumerosi ja polttoainekuitin liitteenä."
+      "title": "Kansainvälisen lentosuunnittelun huomioon otettavat seikat",
+      "content": "Kansainvälisillä lennoilla huomioi mahdolliset laskeutumis- ja navigointimaksut, sillä suomalainen kausipassijärjestelmä ei kata ulkomaisia kustannuksia. Nämä maksut maksetaan yleensä luottokortilla tai käteisellä määränpään tiedustelussa. Ulkomailla tapahtuva tankkaus veloitetaan kerhon tuntihinnan mukaan – kuitenkin koneiden käyttöohjeissa olevat luottokorttitiedot eivät välttämättä ole ideaaleja. On suositeltavaa kantaa käteistä varmuuden vuoksi ja säilyttää polttoainekuitti – saat hyvityksen polttoainelaskusta paluumatkalla, kun liität pankkitilisi numeron kuittiin vapamuotoisessa haussa lentoesityksen alueella."
     },
     "section2": {
       "title": "Kirjallinen lentosuunnitelma",
-      "content": "Muista aina jättää kirjallinen lentosuunnitelma kansainvälisille lennoille. Suunnitelma on toimitettava vähintään tunti ennen kansallisen rajan ylittämistä. Koska Schengen-sopimus kattaa useimmat naapurimaat, tämä on yleensä ainoa rajan ylitykseen liittyvä muodollisuus.",
-      "linkText": "Lue lisää lennonsuunnittelusta",
+      "content": "Muista aina toimittaa kirjallinen lentosuunnitelma kansainvälisille lennoille. Suunnitelma on jätettävä vähintään tuntia ennen valtion rajan ylitystä. Koska Schengen-sopimus kattaa suurimman osan naapurimaista, tämä on yleensä ainoa vaadittu muodollisuus rajanylityksessä.",
+      "linkText": "Lue lisää lentosuunnittelusta",
       "linkUrl": "https://example.com/flight-plan"
     },
     "section3": {
       "title": "Vesialueiden ylitykset",
-      "content": "Jokainen paikka kerhon lentokoneissa on varustettu CO2-kasetteja sisältävillä pelastusliiveillä (yleisesti tunnettuina 'pop-liiveinä'), joita on käytettää vesialueita ylittäessä. Säännöt edellyttävät niiden käyttöä yli 50 meripeninkulman vesistöjen ylityksissä, mutta on suositeltavaa käyttää niitä aina, kun lennetään huomattavan matkan päähän rannikosta.",
-      "linkText": "Lisää turvalaitteista",
+      "content": "Jokaisessa koneen paikassa on liitetty pelastusliivit, joissa on CO2-patruunoita (yleisesti tunnettuina 'pop-liiveinä'), ja niitä on käytettävä vesialueiden ylityksissä. Säännökset edellyttävät niiden käyttöä yli 50 meripeninkulman laajuisten vesialueiden ylityksissä, mutta on suositeltavaa käyttää niitä aina, kun lennetään huomattava matka rannikolta.",
+      "linkText": "Lisätietoja turvallisuusvarusteista",
       "linkUrl": "https://example.com/water-crossings"
     },
     "section4": {
       "title": "Viro",
-      "content": "Viro on osa EU:ta ja Schengen-aluetta, joten tulli- ja passimuodollisuudet eivät ole huolenaihe. Voit aloittaa lennon mistä tahansa Suomen lentokentältä ja laskeutua mihin tahansa Viron lentokentälle. Viro, erityisesti Malmin näkökulmasta, on erinomainen matkakohde – jopa lyhyt lento tarjoaa paljon nähtävää. Tallinnan laskeutumismaksut ovat korkeammat verrattuna esimerkiksi Saarenmaan lentokenttiin.",
+      "content": "Viro kuuluu EU:hun ja Schengen-alueeseen, joten tulli- ja passimuodollisuuksista ei tarvitse huolehtia. Voit aloittaa lentosi mistä tahansa Suomen lentoasemalta ja laskeutua mihin tahansa Viron lentoasemalle. Viro on, erityisesti Malmin näkökulmasta, erinomainen matkakohde – jopa lyhyt lento tarjoaa runsaasti nähtävää. Tallinnan laskeutumismaksut ovat korkeammat verrattuna esimerkiksi Saaremaan lentoasemiin.",
       "linkText": "Tutustu Viroon",
       "linkUrl": "https://example.com/estonia"
     },
     "section5": {
       "title": "Ruotsi",
-      "content": "Ruotsi on myös osa EU:ta ja Schengen-aluetta, joten menettely on sama kuin Virossa. Jos suunnittelet lentää useille Ruotsin lentokentille, voi olla kannattavaa ostaa paikallinen 'viikkokortti', joka kattaa laskeutumismaksut useimmissa lentokentissä kohtuuhintaan viikoksi. Ruotsin liikenneviraston lennonsuunnittelusivusto tarjoaa säätä, Ruotsin AIP:n ja NOTAMit läntiselle naapurillemme.",
+      "content": "Ruotsi kuuluu myös EU:hun ja Schengen-alueeseen, joten menettely on sama kuin Virossa. Jos suunnittelet lentämistä useille Ruotsin lentoasemille, voi olla kannattavaa hankkia paikallinen 'viikkupassi', joka kattaa useimpien lentoasemien laskeutumismaksut kohtuullisella ryhmähintalla viikoksi. Ruotsin Liikenneviraston lentosuunnittelusivusto tarjoaa säätietoja, Ruotsin AIP-tiedot ja NOTAM-tiedotteet länsirantaamme varten.",
       "linkText": "Tutustu Ruotsiin",
       "linkUrl": "https://example.com/sweden"
     },
     "section6": {
       "title": "Latvia",
-      "content": "Riika on suosittu kohde – vilkas eurooppalainen kaupunki vain muutaman tunnin lennon päässä ja yleinen pysähdyspaikka monille kesälomalennoille. Rii",
+      "content": "Riika on suosittu kohde – elinvoimainen eurooppalainen kaupunki vain pari tuntia lentomatkan päässä, ja se on yleinen välilaskukohde monille kesälentomatkoille. Riian kansainvälisen lentoaseman lisäksi on myös vanhempi Riian lentoasema, Spilve, joka sijaitsee lähellä kaupunkia. Spilvessä polttoainetta ei ollut saatavilla kesäaikaan 2012, vaikka laskeutumismaksut olivat vain noin kymmenen euroa. Lentokenttä on PPR! Valitettavasti Latvia tuo haasteita 100LL-polttoaineen suhteen (käytännössä saatavilla vain Riikasta), mutta dieselmoottoriset koneet eivät kohtaa ongelmia. Koska Latvia kuuluu Schengen-alueeseen, pelkkä kirjallinen suunnitelma riittää.",
       "linkText": "Lue lisää Latviasta",
       "linkUrl": "https://example.com/latvia"
     },
     "section7": {
       "title": "Liettua",
-      "content": "Liettuassa lennonjohto tarjoaa myös tietoja muista lentokoneista hallitun ilmatilan ulkopuolella. Maksut ovat kohtuullisia ja yleensä alhaisemmat kuin Latviassa. 100LL-polttoaineen saatavuus on hieman parempi, mutta edellyttää silti suunnittelua. Suosittuja kohteita ovat muun muassa Palanga, joka tunnetaan hiekkarannoistaan, Klaipeda – josta lyhyt lento vie sinut Kuurinkynnäkkeelle – ja Kaunas, jossa on polttoainetäydennysmahdollisuus yhdessä AFIS-tyylisen palvelun kanssa yleisilmailukentällä S. Darius ja S. Girėnas (Aleksotas).",
+      "content": "Liettua tarjoaa lentoliikenteenohjaukselta tietoa myös muista koneista kontrolloidun ilmatilan ulkopuolella. Maksut ovat kohtuulliset ja yleensä alhaisemmat kuin Latviassa. 100LL-polttoaineen saatavuus on hieman parempi, mutta sekin vaatii suunnittelua. Suosittuja kohteita ovat muun muassa Palanga, joka tunnetaan hiekkarannoistaan, Klaipėda – josta lyhyt lento vie Kuurinkynneeseen, sekä Kaunas, jossa on tankkausmahdollisuudet ja AFIS-tyyppinen palvelu yleislentokentällä S. Darius ja S. Girėnas (Aleksotas).",
       "linkText": "Vieraile Liettuassa",
       "linkUrl": "https://example.com/lithuania"
     },
     "section8": {
       "title": "Eurocontrolin AIP-palvelu",
-      "content": "Eurocontrol, Euroopan ilmatilasta vastaava yhteistyöelin, tarjoaa palvelun, joka tarjoaa jäsenvaltioiden ilmailumanuaalit (AIP) PDF-muodossa. Tämä palvelu edellyttää ilmaista rekisteröitymistä. Lisäksi Eurocontrolin verkkosivusto tarjoaa suorat linkit jäsenvaltioiden yksittäisiin AIP-palveluihin.",
+      "content": "Eurocontrol, yhteistyöorganisaatio, joka vastaa Euroopan ilmatilasta, tarjoaa palvelun, joka sisältää jäsenvaltioiden ilmailuoppaat (AIP) PDF-muodossa. Palvelu vaatii ilmaisen rekisteröitymisen. Lisäksi Eurocontrolin sivusto tarjoaa listan suoria linkkejä jäsenvaltioiden AIP-palveluihin.",
       "linkText": "Käytä Eurocontrolia",
       "linkUrl": "https://example.com/eurocontrol"
     },
@@ -340,15 +314,207 @@
       "fetchInternationalFlightPlans": "Virhe haettaessa kansainvälisiä lentosuunnitelmia."
     }
   },
-  "FlightClub": {
-    "title": "Malmin Ilmailukerho",
-    "intro": "Upeita hetkiä hyvässä seurassa, jalat vankasti irti maasta! Ilmailu ei ole vain lentämisestä ja lentokoneiden suorituskyvystä – se on myös yhdessäolosta ja kokemusten jakamisesta lentäjätovereiden kanssa sekä ilmassa että maassa. Jos et pääse kotoasi puhumaan lentämisestä tarpeeksi, löydät kerhostamme samanhenkisiä ystäviä jakamaan intohimosi ja tietosi. Tervetuloa nauttimaan lentämisen jännityksestä kerhomme lentokoneilla tai simulaattorilla!",
-    "activitiesTitle": "Aktiivinen yhteisö",
-    "activitiesText": "Liity kerhoomme ja uppoudu ilmailun maailmaan. Koulutamme yksityislentäjiä (LAPL tai PPL -luvat) ja meillä on aktiivinen nuorisotoiminta, joka keskittyy lentosimulaattoriimme. Järjestämme myös mielenkiintoisia luentoja ja lentomatkoja.",
-    "aboutUsTitle": "Tietoa Malmin Ilmailukerhosta",
-    "aboutUsText": "Yhdistyksemme perustettiin vuonna 1988 ja se on Suomen Ilmailuliiton jäsen. Meillä on noin 300 jäsentä. Järjestämme erilaisia tapahtumia ympäri vuoden, mikä tarjoaa runsaasti mahdollisuuksia osallistua ilmailuun liittyviin aktiviteetteihin. Tehtävämme on edistää turvallista ja miellyttävää lentämistä samalla kun tuo yhteen ilmailun harrastajia pääkaupunkiseudulta. Kehitämme kerhoamme jatkuvasti vastaamaan jäseniemme tarpeisiin.",
-    "joinUsTitle": "Kiinnostuitko? Liity joukkoomme!",
-    "joinUsText": "Kiinnostuitko? Ota meihin yhteyttä ja liity jäseneksi! Autamme sinua pääsemään alkuun tässä upeassa harrastuksessa.",
-    "joinNow": "Liity nyt"
+  "FleetInfo": {
+    "label": "Lentokaluston tiedot"
+  },
+  "Profile": {
+    "label": "Profiili",
+    "username": "Käyttäjänimi",
+    "email": "Sähköposti",
+    "phone": "Puhelin",
+    "address": "Osoite",
+    "role": "Rooli",
+    "section": {
+      "title": "Ilmoitukset & Keskustelu"
+    },
+    "section1": {
+      "title": "WhatsApp-ryhmät",
+      "linkInfo": "MIK info (Ilmoitukset, laitetiedot ym.)",
+      "linkInfoUrl": "https://chat.whatsapp.com/H7ORSRxQMQjInO4hwjN8ER",
+      "linkChat": "MIK pulinajakso (Jäsenten keskustelu)",
+      "linkChatUrl": "https://chat.whatsapp.com/ICDocWfKA6xCbDWwKOZAmU"
+    },
+    "section2": {
+      "title": "Sähköposti-ilmoitukset",
+      "ihq": "IHQ-ilmoitukset",
+      "ihqUrl": "https://groups.google.com/a/mik.fi/forum/#!forum/ihq-info",
+      "stl": "STL-ilmoitukset",
+      "stlUrl": "https://groups.google.com/a/mik.fi/forum/#!forum/stl-info"
+    },
+    "section3": {
+      "title": "Sähköinen lentopäiväkirja ja laskutus",
+      "body1": "Kaikki lennot on kirjattava koneen matkailupäiväkirjaan ja sähköiseen lentopäiväkirjaan osoitteessa",
+      "logbook": "www.mik.fi/kirja",
+      "logbookUrl": "http://www.mik.fi/kirja",
+      "body2": "Syötä tiedot heti lennon jälkeen ja tarkista merkinnät huolellisesti. Laskutus tehdään kuukausittain sähköpostitse. Varmista, että sähköpostiosoitteesi on ajan tasalla.",
+      "body3": "Yhdistämme konekirjan ja sähköisen päiväkirjan vähintään kuukausittain. Varmista, että lento- ja kokonaistuntien laskenta on oikein. Opiskelijan ja kouluttajan on varmistettava, että loikatunnit vastaavat koulutustietoja."
+    },
+    "section4": {
+      "title": "Henkilökohtaiset tilit",
+      "body": "Kerhon verkkosivu käyttää nyt samoja kirjautumistietoja kuin varausjärjestelmä. Jos käytät jaettua tietokonetta, älä valitse 'pysy kirjautuneena' kirjautuessasi."
+    },
+    "section5": {
+      "title": "Varaus- ja keskustelufoorumi & Jäsenuutiset",
+      "body": "Varaukset ja keskustelufoorumit löytyvät jäsenten valikosta vasemmalla. Jäsenuutiset näkyvät Etusivu / Ajankohtaisten sivulla kirjautumisen jälkeen."
+    }
+  },
+  "Bookings": {
+    "label": "Varaukset"
+  },
+  "Logbook": {
+    "label": "Lentopäiväkirja"
+  },
+  "FlightStats": {
+    "label": "Lentotilastot"
+  },
+  "Manuals": {
+    "label": "Manuaalit",
+    "title": "Koneiden käyttöohjeet ja asiakirjat",
+    "description1": "Täältä löydät kerhon koneisiin liittyvät asiakirjat, jotka auttavat lentosuunnittelussa. Viralliset kopiot ovat tietenkin koneissa, ja pyrimme pitämään ne ajan tasalla. Ihmisten erehdyksiä voi aina sattua, joten tarkista asiakirjojen ajantasaisuus ennen lentoa!",
+    "description2": "Ilmoita havaitsemistasi virheistä tai puutteista osoitteeseen kalusto@mik.fi. Koneprofiileja on saatavilla myös kerhon GitHubissa, joten voit ehdottaa muutoksia, jos haluat.",
+    "reportErrors": "Ilmoita virheistä",
+    "githubProfiles": "Koneprofiilit GitHubissa",
+    "notice": "Tärkeä huomautus",
+    "noticeText": "Koneen käyttö edellyttää kerhon laiteohjeiden ymmärtämistä ja noudattamista.",
+    "aircraftCommunication": "Konekohtainen viestintä",
+    "mailingList": "Jakelulista",
+    "flightPlanEquipment": "Lentosuunnitelman kohta 10 (VARUSTEET)",
+    "download": "Lataa",
+    "otherResources": "Muut resurssit",
+    "view": "Näytä"
+  },
+  "Instructions": {
+    "label": "Ohjeet",
+    "title": "Toimintaohjeet",
+    "description": "Lentotoiminnan ohjeet ja tärkeät asiakirjat Malmin Lentokerhon jäsenille.",
+    "operationalGuides": "Toimintaohjeet",
+    "efprCharts": "EFPR-lähestymiskaaviot",
+    "expenseReimbursement": "Kulujen korvaus",
+    "expenseInstructions": "Lähetä täytetty kulukorvauslomake sähköpostitse osoitteeseen laskutus@mik.fi",
+    "malmiGuide": "Malmin lentoaseman ohjeet",
+    "download": "Lataa",
+    "downloadGuide": "Lataa ohje",
+    "submissionInfo": "Toimita täytetyt kululomakkeet kerhon kassalle.",
+    "submitExpenses": "Lähetä kulut osoitteeseen laskutus@mik.fi"
+  },
+  "Members": {
+    "label": "Jäsenet"
+  },
+  "instructors": {
+    "title": "Lentokouluttajat",
+    "columns": {
+      "name": "Kouluttaja",
+      "phone": "Puhelin",
+      "rating": "Arvostelutaso",
+      "pplLapl": "PPL/LAPL",
+      "nightFlight": "Yölento",
+      "instrumentRating": "IR",
+      "recurrentTraining": "Toistuva koulutus",
+      "pricing": "Hinnoittelu",
+      "maxPricing": "Maksimi hinnoittelu"
+    },
+    "pricingInfo": {
+      "flightInstruction": "Lentokoulutus (per lohko)",
+      "licensedStudent": "Luvallinen opiskelija",
+      "unlicensedStudent": "Ilman lentolupaa oleva opiskelija",
+      "theoryInstruction": "Teoriaohjaus (tunnissa, jaettuna osallistujien kesken)"
+    }
+  },
+  "Instructors": {
+    "label": "Kouluttajat"
+  },
+  "StudentChecklist": {
+    "label": "Opiskelijan tarkistuslista",
+    "welcome": {
+      "title": "Tervetuloa Malmin Lentokerhoon",
+      "subtitle": "PPL-opiskelijan tarkistuslista"
+    },
+    "introduction": {
+      "paragraph1": "Tämä tarkistuslista on ensisijaisesti tarkoitettu PPL-opiskelijoille, mutta koskee myös muuta lupakoulutustamme. Sinulla on sama lentokouluttaja aina yksinlentovaiheeseen saakka, ellei poikkeukselliset olosuhteet vaadi muutosta.",
+      "paragraph2": "Jos koet, ettet voi jatkaa nykyisen kouluttajan kanssa, ota yhteyttä pääkouluttajaan. Voit lähettää palautetta tai ilmoituksia anonyymisti kerhon postilaatikon kautta (merkitty 'TRAINING FEEDBACK/REPORT') tai verkkosivulomakkeen kautta (tällä hetkellä ei saatavilla).",
+      "importantNote": "Ota välittömästi yhteyttä pääkouluttajaan, jos epäilet, että turvallisuutta on vaarannettu tai se olisi voinut vaarantua, tai jos sinulla on havaintoja koulutuksesta tai varustuksesta."
+    },
+    "checklistTitle": "Koulutustarkistuslista",
+    "sections": {
+      "beforeTraining": {
+        "title": "Ennen koulutuksen alkua",
+        "items": [
+          "Ilmailulääketieteellinen todistus (voimassa)",
+          "Koulutussopimus Malmin Lentokerhon kanssa",
+          "Opiskelijan luvanhakemus (pääkouluttajan allekirjoittama)",
+          "Maakoulu voidaan opiskella rinnakkain lentokoulutuksen kanssa"
+        ],
+        "note": "Huom: Teoriaa voi opiskella rinnakkain lentokoulutuksen kanssa, mutta tietyt kokeet on suoritettava ennen ensimmäistä yksinolentoa. Lentokoulutuksen aloittaminen myöhään syksyllä ei välttämättä ole suositeltavaa sääolosuhteiden vuoksi."
+      },
+      "beforeFirstFlight": {
+        "title": "Ennen ensimmäistä lentotuntia",
+        "items": [
+          "Lääkärintodistuksen kopio koulutuskansiosta",
+          "Opiskelijan luvan kopio koulutuskansiosta",
+          "Koulutussuunnitelma kansiossa",
+          "Varmista, että lentopäiväkirja ja koneen matkapäiväkirja ovat mukana jokaisella lennolla"
+        ]
+      },
+      "beforeSoloFlight": {
+        "title": "Vaatimukset ennen ensimmäistä yksinolentoa",
+        "items": [
+          "Suoritetut kokeet: Ilmailusäännökset, Lentoteoria, Radiopuhelut",
+          "Osoita taitoa radiopuheluissa ATC:n kanssa",
+          "Suoritettu suullinen konejärjestelmäkoe",
+          "Edistymisen tarkastuslento toisen kouluttajan kanssa",
+          "Hyväksytty pääkouluttajan toimesta"
+        ]
+      },
+      "beforeFlightTest": {
+        "title": "Ennen lentotestiä",
+        "items": [
+          "Voimassa oleva opiskelijan lupa ja lääkärintodistus",
+          "Suoritettu koulutuksen todistus maassa ja lentokoulutuksessa",
+          "Kerhon suositus lentotestiin",
+          "Suoritettu virallinen teoreettinen koe",
+          "Jos sovellettavissa: Epäonnistuneen lentotestin raportti"
+        ]
+      }
+    },
+    "licenseApplication": {
+      "title": "Lupahakemukseen liitettävät asiakirjat",
+      "description": "Seuraavien asiakirjojen tulee sisältyä lupahakemukseesi:",
+      "items": [
+        "Maakoulutuksen todistus",
+        "Lentokoulutuksen todistus",
+        "Tarkastelentäjän lausunto",
+        "Kopio lentopäiväkirjasta",
+        "Virallisten teoreettisten kokeiden tulokset (kopio)",
+        "Kielitaidon todistus",
+        "Passin kopio (ei-suomalaisille kansalaisille)"
+      ],
+      "note": "Huom: Virallisten teoreettisten kokeiden tulosten pitäisi jo olla viranomaisella, mutta liitä kopio vertailua varten. Yölentokorotusta ei voida sisällyttää LAPL(A)/PPL(A) -koulutukseen."
+    },
+    "instructors": {
+      "title": "Koulutuskontaktit",
+      "columns": {
+        "name": "Kouluttaja",
+        "phone": "Puhelin",
+        "rating": "Arvostelutaso",
+        "pplLapl": "PPL/LAPL",
+        "nightFlight": "Yölento",
+        "instrumentRating": "IR",
+        "recurrentTraining": "Toistuva koulutus",
+        "pricing": "Hinnoittelu",
+        "maxPricing": "Maksimi hinnoittelu"
+      },
+      "pricingInfo": {
+        "flightInstruction": "Lentokoulutus (per lohko)",
+        "licensedStudent": "Luvallinen opiskelija",
+        "unlicensedStudent": "Ilman lentolupaa oleva opiskelija",
+        "theoryInstruction": "Teoriaohjaus (tunnissa, jaettuna osallistujien kesken)"
+      },
+      "chiefInstructor": "Pääkouluttaja: Rami Sadik",
+      "aircraftEquipment": {
+        "title": "Koneen varustus",
+        "list": "Koulutuskoneet: OH-SRH, OH-IHQ (ei YL), OH-STL"
+      },
+      "lastUpdated": "Viimeksi päivitetty: 28.10.2020 | Koulutuslupa voimassa toistaiseksi"
+    }
   }
 }

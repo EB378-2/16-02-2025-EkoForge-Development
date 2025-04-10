@@ -29,8 +29,8 @@ import {
 } from "@mui/icons-material";
 import { useTheme } from "@customHooks/useTheme";
 
-const AircraftPage: React.FC = () => {
-  const t = useTranslations("Aircraft");
+const FleetPage: React.FC = () => {
+  const t = useTranslations("Fleet");
   const theme = useTheme();
   // Animation variants
   const fadeInUp = {
@@ -332,4 +332,4 @@ const AircraftPage: React.FC = () => {
   );
 };
 
-export default AircraftPage;
+export default FleetPage;
