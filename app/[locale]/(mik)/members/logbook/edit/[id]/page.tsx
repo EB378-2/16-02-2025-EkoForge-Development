@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { Edit } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import { FormProvider, useFormContext } from "react-hook-form";
-import { Box, Grid, TextField, MenuItem, FormControlLabel, Checkbox } from "@mui/material";
+import { Box, Grid, TextField, MenuItem, FormControlLabel, Checkbox, Typography } from "@mui/material";
 import { format } from "date-fns";
 import { useList } from "@refinedev/core";
 import { Logbook } from "@/components/types";
@@ -95,7 +95,7 @@ export default function LogbookEditPage() {
     saveButtonProps,
   } = methods;
 
-  // Fetch profiles for PIC and Student select
+  // Fetch profiles for the PIC select
   const { data: profilesData } = useList<{
     id: string;
     first_name: string;
@@ -104,17 +104,16 @@ export default function LogbookEditPage() {
     resource: "profiles",
     meta: { select: "id,first_name,last_name" },
   });
-
-  // Fetch resources for Resource select
+  // Fetch resources for the Resource select
   const { data: resourceData } = useList<{
     id: string;
     name: string;
   }>({
     resource: "resources",
-    meta: { select: "id,name" },
+    meta: { select: "id,name" }
   });
 
-  // Auto-calculate Flight Time (HHmm) from Takeoff and Landing Times.
+  // Watch takeoff and landing times for flight time calculation
   const takeoff = watch("takeoff_time");
   const landing = watch("landing_time");
 
@@ -139,7 +138,7 @@ export default function LogbookEditPage() {
     }
   }, [takeoff, landing, setValue]);
 
-  // Auto-calculate Block Time (HHmm) from Block Off and Block On Times.
+  // Watch block off and block on times for block time calculation
   const blockOff = watch("block_off_time");
   const blockOn = watch("block_on_time");
 
@@ -167,13 +166,14 @@ export default function LogbookEditPage() {
   return (
     <Edit title="Edit Logbook Entry" saveButtonProps={saveButtonProps}>
       <FormProvider {...methods}>
+        {/* Mobile View */}
         <Box
           component="form"
-          sx={{ display: "flex", flexDirection: "column", gap: 2, p: 4 }}
+          sx={{ display: { xs: "flex", sm: "none" }, flexDirection: "column", gap: 2, p: 4 }}
         >
           <Grid container spacing={2}>
-            {/* Row 1: Flight Date & Resource */}
-            <Grid item xs={12} sm={6}>
+            {/* Row 1: Flight Date */}
+            <Grid item xs={12}>
               <TextField
                 fullWidth
                 label="Flight Date"
@@ -184,11 +184,198 @@ export default function LogbookEditPage() {
                 helperText={errors.flight_date?.message?.toString()}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* Row 2: Resource */}
+            <Grid item xs={12}>
               <TextField
                 fullWidth
                 select
                 label="Resource"
+                value={watch("resource_id") || ""}
+                {...register("resource_id")}
+              >
+                {resourceData?.data?.map((resource) => (
+                  <MenuItem key={resource.id} value={resource.id}>
+                    {resource.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            {/* Row 3: Block Off Time */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Block Off Time"
+                type="time"
+                inputProps={{ step: 1 }}
+                InputLabelProps={{ shrink: true }}
+                {...register("block_off_time")}
+              />
+            </Grid>
+            {/* Row 4: Takeoff Time */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Takeoff Time"
+                type="time"
+                inputProps={{ step: 1 }}
+                InputLabelProps={{ shrink: true }}
+                {...register("takeoff_time")}
+              />
+            </Grid>
+            {/* Row 5: Landing Time */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Landing Time"
+                type="time"
+                inputProps={{ step: 1 }}
+                InputLabelProps={{ shrink: true }}
+                {...register("landing_time")}
+              />
+            </Grid>
+            {/* Row 6: Block On Time */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Block On Time"
+                type="time"
+                inputProps={{ step: 1 }}
+                InputLabelProps={{ shrink: true }}
+                {...register("block_on_time")}
+              />
+            </Grid>
+            {/* Row 7: Block Time & Flight Time */}
+            <Grid item xs={6}>
+              <Typography variant="body1" sx={{ width: '100%' }}>
+                Block Time (HHmm): {watch("block_time")}
+              </Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="body1" sx={{ width: '100%' }}>
+                Flight Time (HHmm): {watch("flight_time")}
+              </Typography>
+            </Grid>
+            {/* Row 8: DEP */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Departure Place (DEP)"
+                {...register("departure_place")}
+              />
+            </Grid>
+            {/* Row 9: ARR */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Arrival Place (ARR)"
+                {...register("arrival_place")}
+              />
+            </Grid>
+            {/* Row 10: Landings */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Landings"
+                type="number"
+                {...register("landings", { valueAsNumber: true })}
+              />
+            </Grid>
+            {/* Row 11: PIC */}
+            <Grid item xs={12}>
+            <TextField
+                fullWidth
+                select
+                label="PIC"
+                value={watch("pic_id") || ""}
+                {...register("pic_id")}
+              >
+                {profilesData?.data?.map((profile) => (
+                  <MenuItem key={profile.id} value={profile.id}>
+                    {profile.first_name} {profile.last_name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            {/* Row 12: Student */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                select
+                label="Student"
+                value={watch("student_id") || ""}
+                {...register("student_id")}
+              >
+                <MenuItem value="">
+                  <em>N/a</em>
+                </MenuItem>
+                {profilesData?.data?.map((profile) => (
+                  <MenuItem key={profile.id} value={profile.id}>
+                    {profile.first_name} {profile.last_name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            {/* Row 13: PAX */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="PAX"
+                type="number"
+                {...register("pax", { valueAsNumber: true })}
+              />
+            </Grid>
+            {/* Row 14: Flight Type */}
+            <Grid item xs={12}>
+              <TextField fullWidth label="Flight Type" {...register("flight_type")} />
+            </Grid>
+            {/* Row 15: Flight Details */}
+            <Grid item xs={12}>
+              <FlightDetailsSection />
+            </Grid>
+            {/* Row 16: Fuel */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Fuel Left"
+                type="number"
+                {...register("fuel_left", { valueAsNumber: true })}
+              />
+            </Grid>
+            {/* Row 17: Notes */}
+            <Grid item xs={12}>
+              <TextField fullWidth label="Notes" multiline rows={3} {...register("notes")} />
+            </Grid>
+            {/* Row 18: Billing */}
+            <Grid item xs={12}>
+              <TextField fullWidth label="Billing Info" {...register("billing_info")} />
+            </Grid>
+          </Grid>
+        </Box>
+
+        {/* Desktop View */}
+        <Box
+          component="form"
+          sx={{ display: { xs: "none", sm: "flex" }, flexDirection: "column", gap: 2, p: 4 }}
+        >
+          <Grid container spacing={2}>
+            {/* Row 1: Flight Date & Resource */}
+            <Grid item sm={6}>
+              <TextField
+                fullWidth
+                label="Flight Date"
+                type="date"
+                InputLabelProps={{ shrink: true }}
+                {...register("flight_date", { required: "Flight date is required" })}
+                error={!!errors.flight_date}
+                helperText={errors.flight_date?.message?.toString()}
+              />
+            </Grid>
+            <Grid item sm={6}>
+              <TextField
+                fullWidth
+                select
+                label="Resource"
+                value={watch("resource_id") || ""}
                 {...register("resource_id")}
               >
                 {resourceData?.data?.map((resource) => (
@@ -199,7 +386,7 @@ export default function LogbookEditPage() {
               </TextField>
             </Grid>
             {/* Row 2: Block Off Time & Block Time */}
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField
                 fullWidth
                 label="Block Off Time"
@@ -209,17 +396,13 @@ export default function LogbookEditPage() {
                 {...register("block_off_time")}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Block Time (HHmm)"
-                type="text"
-                {...register("block_time")}
-                InputProps={{ readOnly: true }}
-              />
+            <Grid item sm={6}>
+              <Typography variant="body1" sx={{ width: '100%' }}>
+                Block Time (HHmm): {watch("block_time")}
+              </Typography>
             </Grid>
             {/* Row 3: Takeoff Time & Flight Time */}
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField
                 fullWidth
                 label="Takeoff Time"
@@ -229,17 +412,13 @@ export default function LogbookEditPage() {
                 {...register("takeoff_time")}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Flight Time (HHmm)"
-                type="text"
-                {...register("flight_time")}
-                InputProps={{ readOnly: true }}
-              />
+            <Grid item sm={6}>
+              <Typography variant="body1" sx={{ width: '100%' }}>
+                Flight Time (HHmm): {watch("flight_time")}
+              </Typography>
             </Grid>
             {/* Row 4: Landing Time & DEP */}
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField
                 fullWidth
                 label="Landing Time"
@@ -249,7 +428,7 @@ export default function LogbookEditPage() {
                 {...register("landing_time")}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField
                 fullWidth
                 label="Departure Place (DEP)"
@@ -257,7 +436,7 @@ export default function LogbookEditPage() {
               />
             </Grid>
             {/* Row 5: Block On Time & ARR */}
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField
                 fullWidth
                 label="Block On Time"
@@ -267,7 +446,7 @@ export default function LogbookEditPage() {
                 {...register("block_on_time")}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField
                 fullWidth
                 label="Arrival Place (ARR)"
@@ -275,8 +454,14 @@ export default function LogbookEditPage() {
               />
             </Grid>
             {/* Row 6: PIC & Student */}
-            <Grid item xs={12} sm={6}>
-              <TextField fullWidth select label="PIC" {...register("pic_id")}>
+            <Grid item sm={6}>
+              <TextField
+                fullWidth
+                select
+                label="PIC"
+                value={watch("pic_id") || ""}
+                {...register("pic_id")}
+              >
                 {profilesData?.data?.map((profile) => (
                   <MenuItem key={profile.id} value={profile.id}>
                     {profile.first_name} {profile.last_name}
@@ -284,8 +469,17 @@ export default function LogbookEditPage() {
                 ))}
               </TextField>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField fullWidth select label="Student" {...register("student_id")}>
+            <Grid item sm={6}>
+              <TextField
+                fullWidth
+                select
+                label="Student"
+                value={watch("student_id") || ""}
+                {...register("student_id")}
+              >
+                <MenuItem value="">
+                  <em>N/a</em>
+                </MenuItem>
                 {profilesData?.data?.map((profile) => (
                   <MenuItem key={profile.id} value={profile.id}>
                     {profile.first_name} {profile.last_name}
@@ -294,7 +488,7 @@ export default function LogbookEditPage() {
               </TextField>
             </Grid>
             {/* Row 7: PAX & Landings */}
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField
                 fullWidth
                 label="PAX"
@@ -302,7 +496,7 @@ export default function LogbookEditPage() {
                 {...register("pax", { valueAsNumber: true })}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField
                 fullWidth
                 label="Landings"
@@ -311,7 +505,7 @@ export default function LogbookEditPage() {
               />
             </Grid>
             {/* Row 8: Fuel & Flight Type */}
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField
                 fullWidth
                 label="Fuel Left"
@@ -319,19 +513,19 @@ export default function LogbookEditPage() {
                 {...register("fuel_left", { valueAsNumber: true })}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={6}>
               <TextField fullWidth label="Flight Type" {...register("flight_type")} />
             </Grid>
             {/* Row 9: Flight Details */}
-            <Grid item xs={12}>
+            <Grid item sm={12}>
               <FlightDetailsSection />
             </Grid>
             {/* Row 10: Notes */}
-            <Grid item xs={12}>
+            <Grid item sm={12}>
               <TextField fullWidth label="Notes" multiline rows={3} {...register("notes")} />
             </Grid>
             {/* Row 11: Billing */}
-            <Grid item xs={12}>
+            <Grid item sm={12}>
               <TextField fullWidth label="Billing Info" {...register("billing_info")} />
             </Grid>
           </Grid>
