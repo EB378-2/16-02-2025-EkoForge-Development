@@ -451,56 +451,46 @@
     "sections": {
       "beforeTraining": {
         "title": "Before Training Begins",
-        "items": [
-          "Aviation medical certificate (valid)",
-          "Training contract with Malmi Flying Club",
-          "Student license application (signed by chief flight instructor)",
-          "Ground school can be studied alongside flight training"
-        ],
+        "item1": "Aviation medical certificate (valid)",
+        "item2": "Training contract with Malmi Flying Club",
+        "item3": "Student license application (signed by chief flight instructor)",
+        "item4": "Ground school can be studied alongside flight training",
         "note": "Note: Theory can be studied alongside flight training, but certain exams must be passed before first solo. Starting flight training late in autumn may not be advisable due to weather conditions."
       },
       "beforeFirstFlight": {
         "title": "Before First Flight Lesson",
-        "items": [
-          "Medical certificate copy in training folder",
-          "Student license copy in training folder",
-          "Training syllabus in folder",
-          "Ensure logbook and aircraft journey log are onboard for every flight"
-        ]
+        "item1": "Medical certificate copy in training folder",
+        "item2": "Student license copy in training folder",
+        "item3": "Training syllabus in folder",
+        "item4": "Ensure logbook and aircraft journey log are onboard for every flight"
       },
       "beforeSoloFlight": {
         "title": "Requirements Before First Solo",
-        "items": [
-          "Passed exams: Aviation Regulations, Flight Theory, Radiotelephony",
-          "Proficient in radiotelephony with ATC",
-          "Completed aircraft systems oral exam",
-          "Progress check flight with another instructor",
-          "Approved by chief flight instructor"
-        ]
+        "item1": "Passed exams: Aviation Regulations, Flight Theory, Radiotelephony",
+        "item2": "Proficient in radiotelephony with ATC",
+        "item3": "Completed aircraft systems oral exam",
+        "item4": "Progress check flight with another instructor",
+        "item5": "Approved by chief flight instructor"
       },
       "beforeFlightTest": {
         "title": "Before Flight Test",
-        "items": [
-          "Valid student license and medical",
-          "Completed ground and flight training certificates",
-          "Club recommendation for flight test",
-          "Passed official theoretical exam",
-          "If applicable: Failed flight test report"
-        ]
+        "item1": "Valid student license and medical",
+        "item2": "Completed ground and flight training certificates",
+        "item3": "Club recommendation for flight test",
+        "item4": "Passed official theoretical exam",
+        "item5": "If applicable: Failed flight test report"
       }
     },
     "licenseApplication": {
       "title": "License Application Documents",
       "description": "The following documents must be included with your license application:",
-      "items": [
-        "Ground school certificate",
-        "Flight training certificate",
-        "Check pilot statement",
-        "Copy from logbook",
-        "Official theory exam results (copy)",
-        "Language proficiency certificate",
-        "Passport copy (non-Finnish citizens)"
-      ],
+      "item1": "Ground school certificate",
+      "item2": "Flight training certificate",
+      "item3": "Check pilot statement",
+      "item4": "Copy from logbook",
+      "item5": "Official theory exam results (copy)",
+      "item6": "Language proficiency certificate",
+      "item7": "Passport copy (non-Finnish citizens)",
       "note": "Note: The official theory exam results should already be available to the authority, but include a copy for reference. Night rating cannot be included as part of LAPL(A)/PPL(A) training."
     },
     "instructors": {
@@ -525,7 +515,7 @@
       "chiefInstructor": "Chief Flight Instructor: Rami Sadik",
       "aircraftEquipment": {
         "title": "Aircraft Equipment",
-        "list": "Training aircraft: OH-SRH, OH-IHQ (no NF), OH-STL"
+        "list": "Training aircraft: OH-IHQ (no NF), OH-STL"
       },
       "lastUpdated": "Last updated: 28.10.2020 | Training license valid indefinitely"
     }

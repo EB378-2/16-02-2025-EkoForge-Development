@@ -34,23 +34,44 @@ export default function FlightStudentChecklist() {
 
   // Checklist items
   const beforeTraining = [
-    `${t("sections.beforeTraining.items")}`
+    `${t("sections.beforeTraining.item1")}`,
+    `${t("sections.beforeTraining.item2")}`,
+    `${t("sections.beforeTraining.item3")}`,
+    `${t("sections.beforeTraining.item4")}`
   ];
 
   const beforeFirstFlight = [
-   `${t("sections.beforeFirstFlight.items")}`
+   `${t("sections.beforeFirstFlight.item1")}`,
+   `${t("sections.beforeFirstFlight.item2")}`,
+   `${t("sections.beforeFirstFlight.item3")}`,
+   `${t("sections.beforeFirstFlight.item4")}`
+
   ];
 
   const beforeSoloFlight = [
-    `${t("sections.beforeSoloFlight.items")}`
+    `${t("sections.beforeSoloFlight.item1")}`,
+    `${t("sections.beforeSoloFlight.item2")}`,
+    `${t("sections.beforeSoloFlight.item3")}`,
+    `${t("sections.beforeSoloFlight.item4")}`,
+    `${t("sections.beforeSoloFlight.item5")}`
   ];
 
   const beforeFlightTest = [
-    `${t("sections.beforeFlightTest.items")}`
+    `${t("sections.beforeFlightTest.item1")}`,
+    `${t("sections.beforeFlightTest.item2")}`,
+    `${t("sections.beforeFlightTest.item3")}`,
+    `${t("sections.beforeFlightTest.item4")}`,
+    `${t("sections.beforeFlightTest.item5")}`
   ];
 
   const licenseApplication = [
-    `${t("sections.licenseApplication.items")}`
+    `${t("licenseApplication.item1")}`,
+    `${t("licenseApplication.item2")}`,
+    `${t("licenseApplication.item3")}`,
+    `${t("licenseApplication.item4")}`,
+    `${t("licenseApplication.item5")}`,
+    `${t("licenseApplication.item6")}`,
+    `${t("licenseApplication.item7")}`
   ];
 
   return (
