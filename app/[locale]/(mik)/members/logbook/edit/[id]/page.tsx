@@ -303,9 +303,9 @@ export default function LogbookEditPage() {
                 select
                 label="Student"
                 value={watch("student_id") || ""}
-                {...register("student_id")}
+                onChange={(e) => setValue("student_id", e.target.value || null)}
               >
-                <MenuItem value="">
+                <MenuItem>
                   <em>N/a</em>
                 </MenuItem>
                 {profilesData?.data?.map((profile) => (
@@ -475,9 +475,9 @@ export default function LogbookEditPage() {
                 select
                 label="Student"
                 value={watch("student_id") || ""}
-                {...register("student_id")}
+                onChange={(e) => setValue("student_id", e.target.value || null)}
               >
-                <MenuItem value="">
+                <MenuItem>
                   <em>N/a</em>
                 </MenuItem>
                 {profilesData?.data?.map((profile) => (
