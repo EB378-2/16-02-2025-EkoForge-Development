@@ -18,7 +18,7 @@ import {
 import { Blog } from "@/components/types";
 import { useTheme } from "@customHooks/useTheme";
 import { useTranslations } from "next-intl";
-import BlogCard from "@/components/Members/Dashboard/BlogCard"
+import BlogCard from "@components/(MIK)/Members/Dashboard/BlogCard"
 
 // --------------------
 // Front Page Component

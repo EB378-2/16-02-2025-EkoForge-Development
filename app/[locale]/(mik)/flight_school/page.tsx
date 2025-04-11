@@ -249,7 +249,7 @@ const FlightSchoolPage: React.FC = () => {
                     size="large"
                     startIcon={<EmailIcon />}
                     sx={{ mr: 2, mb: 2 }}
-                    href="mailto:koulutus@mik.fi"
+                    href="mailto:koulutus@eko.fi"
                   >
                     {t("contactEmail")}
                   </Button>

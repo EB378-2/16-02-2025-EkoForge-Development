@@ -17,9 +17,9 @@ import {
   FlightLand,
 } from "@mui/icons-material";
 import { useTheme } from "@customHooks/useTheme";
-import UpComingBookings from "@components/Members/Dashboard/UpComingBookings";
-import BlogSection from "@components/Members/Dashboard/BlogSection";
-import FlightStats from "@components/Members/Dashboard/FlightStats";
+import UpComingBookings from "@components/(MIK)/Members/Dashboard/UpComingBookings";
+import BlogSection from "@components/(MIK)/Members/Dashboard/BlogSection";
+import FlightStats from "@components/(MIK)/Members/Dashboard/FlightStats";
 import { ProfileName } from "@components/functions/FetchFunctions";
 import { useGetIdentity } from "@refinedev/core";
 

@@ -117,7 +117,7 @@ const ManualsPage: React.FC = () => {
           <Button 
             variant="outlined" 
             startIcon={<EmailIcon />}
-            href="mailto:kalusto@mik.fi"
+            href="mailto:kalusto@eko.fi"
           >
             {t("reportErrors")}
           </Button>

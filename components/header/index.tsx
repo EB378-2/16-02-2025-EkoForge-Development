@@ -53,21 +53,6 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
           alignItems="center"
         >
           <HamburgerMenu />
-          <Typography
-            variant="h5"
-            component="div"
-            sx={{
-              flexGrow: 1,
-              display: {
-                xs: "block",
-                sm: "block",
-                color: theme.palette.error.main,
-              },
-              textDecoration: "bold",
-            }}
-          >
-            BETA
-          </Typography>
           <Stack
             direction="row"
             width="100%"

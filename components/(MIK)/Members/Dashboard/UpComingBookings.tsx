@@ -23,7 +23,7 @@ import {
 import { ResourceName } from "@/components/functions/FetchFunctions";
 import { Booking } from "@/components/types";
 import { useTheme } from "@customHooks/useTheme";
-import BookingTime from "@/components/Members/Dashboard/BookingTime";
+import BookingTime from "@components/(MIK)/Members/Dashboard/BookingTime";
 import { useTranslations } from "next-intl";
 
 export default function UpComingBookings() {

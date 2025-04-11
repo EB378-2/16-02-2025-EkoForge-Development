@@ -37,9 +37,8 @@ g, admin, nonflyer
 // Public resources accessible to everyone (anonymous), regardless of login status.
 p, anonymous, home, (list)|(show)
 p, anonymous, blogs, (list)|(show)
-p, anonymous, flightschool, (list)|(show)
-p, anonymous, club, (list)|(show)
-p, anonymous, fleet, (list)|(show)
+p, anonymous, about, (list)|(show)
+p, anonymous, pricing, (list)|(show)
 
 
 p, authenticated, members_dropdown, (list)|(show)

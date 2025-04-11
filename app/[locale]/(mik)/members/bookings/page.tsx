@@ -24,7 +24,7 @@ import {
   useDelete,
   HttpError,
 } from "@refinedev/core";
-import BookingModal from "@/components/BookingModal";
+import BookingModal from "@components/(MIK)/BookingModal";
 import { Booking, BookingResource, BookingInstructor } from "@/components/types";
 import { useTheme } from "@customHooks/useTheme";
 

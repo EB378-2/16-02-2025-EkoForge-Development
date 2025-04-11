@@ -4,13 +4,12 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
-import { Box, Container, Typography, Button, Grid, IconButton } from "@mui/material";
+import { Box, Container, Typography, Button, Grid } from "@mui/material";
 import { useTheme } from "@customHooks/useTheme";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Image from "next/image";
 
-const AviationHomePage: React.FC = () => {
-  const t = useTranslations("AviationHome");
+const HomePage: React.FC = () => {
+  const t = useTranslations("Home");
   const theme = useTheme();
 
   // Animation variants
@@ -146,7 +145,7 @@ const AviationHomePage: React.FC = () => {
                 >
                   <Image
                     src="/ihq.jpeg"
-                    alt="MIK Aviation"
+                    alt="Aviation"
                     fill
                     style={{ objectFit: "cover" }}
                   />
@@ -456,4 +455,4 @@ const AviationHomePage: React.FC = () => {
   );
 };
 
-export default AviationHomePage;
+export default HomePage;

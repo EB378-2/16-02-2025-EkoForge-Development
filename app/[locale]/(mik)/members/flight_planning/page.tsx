@@ -34,7 +34,7 @@ import {
     School as SchoolIcon,
     Forum as ForumIcon
 } from "@mui/icons-material";
-import DashboardCard from "@components/Members/flightplanning/DashboardCard";
+import DashboardCard from "@components/(MIK)/Members/flightplanning/DashboardCard";
 import { FlightPlan } from "@components/types";
 
 

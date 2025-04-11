@@ -48,10 +48,10 @@ const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "https://localhost:3000";
 
-const APP_NAME = "MIK";
-const APP_DEFAULT_TITLE = "MIK";
+const APP_NAME = "WingApp";
+const APP_DEFAULT_TITLE = "Wing";
 const APP_TITLE_TEMPLATE = "%s - PWA App";
-const APP_DESCRIPTION = "Malmi Ilmailu Kerho App";
+const APP_DESCRIPTION = "Wing App";
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
@@ -151,7 +151,7 @@ export default async function RootLayout({
                         list: `/${locale}/home`,
                         meta: {
                           icon: <HomeIcon />,
-                          label: t("AviationHome.label"),
+                          label: t("Home.label"),
                         },
                       },
                       {
@@ -175,24 +175,24 @@ export default async function RootLayout({
                         },
                       },
                       {
-                        name: "club",
-                        list: `/${locale}/club`,
+                        name: "about",
+                        list: `/${locale}/about`,
                         meta: {
-                          label: t("Club.label"),
+                          label: t("About.label"),
                           icon: <Groups3Icon />,
                         },
                       },
                       {
-                        name: "fleet",
-                        list: `/${locale}/aircraft`,
+                        name: "pricing",
+                        list: `/${locale}/pricing`,
                         meta: {
-                          label:  t("Fleet.label"),
+                          label:  t("Pricing.label"),
                           icon: <ConnectingAirportsIcon />,
                         },
                       },
                       {
                         name: "members_dropdown",
-                        list: `/${locale}/members_dropdown`,
+                        list: `/${locale}/members`,
                         meta: {
                           label:  t("MembersArea.label"),
                         },

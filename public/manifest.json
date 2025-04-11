@@ -1,7 +1,7 @@
 {
-  "name":"MIK RY",
-  "short_name":"MIK",
-  "description":"MIK webapp, and member portal",
+  "name":"Wing app",
+  "short_name":"Wing",
+  "description":"Wing webapp, and member portal",
   "theme_color":"#eeeeee",
   "background_color":"#cccccc",
   "display":"standalone",

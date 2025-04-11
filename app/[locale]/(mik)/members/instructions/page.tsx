@@ -229,7 +229,7 @@ const InstructionsPage: React.FC = () => {
         <Button
           variant="outlined"
           startIcon={<EmailIcon />}
-          href="mailto:laskutus@mik.fi"
+          href="mailto:laskutus@eko.fi"
           sx={{ mt: 1 }}
         >
           {t("submitExpenses")}
